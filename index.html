@@ -565,10 +565,22 @@
         <div>
             <label for="observacao">Observação:</label>
             <textarea id="observacao" name="observacao" rows="6" cols="100"></textarea>
-        </div>    
+        </div>
+        <button type="submit">Salvar</button>
+        <button type="submit" formaction="/finalizar_cadastro_produto">Finalizar</button>
+        <button type="button" onclick="voltarParaMenu()">Voltar</button>
+
+<script>
+    function voltarParaMenu() {
+        window.location.href = '/menu'; // Redireciona para a rota '/menu'
+    }
+</script>
+    
     </form>
     <script>
-      
+    document.getElementById('continuarCadastroForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar o comportamento padrão de envio do formulário
+    
         // Fazer uma requisição assíncrona ao servidor
         fetch('/salvar_produto', {
             method: 'POST',
@@ -590,6 +602,7 @@
             console.error('Erro ao enviar requisição:', error);
             alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
         });
+    });
 </script>
 </body>
 </html>
