@@ -11,6 +11,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Servir arquivos estáticos da pasta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Função para converter todos os campos de um objeto para maiúsculas
+function convertToUpperCase(obj) {
+    const newObj = {};
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = typeof obj[key] === 'string' ? obj[key].toUpperCase() : obj[key];
+        }
+    }
+    return newObj;
+}
+
 // Rota para a página inicial
 app.get('/', (req, res) => {
     // Envie o arquivo HTML da página index.html
@@ -25,30 +36,14 @@ app.get('/index.html', (req, res) => {
 
 // Rota para lidar com o envio do formulário
 app.post('/salvar_produto', (req, res) => {
-    // Extrair os dados do corpo da solicitação
+    // Extrair os dados do corpo da solicitação e converter para maiúsculas
     const {
         codigo, descricao, desc_resumida, kit, consignado, opme, especie, classe, sub_classe, valor_unitario,
-        unidade, curva_abc, serie, registro_anvisa, etiqueta, medicamento, med_controla, validade, armazenamento_ar_cond,
+        unidade, curva_abc, serie, registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond,
         armazenamento_geladeira, padronizado, aplicacao, auto_custo, valor, repasse, procedimento_faturamento,
         tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao, tipo_atendimento_externo,
         tipo_atendimento_todos, observacao, usuario, email
-    } = req.body;
-
-    // Verifique se todos os campos necessários estão presentes
-   // const requiredFields = [
-   //   'codigo', 'descricao', 'desc_resumida', 'kit', 'consignado', 'opme', 'especie', 'classe', 'sub_classe', 'valor_unitario',
-   //     'unidade', 'curva_abc', 'serie', 'registro_anvisa', 'etiqueta', 'medicamento', 'med_controla', 'validade',
-     //   'armazenamento_ar_cond', 'armazenamento_geladeira', 'padronizado', 'aplicacao', 'auto_custo', 'valor', 'repasse',
-       // 'procedimento_faturamento', 'tipo_atendimento_ps', 'tipo_atendimento_ambulatorial', 'tipo_atendimento_internacao',
-   //     'tipo_atendimento_externo', 'tipo_atendimento_todos', 'observacao', 'usuario', 'email'
-  //  ];
-
-  //  for (let field of requiredFields) {
-  //      if (!req.body[field]) {
-  //          res.status(400).send(`O campo ${field} é obrigatório!`);
-  //          return;
-  //      }
-  //  }
+    } = convertToUpperCase(req.body);
 
     // Configurar o transporte do Nodemailer para o Outlook 365
     const transporter = nodemailer.createTransport({
@@ -56,15 +51,15 @@ app.post('/salvar_produto', (req, res) => {
         port: 587,
         secure: false, // Use TLS
         auth: {
-            user: 'cadastro_pet@outlook.com', // E-mail de origem
-            pass: 'Gic@29098' // Senha do e-mail de origem
+            user: 'cadastros.veros@outlook.com', // E-mail de origem
+            pass: 'Veros@123' // Senha do e-mail de origem
         }
     });
 
     // Configurar o e-mail
     const mailOptions = {
-        from: 'cadastro_pet@outlook.com', // E-mail de origem
-        to: 'cadastro_pet@outlook.com', // E-mail do destinatário
+        from: 'cadastros.veros@outlook.com', // E-mail de origem
+        to: 'cadastros.veros@outlook.com', // E-mail do destinatário
         subject: 'Solicitação de Cadastro',
         html: `
             <h1>Solicitação de Cadastro:</h1>
@@ -83,7 +78,6 @@ app.post('/salvar_produto', (req, res) => {
             <p><strong>Série:</strong> ${serie}</p>
             <p><strong>Registro ANVISA:</strong> ${registro_anvisa}</p>
             <p><strong>Etiqueta:</strong> ${etiqueta}</p>
-            <p><strong>Medicamento:</strong> ${medicamento}</p>
             <p><strong>Medicamento controlado:</strong> ${med_controla}</p>
             <p><strong>Validade do produto:</strong> ${validade}</p>
             <p><strong>Ar Condicionado:</strong> ${armazenamento_ar_cond}</p>
@@ -114,6 +108,42 @@ app.post('/salvar_produto', (req, res) => {
         } else {
             console.log('E-mail enviado: ' + info.response);
             res.send('Produto cadastrado com sucesso!');
+        }
+    });
+});
+
+// Nova rota para responder o email
+app.post('/responder_email', (req, res) => {
+    const { from, to, cc, subject, message } = convertToUpperCase(req.body);
+
+    // Configurar o transporte do Nodemailer para o Outlook 365
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.office365.com',
+        port: 587,
+        secure: false, // Use TLS
+        auth: {
+            user: 'cadastrosmv@veros.com', // E-mail de origem
+            pass: 'Veros@123' // Senha do e-mail de origem
+        }
+    });
+
+    // Configurar o e-mail de resposta
+    const mailOptions = {
+        from: from || 'cadastros.veros@outlook.com', // E-mail de origem, usa padrão se não fornecido
+        to: to, // E-mail do destinatário
+        cc: cc, // E-mails em cópia
+        subject: subject,
+        text: message
+    };
+
+    // Enviar e-mail de resposta
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Erro ao enviar e-mail de resposta');
+        } else {
+            console.log('E-mail de resposta enviado: ' + info.response);
+            res.send('E-mail de resposta enviado com sucesso!');
         }
     });
 });
