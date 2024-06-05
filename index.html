@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <form action="/salvar_produto" method="POST" onsubmit="cadastrarUsuario(); return false;">
+        <div>
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo">
+        </div>
+        <div>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required>
+        </div>
+        <div>
+            <label for="desc_resumida">Descrição Resumida:</label>
+            <input type="text" id="desc_resumida" name="desc_resumida" required>
+        </div>
+        <div>
+            <label for="valor_unitario">Valor de compra unitário:</label>
+            <input type="text" id="valor_unitario" name="valor_unitario">
+        </div>
+    </div>
+    <div>
+        <label for="unidade">Unidade:</label>           
+        <select id="unidade" name="unidade">
+            <option value=""></option>
+            <option value="DRAGEA">DRAGEA</option>
+            <option value="PACOTE">PACOTE</option>
+            <option value="MIO">MIO</option>
+            <option value="MUI">MUI</option>
+            <option value="SERINGA CHEIA">SERINGA CHEIA</option>
+            <option value="MEQ">MEQ</option>
+            <option value="QUILOGRAMA">QUILOGRAMA</option>
+            <option value="LITRO">LITRO</option>
+            <option value="MILILITRO">MILILITRO</option>
+            <option value="METRO">METRO</option>
+            <option value="SACHE">SACHE</option>
+            <option value="BLOCO">BLOCO</option>
+            <option value="FOLHA">FOLHA</option>
+            <option value="MICROGRAMA">MICROGRAMA</option>
+            <option value="DOSE">DOSE</option>
+            <option value="COMPRIMIDO">COMPRIMIDO</option>
+            <option value="CAPSULA">CAPSULA</option>
+            <option value="AMPOLA">AMPOLA</option>
+            <option value="POTE">POTE</option>
+            <option value="TUBO">TUBO</option>
+            <option value="ENVELOPE">ENVELOPE</option>
+            <option value="FRASCO">FRASCO</option>
+            <option value="TABLETE">TABLETE</option>
+            <option value="FLACONETE">FLACONETE</option>
+            <option value="UTR MIL">UTR MIL</option>
+            <option value="MILIGRAMA">MILIGRAMA</option>
+            <option value="FRASCO/AMPOLA">FRASCO/AMPOLA</option>
+            <option value="GALAO">GALAO</option>
+            <option value="GLOBULO">GLOBULO</option>
+            <option value="GOTAS">GOTAS</option>
+            <option value="OVULO">OVULO</option>
+            <option value="BILHAO DE UNID. INTERNACIONAL">BILHAO DE UNID. INTERNACIONAL</option>
+            <option value="BISNAGA">BISNAGA</option>
+            <option value="BOLSA">BOLSA</option>
+            <option value="CAIXA">CAIXA</option>
+            <option value="CARPULE">CARPULE</option>
+            <option value="LATA">LATA</option>
+            <option value="PEROLA">PEROLA</option>
+            <option value="PILULA">PILULA</option>
+            <option value="TUBETE">TUBETE</option>
+            <option value="CENTIMETRO">CENTIMETRO</option>
+            <option value="CONJUNTO">CONJUNTO</option>
+            <option value="KIT">KIT</option>
+            <option value="MACO">MACO</option>
+            <option value="METRO">METRO</option>
+            <option value="PECA">PECA</option>
+            <option value="ROLO">ROLO</option>
+            <option value="CENTGRAY">CENTGRAY</option>
+            <option value="GRAY">GRAY</option>
+            <option value="PAR">PAR</option>
+            <option value="ADESIVO TRANSDERMICO">ADESIVO TRANSDERMICO</option>
+            <option value="SUPOSITORIO">SUPOSITORIO</option>
+            <option value="PASTILHA">PASTILHA</option>
+            <option value="MILIGRAMA/ PESO">MILIGRAMA/ PESO</option>
+            <option value="CALORIAS">CALORIAS</option>
+            <option value="UI POR MILILITRO">UI POR MILILITRO</option>
+            <option value="COMPRIMIDO EFERVECENTE">COMPRIMIDO EFERVECENTE</option>
+            <option value="COMPRIMIDO MASTIGAVEL">COMPRIMIDO MASTIGAVEL</option>
+            <option value="GRAMAS">GRAMAS</option>
+            <option value="METRO CUBICO">METRO CUBICO</option>
+            <option value="CENTIMETRO CUBICO">CENTIMETRO CUBICO</option>
+            <option value="METRO QUADRADO">METRO QUADRADO</option>
+            <option value="MG POR METRO QUADRADO">MG POR METRO QUADRADO</option>
+            <option value="UI POR METRO QUADRADO">UI POR METRO QUADRADO</option>
+            <option value="UI POR MIL">UI POR MIL</option>
+            <option value="UNIDADE">UNIDADE</option>
+            <option value="PUFF">PUFF</option>
+            <option value="UNIDADE INTERNACIONAL">UNIDADE INTERNACIONAL</option>
+            <option value="POTE">POTE</option>
+            <option value="BOBINA">BOBINA</option>
+            <option value="UNIDADE">UNIDADE</option>
+        </select>
+    </div>
+        <div>
+            <label for="kit">Kit:</label>
+            <select id="kit" name="kit">
+                <option value=""></option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div>
+            <label for="consignado">Consignado:</label>
+            <select id="consignado" name="consignado">
+                <option value=""></option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div>
+            <label for="opme">OPME:</label>
+            <select id="opme" name="opme">
+                <option value=""></option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div>
+            <label for="especie">Espécie:</label>
+            <select id="especie" name="especie">
+                <option value=""></option>
+                <option value="DROGAS E MEDICAMENTOS">DROGAS E MEDICAMENTOS</option>
+                <option value="MATERIAL MEDICO HOSPITALAR">MATERIAL MEDICO HOSPITALAR</option>
+                <option value="PATRIMONIO">PATRIMONIO</option>
+                <option value="GASES HOSPITALARES">GASES HOSPITALARES</option>
+                <option value="MATERIAL DE COPA E COZINHA">MATERIAL DE COPA E COZINHA</option>
+                <option value="GENEROS ALIMENTICIOS">GENEROS ALIMENTICIOS</option>
+                <option value="ORTESE, PROTESE E MAT. ESPECIAL">ORTESE, PROTESE E MAT. ESPECIAL</option>
+                <option value="MATERIAL DE MANUTENCAO">MATERIAL DE MANUTENCAO</option>
+                <option value="MATERIAL DE SEGURANCA">MATERIAL DE SEGURANCA</option>
+                <option value="MATERIAL DE HIGIENIZACAO">MATERIAL DE HIGIENIZACAO</option>
+                <option value="COMBUSTIVEIS E LUBRIFICANTES">COMBUSTIVEIS E LUBRIFICANTES</option>
+                <option value="MATERIAIS DE EXPEDIENTE">MATERIAIS DE EXPEDIENTE</option>
+                <option value="MATERIAL DE ROUPARIA">MATERIAL DE ROUPARIA</option>
+                <option value="MATERIAL DE LABORATORIO">MATERIAL DE LABORATORIO</option>
+                <option value="NUTRIENTES ENTERAIS/PARENTERAIS">NUTRIENTES ENTERAIS/PARENTERAIS</option>
+                <option value="BRINDES">BRINDES</option>
+                <option value="RAÇÃO">RAÇÃO</option>
+                <option value="INSUMOS">INSUMOS</option>
+                <option value="HIGIENE">HIGIENE</option>
+                <option value="MATERIAL CONSUMO">MATERIAL CONSUMO</option>
+                <option value="MATERIAL DE EMBALAGEM">MATERIAL DE EMBALAGEM</option>
+                <option value="MATERIAL DE ESCRITORIO">MATERIAL DE ESCRITORIO</option>
+            </select>    
+        </div>
+        <div>
+            <label for="classe">Classe:</label>
+            <select id="classe" name="classe">
+                <option value=""></option>
+                <option value="MATERIAL MEDICO">MATERIAL MEDICO</option>
+                <option value="MATERIAL PERMANENTE">MATERIAL PERMANENTE</option>
+                <option value="GASES">GASES</option>
+                <option value="CIRURGICA">CIRURGICA</option>
+                <option value="OPME NAO CIRURGICA">OPME NAO CIRURGICA</option>
+                <option value="CAIXA">CAIXA</option>
+                <option value="MATERIAL DE LABORATORIO">MATERIAL DE LABORATORIO</option>
+                <option value="MATERIAL DE DIAGNOSTICO">MATERIAL DE DIAGNOSTICO</option>
+                <option value="AGENTES DIAGNOSTICOS">AGENTES DIAGNOSTICOS</option>
+                <option value="ANTIINFECCIOSOS">ANTIINFECCIOSOS</option>
+                <option value="ESPASMOLITICOS">ESPASMOLITICOS</option>
+                <option value="IMUNOLOGIA E ALERGOLOGIA">IMUNOLOGIA E ALERGOLOGIA</option>
+                <option value="METABOLISMO E NUTRICAO">METABOLISMO E NUTRICAO</option>
+                <option value="SISTEMA NERVOSO PERIFERICO">SISTEMA NERVOSO PERIFERICO</option>
+                <option value="ANTI-REUMATICOS E ANTIGOTOSOS">ANTI-REUMATICOS E ANTIGOTOSOS</option>
+                <option value="SISTEMA DIGESTORIO">SISTEMA DIGESTORIO</option>
+                <option value="FARMACOS DIVERSOS">FARMACOS DIVERSOS</option>
+                <option value="ANTIDOTOS E ANTAGONISTAS">ANTIDOTOS E ANTAGONISTAS</option>
+                <option value="SISTEMA RESPIRATORIO">SISTEMA RESPIRATORIO</option>
+                <option value="MIORRELAXANTES">MIORRELAXANTES</option>
+                <option value="OLHOS E ANEXOS">OLHOS E ANEXOS</option>
+                <option value="AGENTES ANTINEOPLASICOS">AGENTES ANTINEOPLASICOS</option>
+                <option value="OUVIDO E ANEXOS">OUVIDO E ANEXOS</option>
+                <option value="SANGUE E SISTEMA HEMATOPOETICO">SANGUE E SISTEMA HEMATOPOETICO</option>
+                <option value="HORMONIOS E ANTI-HORMONIOS">HORMONIOS E ANTI-HORMONIOS</option>
+                <option value="PELE E MUCOSAS">PELE E MUCOSAS</option>
+                <option value="MEDICINA NUCLEAR">MEDICINA NUCLEAR</option>
+                <option value="SISTEMA NERVOSO CENTRAL">SISTEMA NERVOSO CENTRAL</option>
+                <option value="SISTEMA CARDIOVASCULAR">SISTEMA CARDIOVASCULAR</option>
+                <option value="NUTRIENTES ENTERAIS/PARENTERAIS">NUTRIENTES ENTERAIS/PARENTERAIS</option>
+                <option value="A CLASSIFICAR">A CLASSIFICAR</option>
+                <option value="MATERIAL DE COPA E COZINHA">MATERIAL DE COPA E COZINHA</option>
+                <option value="ALIMENTOS">ALIMENTOS</option>
+                <option value="MATERIAL DE MANUTENCAO">MATERIAL DE MANUTENCAO</option>
+                <option value="MATERIAL DE SEGURANCA">MATERIAL DE SEGURANCA</option>
+                <option value="COMBUSTIVEIS E LUBRIFICANTES">COMBUSTIVEIS E LUBRIFICANTES</option>
+                <option value="MATERIAIS DE EXPEDIENTE">MATERIAIS DE EXPEDIENTE</option>
+                <option value="MATERIAL DE ROUPARIA">MATERIAL DE ROUPARIA</option>
+                <option value="MATERIAL DE LABORATORIO">MATERIAL DE LABORATORIO</option>
+                <option value="BRINDES DIVERSOS">BRINDES DIVERSOS</option>
+                <option value="AGENTES IMUNIZANTES">AGENTES IMUNIZANTES</option>
+                <option value="ANTIALERGICOS">ANTIALERGICOS</option>
+                <option value="ANTISSEPTICOS">ANTISSEPTICOS</option>
+                <option value="CONTRASTES RADIOLOGICOS">CONTRASTES RADIOLOGICOS</option>
+                <option value="DERMATOLOGICOS">DERMATOLOGICOS</option>
+                <option value="DIURETICOS OSMOTICOS">DIURETICOS OSMOTICOS</option>
+                <option value="ELETROLITOS">ELETROLITOS</option>
+                <option value="FARMACOS INTERF METAB DA AGUA">FARMACOS INTERF METAB DA AGUA</option>
+                <option value="OFTALMICOS, OTOLOG, NASOFARINGE">OFTALMICOS, OTOLOG, NASOFARINGE</option>
+                <option value="SISTEMA ANALGESIA E ANESTESIA">SISTEMA ANALGESIA E ANESTESIA</option>
+                <option value="SISTEMA ANTIMICROBIANO">SISTEMA ANTIMICROBIANO</option>
+                <option value="SISTEMA NEUROLOGIA PSIQUIATRIA">SISTEMA NEUROLOGIA PSIQUIATRIA</option>
+                <option value="VITAMINAS">VITAMINAS</option>
+                <option value="SECA">SECA</option>
+                <option value="UMIDA">UMIDA</option>
+                <option value="MEDICAMENTOSA">MEDICAMENTOSA</option>
+                <option value="BENS DE PEQUENOS VALORES">BENS DE PEQUENOS VALORES</option>
+                <option value="SUPLEMENTOS">SUPLEMENTOS</option>
+                <option value="ADESIVOS/CURATIVOS/HEMOSTATICOS">ADESIVOS/CURATIVOS/HEMOSTATICOS</option>
+                <option value="CANULAS/DRENOS/SONDAS/TUBOS">CANULAS/DRENOS/SONDAS/TUBOS</option>
+                <option value="DESCARTAVEIS">DESCARTAVEIS</option>
+                <option value="INFUSAO/PERFUROCORTANTE">INFUSAO/PERFUROCORTANTE</option>
+                <option value="LATEX">LATEX</option>
+                <option value="ODONTOLOGICOS">ODONTOLOGICOS</option>
+                <option value="PRODUTOS QUIMICOS">PRODUTOS QUIMICOS</option>
+                <option value="SUTURA CIRURGICA">SUTURA CIRURGICA</option>
+                <option value="TEXTEIS">TEXTEIS</option>
+                <option value="USO GERAL">USO GERAL</option>
+                <option value="INSUMOS">INSUMOS</option>
+                <option value="USO GERAL">USO GERAL</option>                
+            </select>    
+        </div>
+        <div>
+            <label for="sub_classe">Sub-Classe:</label>
+            <select id="sub_classe" name="sub_classe">
+                <option value=""></option>
+                <option value="FARM. AFETAM A CALCIFICACAO">FARM. AFETAM A CALCIFICACAO</option>
+                <option value="FARM. P/ HIPERTIREOIDISMO">FARM. P/ HIPERTIREOIDISMO</option>
+                <option value="FARM. P/ HIPOTIREOIDISMO">FARM. P/ HIPOTIREOIDISMO</option>
+                <option value="HIPERGLICEMIANTE/ANABOLIZANTE">HIPERGLICEMIANTE/ANABOLIZANTE</option>
+                <option value="INSTALAÇÕES">INSTALAÇÕES</option>
+                <option value="GASES MEDICINAIS">GASES MEDICINAIS</option>
+                <option value="GASES INDUSTRIAIS">GASES INDUSTRIAIS</option>
+                <option value="HORM.ANTIDIURETICOS E ANALOGOS">HORM.ANTIDIURETICOS E ANALOGOS</option>
+                <option value="MINERALOCORTICOIDES">MINERALOCORTICOIDES</option>
+                <option value="REHIDRATACAO ORAL">REHIDRATACAO ORAL</option>
+                <option value="RESINAS PERMUTADORAS DE IONS">RESINAS PERMUTADORAS DE IONS</option>
+                <option value="SOLUCOES PARA DIALISE">SOLUCOES PARA DIALISE</option>
+                <option value="VITAMINAS">VITAMINAS</option>
+                <option value="MIORRELAXANTES CENTRAIS">MIORRELAXANTES CENTRAIS</option>
+                <option value="MIORRELAXANTES PERIFERICOS">MIORRELAXANTES PERIFERICOS</option>
+                <option value="ANTIGLAUCOMATOSOS">ANTIGLAUCOMATOSOS</option>
+                <option value="ANTIINFECCIOSOS">ANTIINFECCIOSOS</option>
+                <option value="ANTIINFLAMATORIOS">ANTIINFLAMATORIOS</option>
+                <option value="CORANTE/SOL.IRRIGACAO/LUBRIF.">CORANTE/SOL.IRRIGACAO/LUBRIF.</option>
+                <option value="GLICOCORTICOIDES">GLICOCORTICOIDES</option>
+                <option value="MIDRIATICOS E CICLOPLEGICOS">MIDRIATICOS E CICLOPLEGICOS</option>
+                <option value="MIOTICOS">MIOTICOS</option>
+                <option value="VISCOELASTICOS">VISCOELASTICOS</option>
+                <option value="ANTIINFECCIOSOS">ANTIINFECCIOSOS</option>
+                <option value="CERUMENOLITICO E EMOL. CERUMEN">CERUMENOLITICO E EMOL. CERUMEN</option>
+                <option value="NUTRIENTES PARENTERAIS">NUTRIENTES PARENTERAIS</option>
+                <option value="NUTRIENTES ENTERAIS">NUTRIENTES ENTERAIS</option>
+                <option value="LAMINAS/LANCETAS">LAMINAS/LANCETAS</option>
+                <option value="SCALPS">SCALPS</option>
+                <option value="FERRAMENTAS/ACESSORIOS/INSTRUMENTOS">FERRAMENTAS/ACESSORIOS/INSTRUMENTOS</option>
+                <option value="PINCAS">PINCAS</option>
+                <option value="TUBOS">TUBOS</option>
+                <option value="RESERVATORIOS">RESERVATORIOS</option>
+                <option value="PROTETORES">PROTETORES</option>
+                <option value="ANTICOAGULANTES/HEMOSTATICOS">ANTICOAGULANTES/HEMOSTATICOS</option>
+                <option value="ANTIINFECCIOSOS TOPICO">ANTIINFECCIOSOS TOPICO</option>
+                <option value="ANTIINFLAMATORIOS">ANTIINFLAMATORIOS</option>
+                <option value="ANTI-SEPTICOS">ANTI-SEPTICOS</option>
+                <option value="ANTIULCEROSOS DERMICOS">ANTIULCEROSOS DERMICOS</option>
+                <option value="EMOLIENTES/CONDUTORES">EMOLIENTES/CONDUTORES</option>
+                <option value="GLICOCORTICOIDES">GLICOCORTICOIDES</option>
+                <option value="MUCOPOLISSACARIDASES">MUCOPOLISSACARIDASES</option>
+                <option value="QUERATOLITICO/QUERATOPLASTICO">QUERATOLITICO/QUERATOPLASTICO</option>
+                <option value="ANTIANEMICOS ANTIMICROCITICOS">ANTIANEMICOS ANTIMICROCITICOS</option>
+                <option value="ANTIANEMICOS RENAIS">ANTIANEMICOS RENAIS</option>
+                <option value="ANTICOAGULANTES">ANTICOAGULANTES</option>
+                <option value="ANTIFIBRINOLITICOS">ANTIFIBRINOLITICOS</option>
+                <option value="ANTINEUTROPENICOS">ANTINEUTROPENICOS</option>
+                <option value="ANTITROMBOTICOS">ANTITROMBOTICOS</option>
+                <option value="COAGULANTES DIVERSOS">COAGULANTES DIVERSOS</option>
+                <option value="FIBRINOLITICOS">FIBRINOLITICOS</option>
+                <option value="FOLATOS">FOLATOS</option>
+                <option value="HEMOSTIPTICOS">HEMOSTIPTICOS</option>
+                <option value="SANGUE E FRACOES DO SANGUE">SANGUE E FRACOES DO SANGUE</option>
+                <option value="SUBSTITUTOS DO SANGUE">SUBSTITUTOS DO SANGUE</option>
+                <option value="ANALGESICOS ANTIENXAQUECA">ANALGESICOS ANTIENXAQUECA</option>
+                <option value="ANALGESICOS-ANTIPIRETICOS">ANALGESICOS-ANTIPIRETICOS</option>
+                <option value="ANTIPARKINSONIANOS">ANTIPARKINSONIANOS</option>
+                <option value="ANTIVERTIGINOSOS">ANTIVERTIGINOSOS</option>
+                <option value="ANEST. LOCAL DER. DE AMIDAS">ANEST. LOCAL DER. DE AMIDAS</option>
+                <option value="ANEST. LOCAL DER. DE ESTERES">ANEST. LOCAL DER. DE ESTERES</option>
+                <option value="CANULAS">CANULAS</option>
+                <option value="DRENOS">DRENOS</option>
+                <option value="SONDAS">SONDAS</option>
+                <option value="FRASCOS">FRASCOS</option>
+                <option value="ADESIVOS/CURATIVOS/HEMOSTATICOS/ESPARADRAPOS/SELOS/TAMPAO/FRALDAS/ABSORVENTES">ADESIVOS/CURATIVOS/HEMOSTATICOS/ESPARADRAPOS/SELOS/TAMPAO/FRALDAS/ABSORVENTES</option>
+                <option value="INSUMOS">INSUMOS</option>
+                <option value="BARACAS">BARACAS</option>
+                <option value="BOLSAS">BOLSAS</option>
+                <option value="COLETORES">COLETORES</option>
+                <option value="EMBALAGENS">EMBALAGENS</option>
+                <option value="DISPOSITIVOS">DISPOSITIVOS</option>
+                <option value="EPI (PROTETORES)">EPI (PROTETORES)</option>
+                <option value="PAPEIS PARA EXAMES">PAPEIS PARA EXAMES</option>
+                <option value="PULSEIRAS">PULSEIRAS</option>
+                <option value="APARELHO DE TRICOTOMIA">APARELHO DE TRICOTOMIA</option>
+                <option value="MEDICAMENTOS">MEDICAMENTOS</option>
+                <option value="COLETORES">COLETORES</option>
+                <option value="KITS CIRURGICOS/ CONJUNTOS">KITS CIRURGICOS/ CONJUNTOS</option>
+                <option value="INDICADORES">INDICADORES</option>
+                <option value="ACESSORIOS">ACESSORIOS</option>
+                <option value="TIRAS/FITAS">TIRAS/FITAS</option>
+                <option value="DESCONTAMINANTES">DESCONTAMINANTES</option>
+                <option value="REAGENTE QUIMICOS">REAGENTE QUIMICOS</option>
+                <option value="ORTODONTIA/ODONTOLOGIA">ORTODONTIA/ODONTOLOGIA</option>
+                <option value="ELETRODOS">ELETRODOS</option>
+                <option value="CAPA/CAMISA/SACO">CAPA/CAMISA/SACO</option>
+                <option value="FIOS">FIOS</option>
+                <option value="TORNEIRAS/CONECTORES">TORNEIRAS/CONECTORES</option>
+                <option value="ORTOPEDIA">ORTOPEDIA</option>
+                <option value="CIRURGIA GERAL">CIRURGIA GERAL</option>
+                <option value="CARDIOVASCULAR">CARDIOVASCULAR</option>
+                <option value="NEUROCIRURGIA">NEUROCIRURGIA</option>
+                <option value="OFTALMOLOGIA">OFTALMOLOGIA</option>
+                <option value="UROLOGIA">UROLOGIA</option>
+                <option value="OTORRINOLARINGOLOGIA">OTORRINOLARINGOLOGIA</option>
+                <option value="REAGENTE">REAGENTE</option>
+                <option value="CIRURGIA PLASTICA">CIRURGIA PLASTICA</option>
+                <option value="CONTRASTES">CONTRASTES</option>
+                <option value="DESCONTAMINANTES">DESCONTAMINANTES</option>
+                <option value="REAGENTE QUIMICOS">REAGENTE QUIMICOS</option>
+                <option value="ESCOVAS/ESPONJAS">ESCOVAS/ESPONJAS</option>
+                <option value="ESPACADOR">ESPACADOR</option>
+                <option value="IRRIGADOR/ASPIRADOR">IRRIGADOR/ASPIRADOR</option>
+                <option value="LATEX">LATEX</option>
+                <option value="ATADURAS/FAIXAS/MALHAS">ATADURAS/FAIXAS/MALHAS</option>
+                <option value="COMPRESSAS">COMPRESSAS</option>
+                <option value="INSUMOS">INSUMOS</option>
+                <option value="EMBALAGENS">EMBALAGENS</option>
+                <option value="PAPEIS PARA EXAMES">PAPEIS PARA EXAMES</option>
+                <option value="FILMES RADIOLOGICOS">FILMES RADIOLOGICOS</option>
+                <option value="REVELADORES">REVELADORES</option>
+                <option value="FIXADORES">FIXADORES</option>
+                <option value="COLETORES">COLETORES</option>
+                <option value="PRESERVATIVOS">PRESERVATIVOS</option>
+                <option value="EXTENSORES/PERFUSORES">EXTENSORES/PERFUSORES</option>
+                <option value="GERAMICIDAS/DETERGENTES/CICATRIZANTES/ALCOOL/OLEO">GERAMICIDAS/DETERGENTES/CICATRIZANTES/ALCOOL/OLEO</option>
+                <option value="MONITORIZACAO">MONITORIZACAO</option>
+                <option value="INDICADORES">INDICADORES</option>
+                <option value="ACESSORIOS">ACESSORIOS</option>
+                <option value="TEXTIL">TEXTIL</option>
+                <option value="TALAS">TALAS</option>
+                <option value="CAIXA">CAIXA</option>
+                <option value="SERINGAS">SERINGAS</option>
+                <option value="MOVEIS E UTENSILIOS">MOVEIS E UTENSILIOS</option>
+                <option value="MATERIAIS DE INFORMATICA">MATERIAIS DE INFORMATICA</option>
+                <option value="ORTOPEDICA">ORTOPEDICA</option>
+                <option value="OFTALMICA">OFTALMICA</option>
+                <option value="ODONTOLOGICA">ODONTOLOGICA</option>
+                <option value="AMIDOTRIZOATOS">AMIDOTRIZOATOS</option>
+                <option value="COMPOSTOS DE GADOLINIO">COMPOSTOS DE GADOLINIO</option>
+                <option value="METAIS PESADOS">METAIS PESADOS</option>
+                <option value="OLEOS IODADOS">OLEOS IODADOS</option>
+                <option value="AUX. DO ABANDONO DO TABAGISMO">AUX. DO ABANDONO DO TABAGISMO</option>
+                <option value="BLOQUEADORES NEUROMUSCULARES">BLOQUEADORES NEUROMUSCULARES</option>
+                <option value="CORANTES">CORANTES</option>
+                <option value="FAR. P/ DISF. ERETIL/RET. URIN">FAR. P/ DISF. ERETIL/RET. URIN</option>
+                <option value="LUBRIFICANTES ARTICULARES">LUBRIFICANTES ARTICULARES</option>
+                <option value="SOLUCAO CONSERV./IRRIGACAO">SOLUCAO CONSERV./IRRIGACAO</option>
+                <option value="SOLUCOES PARA CARDIOPLEGIA">SOLUCOES PARA CARDIOPLEGIA</option>
+                <option value="AGENTES ADSORVENTES">AGENTES ADSORVENTES</option>
+                <option value="AGENTES QUELANTES">AGENTES QUELANTES</option>
+                <option value="ANTIDOTOS FARM. ESPECIFICOS">ANTIDOTOS FARM. ESPECIFICOS</option>
+                <option value="ANTIBIOTICOS">ANTIBIOTICOS</option>
+                <option value="ANTIFUNGICOS">ANTIFUNGICOS</option>
+                <option value="ANTIINFECCIOSOS URINARIOS">ANTIINFECCIOSOS URINARIOS</option>
+                <option value="ANTIPARASITARIOS">ANTIPARASITARIOS</option>
+                <option value="ANTI-SEPTICOS">ANTI-SEPTICOS</option>
+                <option value="ANTIVIRAIS">ANTIVIRAIS</option>
+                <option value="SULFONAMIDAS">SULFONAMIDAS</option>
+                <option value="AGENTES DIVERSOS">AGENTES DIVERSOS</option>
+                <option value="ANTIGOTOSO/ANTI-HIPERURICEMICO">ANTIGOTOSO/ANTI-HIPERURICEMICO</option>
+                <option value="ANTIINFLAM. NAO ESTEREOIDAL">ANTIINFLAM. NAO ESTEREOIDAL</option>
+                <option value="ANTIINFLAM. ESTEREOIDAL">ANTIINFLAM. ESTEREOIDAL</option>
+                <option value="ANTIARRITMICOS">ANTIARRITMICOS</option>
+                <option value="ANTI-HIPERTENSIVOS">ANTI-HIPERTENSIVOS</option>
+                <option value="ANTIVARICOSOS">ANTIVARICOSOS</option>
+                <option value="GLICOSIDEOS DIGITALICOS">GLICOSIDEOS DIGITALICOS</option>
+                <option value="OUTROS FARMACOS INOTROPICOS">OUTROS FARMACOS INOTROPICOS</option>
+                <option value="PROSTAGLANDINA E SUBST. RELAC.">PROSTAGLANDINA E SUBST. RELAC.</option>
+                <option value="VASOCONSTRITORES">VASOCONSTRITORES</option>
+                <option value="VASODILATADORES">VASODILATADORES</option>
+                <option value="ANTIACIDOS ASSOCIADOS">ANTIACIDOS ASSOCIADOS</option>
+                <option value="ANTIACIDOS ISOLADOS">ANTIACIDOS ISOLADOS</option>
+                <option value="ANTIDIARREICOS">ANTIDIARREICOS</option>
+                <option value="ANTIEMETICOS">ANTIEMETICOS</option>
+                <option value="ANTIULCEROSOS">ANTIULCEROSOS</option>
+                <option value="CATARTICOS - ESTIMULANTES">CATARTICOS - ESTIMULANTES</option>
+                <option value="CATARTICOS - FORM. DE MASSA">CATARTICOS - FORM. DE MASSA</option>
+                <option value="CATARTICOS - LUBRIFICANTES">CATARTICOS - LUBRIFICANTES</option>
+                <option value="CATARTICOS - SALINOS">CATARTICOS - SALINOS</option>
+                <option value="ENZIMAS DIGESTIVAS">ENZIMAS DIGESTIVAS</option>
+                <option value="ESTOMAQUICOS/ANTI-FISETICOS">ESTOMAQUICOS/ANTI-FISETICOS</option>
+                <option value="OUTROS LAXANTES E ASSOCIACÖES">OUTROS LAXANTES E ASSOCIACÖES</option>
+                <option value="PRO-CINETICOS">PRO-CINETICOS</option>
+                <option value="ANTIASMATICOS">ANTIASMATICOS</option>
+                <option value="ANTITUSSIGENOS">ANTITUSSIGENOS</option>
+                <option value="DESCONGESTIONANTES NASAIS">DESCONGESTIONANTES NASAIS</option>
+                <option value="FARM. P/ DISTURBIOS PULMONARES">FARM. P/ DISTURBIOS PULMONARES</option>
+                <option value="ANTICOLINERGICOS">ANTICOLINERGICOS</option>
+                <option value="MUSCOLOTROPICOS">MUSCOLOTROPICOS</option>
+                <option value="ESTIMULANTES UTERINOS">ESTIMULANTES UTERINOS</option>
+                <option value="FARM. P/ DISTURBIO HORM. FEM.">FARM. P/ DISTURBIO HORM. FEM.</option>
+                <option value="FARM. P/ DISTURBIO HORM. MASC.">FARM. P/ DISTURBIO HORM. MASC.</option>
+                <option value="RELAX. UTERINO/INIB PROLACTINA">RELAX. UTERINO/INIB PROLACTINA</option>
+                <option value="ANTI-HISTAMINICOS">ANTI-HISTAMINICOS</option>
+                <option value="IMUNOESTIMULANTES">IMUNOESTIMULANTES</option>
+                <option value="IMUNOGLOBULINAS">IMUNOGLOBULINAS</option>
+                <option value="IMUNOSSUPRESSORES">IMUNOSSUPRESSORES</option>
+                <option value="VACINAS">VACINAS</option>
+                <option value="SUBSTANCIAS HORMONAIS">SUBSTANCIAS HORMONAIS</option>
+                <option value="AGUA, GLICOSE E SAIS MINERAIS">AGUA, GLICOSE E SAIS MINERAIS</option>
+                <option value="ANTIDIABETICOS">ANTIDIABETICOS</option>
+                <option value="ANTILIPEMICOS">ANTILIPEMICOS</option>
+                <option value="DIETAS ENTERAIS">DIETAS ENTERAIS</option>
+                <option value="DIETAS PARENTERAIS">DIETAS PARENTERAIS</option>
+                <option value="AGULHAS">AGULHAS</option>
+                <option value="BISTURIS">BISTURIS</option>
+                <option value="CATETERES">CATETERES</option>
+                <option value="EQUIPOS/INJETOR">EQUIPOS/INJETOR</option>
+            </select>
+        </div>
+        <div>
+            <label for="curva_abc">Curva ABC:</label>
+            <input type="text" id="curva_abc" name="curva_abc">
+        </div>
+        <div>
+            <label for="lote">Lote:</label>
+            <input type="text" id="lote" name="lote">
+        </div>
+        <div>
+            <label for="serie">Série:</label>
+            <input type="text" id="serie" name="serie">
+        </div>
+        <div>
+            <label for="registro_anvisa">Registro ANVISA:</label>
+            <input type="text" id="registro_anvisa" name="registro_anvisa">
+        </div>
+        <div>
+            <label for="etiqueta">Etiqueta:</label>
+            <select id="etiqueta" name="etiqueta">
+                <option value=""></option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div>
+            <label for="medicamento">Medicamento:</label>
+            <select id="medicamento" name="medicamento">
+                <option value=""></option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div>
+            <label for="med_controla">Medicamento controlado:</label>
+            <select id="med_controla" name="med_controla">
+                <option value=""></option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+            <div>
+                <label for="validade">Validade do produto:</label>
+                <input type="date" id="validade" name="validade">
+            </div>
+        </div>
+
+          <br>
+          <div>
+            <label for="armazenamento">Armazenamento:</label>
+            <div class="checkbox-group">
+            <label for="armazenamento_ar_cond">Ar Condicionado:</label>
+            <input type="checkbox" id="armazenamento_ar_cond" name="armazenamento_ar_cond" value="S">
+        
+            <label for="armazenamento_geladeira">Geladeira:</label>
+            <input type="checkbox" id="armazenamento_geladeira" name="armazenamento_geladeira" value="S">
+            </div>
+        </div>
+
+                <br>
+                    
+            <div>
+                <label for="padronizado">Padronizado:</label>
+                 <select id="padronizado" name="padronizado">
+                    <option value=""></option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+            </div>
+            
+
+            <div>
+                <label for="aplicacao">Aplicação:</label>
+                <select id="aplicacao" name="aplicacao">
+                    <option value=""></option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="auto_custo">Alto custo:</label>
+                <select id="auto_custo" name="auto_custo">
+                    <option value=""></option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="valor">Valor de venda:</label>
+                <input type="text" id="valor" name="valor">
+            </div>
+
+            <div>
+                <label for="repasse">Repasse:</label>
+                <input type="text" id="repasse" name="repasse">
+            </div>
+
+        <div>
+            <label for="procedimento_faturamento">Procedimento de Faturamento:</label>
+            <input type="text" id="procedimento_faturamento" name="procedimento_faturamento">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="tipo_atendimento">Tipo de Atendimento:</label>
+            <div class="checkbox-group">
+            <label for="tipo_atendimento_ps">PS:</label>
+            <input type="checkbox" id="tipo_atendimento_ps" name="tipo_atendimento_ps" value="S">
+        
+            <label for="tipo_atendimento_ambulatorio">Ambulatorial:</label>
+            <input type="checkbox" id="tipo_atendimento_ambulatorio" name="tipo_atendimento_ambulatorio" value="S">
+        
+            <label for="tipo_atendimento_internacao">Internação:</label>
+            <input type="checkbox" id="tipo_atendimento_internacao" name="tipo_atendimento_internacao" value="S">
+        
+            <label for="tipo_atendimento_externo">Externo:</label>
+            <input type="checkbox" id="tipo_atendimento_externo" name="tipo_atendimento_externo" value="S">
+        
+            <label for="tipo_atendimento_todos">Todos:</label>
+            <input type="checkbox" id="tipo_atendimento_todos" name="tipo_atendimento_todos" value="S">
+        </div>
+        </div>
+
+            <br>
+
+        <div>
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" rows="6" cols="100"></textarea>
+        </div>
+
+            <br>
+
+            <div>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>    
+
+            <br>
+
+        <button type="submit">Salvar</button>
+<script>
+    function voltarParaMenu() {
+        window.location.href = '/menu'; // Redireciona para a rota '/menu'
+    }
+</script>
+    
+    </form>
+    <script>
+    document.getElementById('continuarCadastroForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar o comportamento padrão de envio do formulário
+    
+        // Fazer uma requisição assíncrona ao servidor
+        fetch('/salvar_produto', {
+            method: 'POST',
+            body: new FormData(this) // Enviar os dados do formulário
+        })
+        .then(response => response.json()) // Analisar a resposta JSON do servidor
+        .then(data => {
+            // Verificar o status retornado pelo servidor
+            if (data.status === 'sucesso') {
+                // Exibir uma mensagem de sucesso usando um pop-up
+                alert('Produto cadastrado com sucesso!');
+            } else {
+                // Exibir uma mensagem de erro usando um pop-up
+                alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
+            }
+        })
+        .catch(error => {
+            // Exibir uma mensagem de erro em caso de falha na requisição
+            console.error('Erro ao enviar requisição:', error);
+            alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
+        });
+    });
+</script>
+</body>
+</html>
