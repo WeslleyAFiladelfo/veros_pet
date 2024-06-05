@@ -105,3 +105,18 @@ button:hover {
     color: #8f7ccf; /* Cor da marca d'água (preto com transparência) */
     z-index: -1; /* Coloca a marca d'água atrás do conteúdo */
 }
+
+/* Exemplo de media query */
+@media only screen and (max-width: 600px) {
+    /* Estilos para telas menores que 600px */
+    body {
+        font-size: 14px;
+    }
+}
+
+/* Estilo para imagens responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
