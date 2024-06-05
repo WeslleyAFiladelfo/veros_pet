@@ -22,9 +22,11 @@ app.post('/salvar_produto', (req, res) => {
     // Extrair os dados do corpo da solicitação
     const { codigo, descricao, desc_resumida, kit, consignado, opme, especie, classe, sub_classe } = req.body;
 
-    // Configurar o transporte do Nodemailer
+    // Configurar o transporte do Nodemailer para o Outlook 365
     const transporter = nodemailer.createTransport({
-        service: 'outlook',
+        host: 'smtp.office365.com',
+        port: 587,
+        secure: false, // Use TLS
         auth: {
             user: 'cadastro_pet@outlook.com', // E-mail de origem
             pass: 'Gic@29098' // Senha do e-mail de origem
