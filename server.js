@@ -14,6 +14,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Rota para a página inicial
 app.get('/', (req, res) => {
     // Envie o arquivo HTML da página index.html
+    res.sendFile(path.join(__dirname, 'menu.html'));
+});
+
+// Rota para a página inicial
+app.get('/index.html', (req, res) => {
+    // Envie o arquivo HTML da página index.html
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 

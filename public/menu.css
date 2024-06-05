@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ebf0ec; /* Defini uma cor de fundo de backup caso a imagem não seja carregada */
+    background-image: url('veros_logo.jpg'); /* Caminho para a sua imagem */
+    background-size: contain; /* Adiciona a imagem sem esticá-la */
+    background-repeat: no-repeat; /* Evita que a imagem seja repetida */
+    background-position: center top; /* Centraliza a imagem na parte superior da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Mudei de 'height' para 'min-height' para garantir que a imagem cubra toda a altura da tela */
+}
+
+.menu {
+    
+    text-align: center;
+    padding: 20px 0;
+}
+
+.menu-btn {
+    background-color: #8f7ccf;
+    border: 2px solid #fff; /* Adiciona uma borda sólida branca com 2 pixels de largura */
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    border-radius: 5px; /* Define o raio de curvatura das bordas */
+}
+
+.menu-btn:hover {
+    background-color: #161444;
+    border-color: #161444; /* Altera a cor da borda quando o botão é hover */
+}
+
