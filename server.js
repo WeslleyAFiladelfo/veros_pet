@@ -2,70 +2,75 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const { PDFDocument, rgb } = require('pdf-lib');
+const fs = require('fs');
 
 const app = express();
 
-// Middleware para analisar corpos de solicitação
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Servir arquivos estáticos da pasta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Função para converter todos os campos de um objeto para maiúsculas
 function convertToUpperCase(obj) {
     const newObj = {};
     for (let key in obj) {
         if (obj.hasOwnProperty(key)) {
-            newObj[key] = typeof obj[key] === 'string' ? obj[key].toUpperCase() : obj[key];
+            newObj[key] = Array.isArray(obj[key])
+                ? obj[key].map(item => (typeof item === 'string' ? item.toUpperCase() : item))
+                : typeof obj[key] === 'string'
+                ? obj[key].toUpperCase()
+                : obj[key];
         }
     }
     return newObj;
 }
 
-// Rota para a página inicial
 app.get('/', (req, res) => {
-    // Envie o arquivo HTML da página index.html
     res.sendFile(path.join(__dirname, 'menu.html'));
 });
 
-// Rota para a página inicial
 app.get('/index.html', (req, res) => {
-    // Envie o arquivo HTML da página index.html
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Rota para lidar com o envio do formulário
 app.post('/salvar_produto', (req, res) => {
-    // Extrair os dados do corpo da solicitação e converter para maiúsculas
+    const formData = convertToUpperCase(req.body);
     const {
-        codigo, descricao, desc_resumida, kit, consignado, opme, especie, classe, sub_classe, valor_unitario,
+        codigo, kit, consignado, opme, especie, classe, sub_classe, valor_unitario,
         unidade, curva_abc, serie, registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond,
         armazenamento_geladeira, padronizado, aplicacao, auto_custo, valor, repasse, procedimento_faturamento,
         tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao, tipo_atendimento_externo,
         tipo_atendimento_todos, observacao, usuario, email
-    } = convertToUpperCase(req.body);
+    } = formData;
 
-    // Configurar o transporte do Nodemailer para o Outlook 365
+    const descricoes = formData.descricao || [];
+    const desc_resumidas = formData.desc_resumida || [];
+
+    let descricoesHtml = '';
+    for (let i = 0; i < descricoes.length; i++) {
+        descricoesHtml += `
+            <p><strong>Descrição ${i + 1}:</strong> ${descricoes[i]}</p>
+            <p><strong>Descrição Resumida ${i + 1}:</strong> ${desc_resumidas[i]}</p>
+        `;
+    }
+
     const transporter = nodemailer.createTransport({
         host: 'smtp.office365.com',
         port: 587,
-        secure: false, // Use TLS
+        secure: false,
         auth: {
-            user: 'cadastros.veros@outlook.com', // E-mail de origem
-            pass: 'Veros@123' // Senha do e-mail de origem
+            user: 'cadastros.veros@outlook.com',
+            pass: 'Veros@123'
         }
     });
 
-    // Configurar o e-mail
     const mailOptions = {
-        from: 'cadastros.veros@outlook.com', // E-mail de origem
-        to: 'cadastros.veros@outlook.com', // E-mail do destinatário
+        from: 'cadastros.veros@outlook.com',
+        to: 'cadastros.cadastrosmv@outlook.com',
         subject: 'Solicitação de Cadastro',
         html: `
             <h1>Solicitação de Cadastro:</h1>
-            <p><strong>Código:</strong> ${codigo}</p>
-            <p><strong>Descrição:</strong> ${descricao}</p>
-            <p><strong>Descrição Resumida:</strong> ${desc_resumida}</p>
+            ${codigo ? `<p><strong>Código:</strong> ${codigo}</p>` : ''}
+            ${descricoesHtml}
             <p><strong>Valor de compra unitário:</strong> ${valor_unitario}</p>
             <p><strong>Unidade:</strong> ${unidade}</p>
             <p><strong>Kit:</strong> ${kit}</p>
@@ -100,7 +105,6 @@ app.post('/salvar_produto', (req, res) => {
         `
     };
 
-    // Enviar e-mail
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error);
@@ -112,31 +116,27 @@ app.post('/salvar_produto', (req, res) => {
     });
 });
 
-// Nova rota para responder o email
 app.post('/responder_email', (req, res) => {
     const { from, to, cc, subject, message } = convertToUpperCase(req.body);
 
-    // Configurar o transporte do Nodemailer para o Outlook 365
     const transporter = nodemailer.createTransport({
         host: 'smtp.office365.com',
         port: 587,
-        secure: false, // Use TLS
+        secure: false,
         auth: {
-            user: 'cadastrosmv@veros.com', // E-mail de origem
-            pass: 'Veros@123' // Senha do e-mail de origem
+            user: 'cadastros.veros@outlook.com',
+            pass: 'Veros@123'
         }
     });
 
-    // Configurar o e-mail de resposta
     const mailOptions = {
-        from: from || 'cadastros.veros@outlook.com', // E-mail de origem, usa padrão se não fornecido
-        to: to, // E-mail do destinatário
-        cc: cc, // E-mails em cópia
+        from: from || 'cadastros.veros@outlook.com',
+        to: to,
+        cc: cc,
         subject: subject,
         text: message
     };
 
-    // Enviar e-mail de resposta
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error);

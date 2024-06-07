@@ -1,26 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Produto</title>
-    <link rel="stylesheet" href="/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro de Produto</title>
+<link rel="shortcut icon" href="/lobo.icon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/styles.css">
+<script>
+    function addDescriptionFields() {
+        // Cria um novo div para os campos
+        const descriptionGroup = document.createElement('div');
+        descriptionGroup.classList.add('description-group');
+
+        // Cria o campo "Descrição"
+        const descricaoLabel = document.createElement('label');
+        descricaoLabel.setAttribute('for', 'descricao');
+        descricaoLabel.textContent = 'Descrição:';
+        const descricaoInput = document.createElement('input');
+        descricaoInput.setAttribute('type', 'text');
+        descricaoInput.setAttribute('name', 'descricao[]');
+        descricaoInput.setAttribute('required', true);
+
+        // Cria o campo "Descrição Resumida"
+        const descResumidaLabel = document.createElement('label');
+        descResumidaLabel.setAttribute('for', 'desc_resumida');
+        descResumidaLabel.textContent = 'Descrição Resumida:';
+        const descResumidaInput = document.createElement('input');
+        descResumidaInput.setAttribute('type', 'text');
+        descResumidaInput.setAttribute('name', 'desc_resumida[]');
+        descResumidaInput.setAttribute('required', true);
+
+        // Adiciona os campos ao div
+        descriptionGroup.appendChild(descricaoLabel);
+        descriptionGroup.appendChild(descricaoInput);
+        descriptionGroup.appendChild(descResumidaLabel);
+        descriptionGroup.appendChild(descResumidaInput);
+
+        // Adiciona o novo div ao formulário antes do botão "Adicionar Descrição"
+        const form = document.getElementById('productForm');
+        form.insertBefore(descriptionGroup, document.getElementById('addDescriptionButton'));
+    }
+</script>
 </head>
 <body>
-    <form action="/salvar_produto" method="POST" onsubmit="cadastrarUsuario(); return false;">
-        <div>
-            <label for="codigo">Código:</label>
-            <input type="text" id="codigo" name="codigo">
-        </div>
-        <div>
-            <label for="descricao">Descrição:</label>
-            <input type="text" id="descricao" name="descricao" required>
-        </div>
-        <div>
-            <label for="desc_resumida">Descrição Resumida:</label>
-            <input type="text" id="desc_resumida" name="desc_resumida" required>
-        </div>
-        <div>
+<form id="productForm" action="/salvar_produto" method="POST">
+    <label for="codigo">Código:</label>
+    <input type="text" id="codigo" name="codigo" required>
+    <div class="description-group">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao[]" required>
+    </div>
+    <div class="description-group">
+        <label for="desc_resumida">Descrição Resumida:</label>
+        <input type="text" id="desc_resumida" name="desc_resumida[]" required>
+    </div>
+    <button type="button" id="addDescriptionButton" onclick="addDescriptionFields()">Adicionar Descrição</button>
+    <div>
             <label for="valor_unitario">Valor de compra unitário:</label>
             <input type="text" id="valor_unitario" name="valor_unitario">
         </div>
@@ -572,41 +606,39 @@
             </div>    
 
             <br>
-
-        <button type="submit">Salvar</button>
-<script>
-    function voltarParaMenu() {
-        window.location.href = '/menu'; // Redireciona para a rota '/menu'
-    }
+            
+            <button type="submit">Salvar</button>
+            
+            </form>
+            <script>
+            document.getElementById('continuarCadastroForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Evitar o comportamento padrão de envio do formulário
+            
+                // Fazer uma requisição assíncrona ao servidor
+                fetch('/salvar_produto', {
+                    method: 'POST',
+                    body: new FormData(this) // Enviar os dados do formulário
+                })
+                .then(response => response.json()) // Analisar a resposta JSON do servidor
+                .then(data => {
+                    // Verificar o status retornado pelo servidor
+                    if (data.status === 'sucesso') {
+                        // Exibir uma mensagem de sucesso usando um pop-up
+                        alert('Produto cadastrado com sucesso!');
+                    } else {
+                        // Exibir uma mensagem de erro usando um pop-up
+                        alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    // Exibir uma mensagem de erro em caso de falha na requisição
+                    console.error('Erro ao enviar requisição:', error);
+                    alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
+                });
+            });
 </script>
-    
-    </form>
-    <script>
-    document.getElementById('continuarCadastroForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evitar o comportamento padrão de envio do formulário
-    
-        // Fazer uma requisição assíncrona ao servidor
-        fetch('/salvar_produto', {
-            method: 'POST',
-            body: new FormData(this) // Enviar os dados do formulário
-        })
-        .then(response => response.json()) // Analisar a resposta JSON do servidor
-        .then(data => {
-            // Verificar o status retornado pelo servidor
-            if (data.status === 'sucesso') {
-                // Exibir uma mensagem de sucesso usando um pop-up
-                alert('Produto cadastrado com sucesso!');
-            } else {
-                // Exibir uma mensagem de erro usando um pop-up
-                alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
-            }
-        })
-        .catch(error => {
-            // Exibir uma mensagem de erro em caso de falha na requisição
-            console.error('Erro ao enviar requisição:', error);
-            alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
-        });
-    });
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="server.js"></script>
 </body>
 </html>
+            

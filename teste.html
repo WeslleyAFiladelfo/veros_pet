@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <style>
+        .description-group {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function addDescriptionFields() {
+            // Cria um novo div para os campos
+            const descriptionGroup = document.createElement('div');
+            descriptionGroup.classList.add('description-group');
+
+            // Cria o campo "Descrição"
+            const descricaoLabel = document.createElement('label');
+            descricaoLabel.setAttribute('for', 'descricao');
+            descricaoLabel.textContent = 'Descrição:';
+            const descricaoInput = document.createElement('input');
+            descricaoInput.setAttribute('type', 'text');
+            descricaoInput.setAttribute('name', 'descricao[]');
+            descricaoInput.setAttribute('required', true);
+
+            // Cria o campo "Descrição Resumida"
+            const descResumidaLabel = document.createElement('label');
+            descResumidaLabel.setAttribute('for', 'desc_resumida');
+            descResumidaLabel.textContent = 'Descrição Resumida:';
+            const descResumidaInput = document.createElement('input');
+            descResumidaInput.setAttribute('type', 'text');
+            descResumidaInput.setAttribute('name', 'desc_resumida[]');
+            descResumidaInput.setAttribute('required', true);
+
+            // Adiciona os campos ao div
+            descriptionGroup.appendChild(descricaoLabel);
+            descriptionGroup.appendChild(descricaoInput);
+            descriptionGroup.appendChild(descResumidaLabel);
+            descriptionGroup.appendChild(descResumidaInput);
+
+            // Adiciona o novo div ao formulário
+            const form = document.getElementById('productForm');
+            form.appendChild(descriptionGroup);
+        }
+    </script>
+</head>
+<body>
+    <form id="productForm" action="/salvar_produto" method="POST">
+        <div class="description-group">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao[]" required>
+        </div>
+        <div class="description-group">
+            <label for="desc_resumida">Descrição Resumida:</label>
+            <input type="text" id="desc_resumida" name="desc_resumida[]" required>
+        </div>
+        <button type="button" onclick="addDescriptionFields()">Adicionar Descrição</button>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
