@@ -39,7 +39,7 @@ app.post('/salvar_produto', (req, res) => {
         unidade, curva_abc, serie, registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond,
         armazenamento_geladeira, padronizado, aplicacao, auto_custo, valor, repasse, procedimento_faturamento,
         tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao, tipo_atendimento_externo,
-        tipo_atendimento_todos, observacao, usuario, email
+        tipo_atendimento_todos, sn_movimentacao, sn_bloqueio_de_compras, observacao, usuario, email, email_cc
     } = formData;
 
     const descricoes = formData.descricao || [];
@@ -58,14 +58,18 @@ app.post('/salvar_produto', (req, res) => {
         port: 587,
         secure: false,
         auth: {
-            user: 'cadastros.veros@outlook.com',
-            pass: 'Veros@123'
+            user: 'weslley.filadelfo@veros.vet',
+            pass: 'Sot67236'
+        },
+        tls: {
+            ciphers: 'SSLv3',
+            rejectUnauthorized: false // Permite conexões a servidores com certificados autoassinados
         }
     });
 
     const mailOptions = {
-        from: 'cadastros.veros@outlook.com',
-        to: 'cadastros.cadastrosmv@outlook.com',
+        from: 'weslley.filadelfo@veros.vet',
+        to: 'weslley.filadelfo@veros.vet',
         subject: 'Solicitação de Cadastro',
         html: `
             <h1>Solicitação de Cadastro:</h1>
@@ -99,9 +103,12 @@ app.post('/salvar_produto', (req, res) => {
             <p><strong>Internação:</strong> ${tipo_atendimento_internacao}</p>
             <p><strong>Externo:</strong> ${tipo_atendimento_externo}</p>
             <p><strong>Todos:</strong> ${tipo_atendimento_todos}</p>
+            <p><strong>Movimentação:</strong> ${sn_movimentacao}</p>
+            <p><strong>Bloq. Compras:</strong> ${sn_bloqueio_de_compras}</p>
             <p><strong>Observação:</strong> ${observacao}</p>
             <p><strong>Usuário:</strong> ${usuario}</p>
             <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Com cópia:</strong> ${email_cc}</p>
         `
     };
 
@@ -124,13 +131,17 @@ app.post('/responder_email', (req, res) => {
         port: 587,
         secure: false,
         auth: {
-            user: 'cadastros.veros@outlook.com',
-            pass: 'Veros@123'
+            user: 'weslley.filadelfo@veros.vet',
+            pass: 'Sot67236'
+        },
+        tls: {
+            ciphers: 'SSLv3',
+            rejectUnauthorized: false // Permite conexões a servidores com certificados autoassinados
         }
     });
 
     const mailOptions = {
-        from: from || 'cadastros.veros@outlook.com',
+        from: from || 'weslley.filadelfo@veros.vet',
         to: to,
         cc: cc,
         subject: subject,

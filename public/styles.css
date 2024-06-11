@@ -42,6 +42,7 @@ label {
 }
 
 input[type="text"],
+input[type="email"],
 select {
     width: 100%;
     padding: 10px; /* Aumentei o preenchimento */
@@ -71,8 +72,17 @@ button:hover {
     border-color: #161444; /* Altera a cor da borda quando o botão é hover */
 }
 
-#descricao {
-    width: 60vw; /* Definir a largura para 100% da largura da viewport */
+.description-group {
+    margin-bottom: 10px;
+}
+
+.field-group {
+    margin-bottom: 15px;
+}
+
+.styled-field {
+    background-color: #fff5e6;
+    border: 1px solid #8f7ccf;
 }
 
 * {
