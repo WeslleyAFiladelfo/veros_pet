@@ -58,8 +58,8 @@ app.post('/salvar_produto', (req, res) => {
         port: 587,
         secure: false,
         auth: {
-            user: 'weslley.filadelfo@veros.vet',
-            pass: 'Sot67236'
+            user: 'cadastrosveros@outlook.com.br',
+            pass: 'Veros@123'
         },
         tls: {
             ciphers: 'SSLv3',
@@ -68,8 +68,8 @@ app.post('/salvar_produto', (req, res) => {
     });
 
     const mailOptions = {
-        from: 'weslley.filadelfo@veros.vet',
-        to: 'weslley.filadelfo@veros.vet',
+        from: 'cadastrosveros@outlook.com.br',
+        to: 'cadastrosveros@outlook.com.br',
         subject: 'Solicitação de Cadastro',
         html: `
             <h1>Solicitação de Cadastro:</h1>
@@ -127,12 +127,12 @@ app.post('/responder_email', (req, res) => {
     const { from, to, cc, subject, message } = convertToUpperCase(req.body);
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com',
+        host: 'smtp.office365.com.br',
         port: 587,
         secure: false,
         auth: {
-            user: 'weslley.filadelfo@veros.vet',
-            pass: 'Sot67236'
+            user: 'cadastrosveros@outlook.com.br',
+            pass: 'Veros@123'
         },
         tls: {
             ciphers: 'SSLv3',
@@ -141,7 +141,7 @@ app.post('/responder_email', (req, res) => {
     });
 
     const mailOptions = {
-        from: from || 'weslley.filadelfo@veros.vet',
+        from: from || 'cadastrosveros@outlook.com',
         to: to,
         cc: cc,
         subject: subject,
