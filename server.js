@@ -2,8 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const { PDFDocument, rgb } = require('pdf-lib');
-const fs = require('fs');
 
 const app = express();
 
@@ -35,21 +33,29 @@ app.get('/index.html', (req, res) => {
 app.post('/salvar_produto', (req, res) => {
     const formData = convertToUpperCase(req.body);
     const {
-        codigo, kit, consignado, opme, especie, classe, sub_classe, valor_unitario,
-        unidade, curva_abc, serie, registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond,
-        armazenamento_geladeira, padronizado, aplicacao, auto_custo, valor, repasse, procedimento_faturamento,
-        tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao, tipo_atendimento_externo,
-        tipo_atendimento_todos, sn_movimentacao, sn_bloqueio_de_compras, observacao, usuario, email, email_cc
+        codigo, kit, consignado, opme, especie, classe, sub_classe, unidade, curva_abc, serie,
+        registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond, armazenamento_geladeira,
+        padronizado, sn_movimentacao, sn_bloqueio_de_compras, aplicacao, auto_custo, valor, repasse,
+        procedimento_faturamento, tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao,
+        tipo_atendimento_externo, tipo_atendimento_todos, observacao, usuario, email, email_cc
     } = formData;
 
     const descricoes = formData.descricao || [];
     const desc_resumidas = formData.desc_resumida || [];
+    const valores_unitarios = formData.valor_unitario || [];
+    const marcas1 = formData.LAB_PRO_1 || [];
+    const marcas2 = formData.LAB_PRO_2 || [];
+    const marcas3 = formData.LAB_PRO_3 || [];
 
     let descricoesHtml = '';
     for (let i = 0; i < descricoes.length; i++) {
         descricoesHtml += `
             <p><strong>Descrição ${i + 1}:</strong> ${descricoes[i]}</p>
             <p><strong>Descrição Resumida ${i + 1}:</strong> ${desc_resumidas[i]}</p>
+            <p><strong>Valor Unitário ${i + 1}:</strong> ${valores_unitarios[i]}</p>
+            <p><strong>Marcas 1 - ${i + 1}:</strong> ${marcas1[i]}</p>
+            <p><strong>Marcas 2 - ${i + 1}:</strong> ${marcas2[i]}</p>
+            <p><strong>Marcas 3 - ${i + 1}:</strong> ${marcas3[i]}</p>
         `;
     }
 
@@ -75,7 +81,6 @@ app.post('/salvar_produto', (req, res) => {
             <h1>Solicitação de Cadastro:</h1>
             ${codigo ? `<p><strong>Código:</strong> ${codigo}</p>` : ''}
             ${descricoesHtml}
-            <p><strong>Valor de compra unitário:</strong> ${valor_unitario}</p>
             <p><strong>Unidade:</strong> ${unidade}</p>
             <p><strong>Kit:</strong> ${kit}</p>
             <p><strong>Consignado:</strong> ${consignado}</p>
@@ -92,6 +97,9 @@ app.post('/salvar_produto', (req, res) => {
             <p><strong>Ar Condicionado:</strong> ${armazenamento_ar_cond}</p>
             <p><strong>Geladeira:</strong> ${armazenamento_geladeira}</p>
             <p><strong>Padronizado:</strong> ${padronizado}</p>
+            <p><strong>Movimentação:</strong> ${sn_movimentacao}</p>
+            <p><strong>Bloq. Compras:</strong> ${sn_bloqueio_de_compras}</p>
+            <h3>Precificação:</h3>
             <p><strong>Aplicação:</strong> ${aplicacao}</p>
             <p><strong>Alto custo:</strong> ${auto_custo}</p>
             <p><strong>Valor de venda:</strong> ${valor}</p>
@@ -103,8 +111,6 @@ app.post('/salvar_produto', (req, res) => {
             <p><strong>Internação:</strong> ${tipo_atendimento_internacao}</p>
             <p><strong>Externo:</strong> ${tipo_atendimento_externo}</p>
             <p><strong>Todos:</strong> ${tipo_atendimento_todos}</p>
-            <p><strong>Movimentação:</strong> ${sn_movimentacao}</p>
-            <p><strong>Bloq. Compras:</strong> ${sn_bloqueio_de_compras}</p>
             <p><strong>Observação:</strong> ${observacao}</p>
             <p><strong>Usuário:</strong> ${usuario}</p>
             <p><strong>Email:</strong> ${email}</p>
@@ -127,7 +133,7 @@ app.post('/responder_email', (req, res) => {
     const { from, to, cc, subject, message } = convertToUpperCase(req.body);
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com.br',
+        host: 'smtp.office365.com',
         port: 587,
         secure: false,
         auth: {

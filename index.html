@@ -3,7 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cadastro de Produto</title>
-<link rel="shortcut icon" href="/lobo.icon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/public/lobo.ico" type="image/x-icon">
+<link rel="icon" type="image/x-icon" href="/public/lobo.ico">
 <link rel="stylesheet" href="/styles.css">
 <script>
     function addDescriptionFields() {
@@ -19,6 +20,7 @@
         descricaoInput.setAttribute('type', 'text');
         descricaoInput.setAttribute('name', 'descricao[]');
         descricaoInput.setAttribute('required', true);
+        descricaoInput.setAttribute('maxlength', 60);
 
         // Cria o campo "Descrição Resumida"
         const descResumidaLabel = document.createElement('label');
@@ -28,12 +30,55 @@
         descResumidaInput.setAttribute('type', 'text');
         descResumidaInput.setAttribute('name', 'desc_resumida[]');
         descResumidaInput.setAttribute('required', true);
+        descResumidaInput.setAttribute('maxlength', 30);
+
+        // Cria o campo "Valor Unitário"
+        const valorUnitarioLabel = document.createElement('label');
+        valorUnitarioLabel.setAttribute('for', 'valor_unitario');
+        valorUnitarioLabel.textContent = 'Valor de compra unitário:';
+        const valorUnitarioInput = document.createElement('input');
+        valorUnitarioInput.setAttribute('type', 'text');
+        valorUnitarioInput.setAttribute('name', 'valor_unitario[]');
+
+        // Cria os campos "Marcas 1", "Marcas 2", e "Marcas 3"
+        const marcasLabel = document.createElement('label');
+        marcasLabel.textContent = 'Marcas dos produtos:';
+
+        const marca1Label = document.createElement('label');
+        marca1Label.setAttribute('for', 'LAB_PRO_1');
+        marca1Label.textContent = 'Marcas 1:';
+        const marca1Input = document.createElement('input');
+        marca1Input.setAttribute('type', 'text');
+        marca1Input.setAttribute('name', 'LAB_PRO_1[]');
+
+        const marca2Label = document.createElement('label');
+        marca2Label.setAttribute('for', 'LAB_PRO_2');
+        marca2Label.textContent = 'Marcas 2:';
+        const marca2Input = document.createElement('input');
+        marca2Input.setAttribute('type', 'text');
+        marca2Input.setAttribute('name', 'LAB_PRO_2[]');
+
+        const marca3Label = document.createElement('label');
+        marca3Label.setAttribute('for', 'LAB_PRO_3');
+        marca3Label.textContent = 'Marcas 3:';
+        const marca3Input = document.createElement('input');
+        marca3Input.setAttribute('type', 'text');
+        marca3Input.setAttribute('name', 'LAB_PRO_3[]');
 
         // Adiciona os campos ao div
         descriptionGroup.appendChild(descricaoLabel);
         descriptionGroup.appendChild(descricaoInput);
         descriptionGroup.appendChild(descResumidaLabel);
         descriptionGroup.appendChild(descResumidaInput);
+        descriptionGroup.appendChild(valorUnitarioLabel);
+        descriptionGroup.appendChild(valorUnitarioInput);
+        descriptionGroup.appendChild(marcasLabel);
+        descriptionGroup.appendChild(marca1Label);
+        descriptionGroup.appendChild(marca1Input);
+        descriptionGroup.appendChild(marca2Label);
+        descriptionGroup.appendChild(marca2Input);
+        descriptionGroup.appendChild(marca3Label);
+        descriptionGroup.appendChild(marca3Input);
 
         // Adiciona o novo div ao formulário antes do botão "Adicionar Descrição"
         const form = document.getElementById('productForm');
@@ -45,6 +90,7 @@
 <form id="productForm" action="/salvar_produto" method="POST">
     <label for="codigo">Código:</label>
     <input type="text" id="codigo" name="codigo">
+
     <div class="description-group">
         <label for="descricao">Descrição:</label>
         <input type="text" id="descricao" name="descricao[]" required maxlength="60">
@@ -53,17 +99,25 @@
         <label for="desc_resumida">Descrição Resumida:</label>
         <input type="text" id="desc_resumida" name="desc_resumida[]" required maxlength="30">
     </div>
-    <button type="button" id="addDescriptionButton" onclick="addDescriptionFields()">Adicionar Descrição</button>
-    
-    <div>
-            <label for="valor_unitario">Valor de compra unitário:</label>
-            <input type="text" id="valor_unitario" name="valor_unitario">
-        </div>
+    <div class="description-group">
+        <label for="valor_unitario">Valor de compra unitário:</label>
+        <input type="text" id="valor_unitario" name="valor_unitario[]">
     </div>
-    
+    <div class="description-group">
+        <label for="LAB_PRO">Marcas dos produtos:</label>
+        <label for="LAB_PRO_1">Marcas 1:</label>
+        <input type="text" id="LAB_PRO_1" name="LAB_PRO_1[]">
+        <label for="LAB_PRO_2">Marcas 2:</label>
+        <input type="text" id="LAB_PRO_2" name="LAB_PRO_2[]">
+        <label for="LAB_PRO_3">Marcas 3:</label>
+        <input type="text" id="LAB_PRO_3" name="LAB_PRO_3[]">
+    </div>
+    <br>
+    <button type="button" id="addDescriptionButton" onclick="addDescriptionFields()">Adicionar produtos</button>
+ <br>
     <div>
         <label for="unidade">Unidade:</label>           
-        <select id="unidade" name="unidade">
+        <select id="unidade" name="unidade" required>
             <option value=""></option>
             <option value="DRAGEA">DRAGEA</option>
             <option value="PACOTE">PACOTE</option>
@@ -140,7 +194,7 @@
     </div>
         <div>
             <label for="kit">Kit:</label>
-            <select id="kit" name="kit">
+            <select id="kit" name="kit" required>
                 <option value=""></option>
                 <option value="SIM">Sim</option>
                 <option value="NAO">Não</option>
@@ -148,7 +202,7 @@
         </div>
         <div>
             <label for="consignado">Consignado:</label>
-            <select id="consignado" name="consignado">
+            <select id="consignado" name="consignado" required>
                 <option value=""></option>
                 <option value="SIM">Sim</option>
                 <option value="NAO">Não</option>
@@ -156,7 +210,7 @@
         </div>
         <div>
             <label for="opme">OPME:</label>
-            <select id="opme" name="opme">
+            <select id="opme" name="opme" required>
                 <option value=""></option>
                 <option value="SIM">Sim</option>
                 <option value="NAO">Não</option>
@@ -164,7 +218,7 @@
         </div>
         <div>
             <label for="especie">Espécie:</label>
-            <select id="especie" name="especie">
+            <select id="especie" name="especie" required>
                 <option value=""></option>
                 <option value="DROGAS E MEDICAMENTOS">DROGAS E MEDICAMENTOS</option>
                 <option value="MATERIAL MEDICO HOSPITALAR">MATERIAL MEDICO HOSPITALAR</option>
@@ -192,7 +246,7 @@
         </div>
         <div>
             <label for="classe">Classe:</label>
-            <select id="classe" name="classe">
+            <select id="classe" name="classe" required>
                 <option value=""></option>
                 <option value="MATERIAL MEDICO">MATERIAL MEDICO</option>
                 <option value="MATERIAL PERMANENTE">MATERIAL PERMANENTE</option>
@@ -268,7 +322,7 @@
         </div>
         <div>
             <label for="sub_classe">Sub-Classe:</label>
-            <select id="sub_classe" name="sub_classe">
+            <select id="sub_classe" name="sub_classe" required>
                 <option value=""></option>
                 <option value="FARM. AFETAM A CALCIFICACAO">FARM. AFETAM A CALCIFICACAO</option>
                 <option value="FARM. P/ HIPERTIREOIDISMO">FARM. P/ HIPERTIREOIDISMO</option>
@@ -486,11 +540,11 @@
         </div>
         <div>
             <label for="registro_anvisa">Registro ANVISA:</label>
-            <input type="text" id="registro_anvisa" name="registro_anvisa">
+            <input type="text" id="registro_anvisa" name="registro_anvisa" required>
         </div>
         <div>
             <label for="etiqueta">Etiqueta:</label>
-            <select id="etiqueta" name="etiqueta">
+            <select id="etiqueta" name="etiqueta" required>
                 <option value=""></option>
                 <option value="SIM">Sim</option>
                 <option value="NAO">Não</option>
@@ -499,53 +553,78 @@
        
         <div>
             <label for="med_controla">Medicamento controlado:</label>
-            <select id="med_controla" name="med_controla">
+            <select id="med_controla" name="med_controla" required>
                 <option value=""></option>
                 <option value="SIM">Sim</option>
                 <option value="NAO">Não</option>
             </select>
             <div>
                 <label for="validade">Validade do produto:</label>
-                <input type="date" id="validade" name="validade">
+                <input type="date" id="validade" name="validade" required>
             </div>
         </div>
 
           <br>
-          <div>
+        <div>
             <label for="armazenamento">Armazenamento:</label>
             <div class="checkbox-group">
-            <label for="armazenamento_ar_cond">Ar Condicionado:</label>
+            <label for="armazenamento_ar_cond">Temperatura ambiente:</label>
             <input type="checkbox" id="armazenamento_ar_cond" name="armazenamento_ar_cond" value="SIM">
         
             <label for="armazenamento_geladeira">Geladeira:</label>
             <input type="checkbox" id="armazenamento_geladeira" name="armazenamento_geladeira" value="SIM">
-            </div>
         </div>
 
                 <br>
                     
             <div>
                 <label for="padronizado">Padronizado:</label>
-                 <select id="padronizado" name="padronizado">
+                 <select id="padronizado" name="padronizado" required>
                     <option value=""></option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
                 </select>
             </div>
             
+            <br>
+
+            <div>
+                <label for="sn_movimentacao">Movimentação:</label>
+                 <select id="sn_movimentacao" name="sn_movimentacao" required>
+                    <option value=""></option>
+                    <option value="SIM">Sim</option>
+                    <option value="NAO">Não</option>
+                 </select>
+            </div>
+    
+            
+            <div>
+                <label for="sn_bloqueio_de_compras">Bloq. Compras:</label>
+                 <select id="sn_bloqueio_de_compras" name="sn_bloqueio_de_compras" required>
+                    <option value=""></option>
+                    <option value="SIM">Sim</option>
+                    <option value="NAO">Não</option>
+                 </select>
+            </div>
+    
+                <br>
+
+            <h3>Precificação:</h3>
 
             <div>
                 <label for="aplicacao">Aplicação:</label>
-                <select id="aplicacao" name="aplicacao">
+                <select id="aplicacao" name="aplicacao" required>
                     <option value=""></option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
                 </select>
             </div>
 
+
+
             <div>
                 <label for="auto_custo">Alto custo:</label>
-                <select id="auto_custo" name="auto_custo">
+                <select id="auto_custo" name="auto_custo" required>
                     <option value=""></option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
@@ -554,17 +633,17 @@
 
             <div>
                 <label for="valor">Valor de venda:</label>
-                <input type="text" id="valor" name="valor">
+                <input type="text" id="valor" name="valor" required>
             </div>
 
             <div>
                 <label for="repasse">Repasse:</label>
-                <input type="text" id="repasse" name="repasse">
+                <input type="text" id="repasse" name="repasse" required>
             </div>
 
         <div>
             <label for="procedimento_faturamento">Procedimento de Faturamento:</label>
-            <input type="text" id="procedimento_faturamento" name="procedimento_faturamento">
+            <input type="text" id="procedimento_faturamento" name="procedimento_faturamento" required>
         </div>
 
         <br>
@@ -592,25 +671,6 @@
             <br>
 
         <div>
-            <label for="sn_movimentacao">Movimentação:</label>
-             <select id="sn_movimentacao" name="sn_movimentacao">
-                <option value=""></option>
-                <option value="NAO">Não</option>
-             </select>
-        </div>
-
-        
-        <div>
-            <label for="sn_bloqueio_de_compras">Bloq. Compras:</label>
-             <select id="sn_bloqueio_de_compras" name="sn_bloqueio_de_compras">
-                <option value=""></option>
-                <option value="SIM">Sim</option>
-             </select>
-        </div>
-
-            <br>
-
-        <div>
             <label for="observacao">Observação:</label>
             <textarea id="observacao" name="observacao" rows="6" cols="100"></textarea>
         </div>
@@ -623,8 +683,8 @@
             </div>   
             
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <label for="email">Email solicitante:</label>
+                <input type="email" id="email" name="email" required>
             </div>    
 
             <div>
