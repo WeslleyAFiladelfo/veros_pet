@@ -65,7 +65,7 @@ app.post('/salvar_produto', (req, res) => {
         secure: false,
         auth: {
             user: 'cadastrosveros@outlook.com.br',
-            pass: 'Veros@123'
+            pass: 'Veros@1234'
         },
         tls: {
             ciphers: 'SSLv3',
@@ -138,7 +138,7 @@ app.post('/responder_email', (req, res) => {
         secure: false,
         auth: {
             user: 'cadastrosveros@outlook.com.br',
-            pass: 'Veros@123'
+            pass: 'Veros@1234'
         },
         tls: {
             ciphers: 'SSLv3',
