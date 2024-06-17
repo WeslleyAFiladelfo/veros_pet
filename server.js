@@ -33,7 +33,7 @@ app.get('/index.html', (req, res) => {
 app.post('/salvar_produto', (req, res) => {
     const formData = convertToUpperCase(req.body);
     const {
-        codigo, kit, consignado, opme, especie, classe, sub_classe, unidade, curva_abc, serie,
+        cadastro_urgente,codigo, kit, consignado, opme, especie, classe, sub_classe, unidade, curva_abc, serie,
         registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond, armazenamento_geladeira,
         padronizado, sn_movimentacao, sn_bloqueio_de_compras, aplicacao, auto_custo, valor, repasse,
         procedimento_faturamento, tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao,
@@ -64,7 +64,7 @@ app.post('/salvar_produto', (req, res) => {
         port: 587,
         secure: false,
         auth: {
-            user: 'cadastrosveros@outlook.com.br',
+            user: 'cadastrosveros@outlook.com',
             pass: 'Veros@1234'
         },
         tls: {
@@ -74,11 +74,12 @@ app.post('/salvar_produto', (req, res) => {
     });
 
     const mailOptions = {
-        from: 'cadastrosveros@outlook.com.br',
-        to: 'cadastrosveros@outlook.com.br',
+        from: 'cadastrosveros@outlook.com',
+        to: 'cadastrosveros@outlook.com',
         subject: 'Solicitação de Cadastro',
         html: `
             <h1>Solicitação de Cadastro:</h1>
+            <p><strong>Cadastro de Urgência:</strong> ${cadastro_urgente}</p>
             ${codigo ? `<p><strong>Código:</strong> ${codigo}</p>` : ''}
             ${descricoesHtml}
             <p><strong>Unidade:</strong> ${unidade}</p>
@@ -137,7 +138,7 @@ app.post('/responder_email', (req, res) => {
         port: 587,
         secure: false,
         auth: {
-            user: 'cadastrosveros@outlook.com.br',
+            user: 'cadastrosveros@outlook.com',
             pass: 'Veros@1234'
         },
         tls: {
@@ -147,7 +148,7 @@ app.post('/responder_email', (req, res) => {
     });
 
     const mailOptions = {
-        from: from || 'cadastrosveros@outlook.com.br',
+        from: from || 'cadastrosveros@outlook.com',
         to: to,
         cc: cc,
         subject: subject,

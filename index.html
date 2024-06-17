@@ -87,7 +87,16 @@
 </script>
 </head>
 <body>
-<form id="productForm" action="/salvar_produto" method="POST">
+    <form id="productForm" action="/salvar_produto" method="POST">
+        
+        <div>
+            <label for="cadastro_urgente">Cadastro de Urgência:</label>
+            <div class="checkbox-group">
+            <input type="checkbox" id="cadastro_urgente" name="cadastro_urgente" value="SIM">
+        </div>
+        
+        <br>
+
     <label for="codigo">Código:</label>
     <input type="text" id="codigo" name="codigo">
 
@@ -560,7 +569,7 @@
             </select>
             <div>
                 <label for="validade">Validade do produto:</label>
-                <input type="date" id="validade" name="validade" required>
+                <input type="date" id="validade" name="validade">
             </div>
         </div>
 
