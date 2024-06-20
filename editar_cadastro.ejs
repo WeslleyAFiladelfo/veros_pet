@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro de Produto</title>
+<link rel="shortcut icon" href="/public/lobo.ico" type="image/x-icon">
+<link rel="icon" type="image/x-icon" href="/public/lobo.ico">
+<link rel="stylesheet" href="/styles.css">
+<script>
+    function addDescriptionFields() {
+        // Cria um novo div para os campos
+        const descriptionGroup = document.createElement('div');
+        descriptionGroup.classList.add('description-group');
+
+        // Cria o campo "Descrição"
+        const descricaoLabel = document.createElement('label');
+        descricaoLabel.setAttribute('for', 'descricao');
+        descricaoLabel.textContent = 'Descrição:';
+        const descricaoInput = document.createElement('input');
+        descricaoInput.setAttribute('type', 'text');
+        descricaoInput.setAttribute('name', 'descricao[]');
+        descricaoInput.setAttribute('required', true);
+        descricaoInput.setAttribute('maxlength', 60);
+
+        // Cria o campo "Descrição Resumida"
+        const descResumidaLabel = document.createElement('label');
+        descResumidaLabel.setAttribute('for', 'desc_resumida');
+        descResumidaLabel.textContent = 'Descrição Resumida:';
+        const descResumidaInput = document.createElement('input');
+        descResumidaInput.setAttribute('type', 'text');
+        descResumidaInput.setAttribute('name', 'desc_resumida[]');
+        descResumidaInput.setAttribute('required', true);
+        descResumidaInput.setAttribute('maxlength', 30);
+
+        // Cria o campo "Valor Unitário"
+        const valorUnitarioLabel = document.createElement('label');
+        valorUnitarioLabel.setAttribute('for', 'valor_unitario');
+        valorUnitarioLabel.textContent = 'Valor de compra unitário:';
+        const valorUnitarioInput = document.createElement('input');
+        valorUnitarioInput.setAttribute('type', 'text');
+        valorUnitarioInput.setAttribute('name', 'valor_unitario[]');
+
+        // Cria os campos "Marcas 1", "Marcas 2", e "Marcas 3"
+        const marcasLabel = document.createElement('label');
+        marcasLabel.textContent = 'Marcas dos produtos:';
+
+        const marca1Label = document.createElement('label');
+        marca1Label.setAttribute('for', 'LAB_PRO_1');
+        marca1Label.textContent = 'Marcas 1:';
+        const marca1Input = document.createElement('input');
+        marca1Input.setAttribute('type', 'text');
+        marca1Input.setAttribute('name', 'LAB_PRO_1[]');
+
+        const marca2Label = document.createElement('label');
+        marca2Label.setAttribute('for', 'LAB_PRO_2');
+        marca2Label.textContent = 'Marcas 2:';
+        const marca2Input = document.createElement('input');
+        marca2Input.setAttribute('type', 'text');
+        marca2Input.setAttribute('name', 'LAB_PRO_2[]');
+
+        const marca3Label = document.createElement('label');
+        marca3Label.setAttribute('for', 'LAB_PRO_3');
+        marca3Label.textContent = 'Marcas 3:';
+        const marca3Input = document.createElement('input');
+        marca3Input.setAttribute('type', 'text');
+        marca3Input.setAttribute('name', 'LAB_PRO_3[]');
+
+        // Adiciona os campos ao div
+        descriptionGroup.appendChild(descricaoLabel);
+        descriptionGroup.appendChild(descricaoInput);
+        descriptionGroup.appendChild(descResumidaLabel);
+        descriptionGroup.appendChild(descResumidaInput);
+        descriptionGroup.appendChild(valorUnitarioLabel);
+        descriptionGroup.appendChild(valorUnitarioInput);
+        descriptionGroup.appendChild(marcasLabel);
+        descriptionGroup.appendChild(marca1Label);
+        descriptionGroup.appendChild(marca1Input);
+        descriptionGroup.appendChild(marca2Label);
+        descriptionGroup.appendChild(marca2Input);
+        descriptionGroup.appendChild(marca3Label);
+        descriptionGroup.appendChild(marca3Input);
+
+        // Adiciona o novo div ao formulário antes do botão "Adicionar Descrição"
+        const form = document.getElementById('productForm');
+        form.insertBefore(descriptionGroup, document.getElementById('addDescriptionButton'));
+    }
+</script>
+</head>
+<body>
+    <input type="hidden" id="token" name="token" value="<%= cadastro.token %>">
+        
+        <div>
+            <label for="cadastro_urgente">Cadastro de Urgência:</label>
+            <div class="checkbox-group">
+            <input type="checkbox" id="cadastro_urgente" name="cadastro_urgente" value="SIM">
+        </div>
+        
+        <br>
+
+    <label for="codigo">Código:</label>
+    <input type="text" id="codigo" name="codigo">
+
+    <div class="description-group">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao[]" required maxlength="60">
+    </div>
+    <div class="description-group">
+        <label for="desc_resumida">Descrição Resumida:</label>
+        <input type="text" id="desc_resumida" name="desc_resumida[]" required maxlength="30">
+    </div>
+    <div class="description-group">
+        <label for="valor_unitario">Valor de compra unitário:</label>
+        <input type="text" id="valor_unitario" name="valor_unitario[]">
+    </div>
+    <div class="description-group">
+        <label for="LAB_PRO">Marcas dos produtos:</label>
+        <label for="LAB_PRO_1">Marcas 1:</label>
+        <input type="text" id="LAB_PRO_1" name="LAB_PRO_1[]">
+        <label for="LAB_PRO_2">Marcas 2:</label>
+        <input type="text" id="LAB_PRO_2" name="LAB_PRO_2[]">
+        <label for="LAB_PRO_3">Marcas 3:</label>
+        <input type="text" id="LAB_PRO_3" name="LAB_PRO_3[]">
+    </div>
+    <br>
+    <button type="button" id="addDescriptionButton" onclick="addDescriptionFields()">Adicionar produtos</button>
+ <br>
+ <div>
+    <label for="unidade">Unidade:</label>
+    <input type="text" id="unidade" name="unidade" value="<%= cadastro.unidade %>">
+</div>
+<div>
+        <div>
+            <label for="kit">Kit:</label>
+            <input type="text" id="kit" name="kit" value="<%= cadastrado.kit %">
+        </div>
+        <div>
+            <label for="consignado">Consignado:</label>
+            <input type="text" id="consignado" name="consignado" value="<%= cadastrado.consignado %">
+        </div>
+        <div>
+            <label for="opme">OPME:</label>
+            <input type="text" id="opme" name="opme" value="<%= cadastrado.opme %">
+        </div>
+        <div>
+            <label for="especie">Espécie:</label>
+            <input type="text" id="especie" name="especie" value="<%= cadastrado.especie %">
+        </div>
+        <div>
+            <label for="classe">Classe:</label>
+            <input type="text" id="classe" name="classe" value="<%= cadastro.class %">
+        </div>
+        <div>
+            <label for="sub_classe">Sub-Classe:</label>
+            <input type="text" id="sub_classe" name="sub_classe" value="<%= cadastro.sub_classe %">
+        </div>
+        <div>
+            <label for="curva_abc">Curva ABC:</label>
+            <input type="text" id="curva_abc" name="curva_abc" value="<%= cadastro.curva_abc %">
+        </div>
+        <div>
+            <label for="lote">Lote:</label>
+            <input type="text" id="lote" name="lote" value="<%= cadastro.lote %">
+        </div>
+        <div>
+            <label for="serie">Série:</label>
+            <input type="text" id="serie" name="serie" value="<%= cadastro.serie %">
+        </div>
+        <div>
+            <label for="registro_anvisa">Registro ANVISA:</label>
+            <input type="text" id="registro_anvisa" name="registro_anvisa" value="<%= cadastro.registro_anvisa %">
+        </div>
+        <div>
+            <label for="etiqueta">Etiqueta:</label>
+            <input type="text" id="etiqueta" name="etiqueta" value="<%= cadastro.etiqueta %">
+        </div>
+       
+        <div>
+            <label for="med_controla">Medicamento controlado:</label>
+            <input type="text" id="med_controla" name="med_controla" value="<%= cadastro.med_controla %">
+        </div>
+            <div>
+                <label for="validade">Validade do produto:</label>
+                <input type="date" id="validade" name="validade" value="<%= cadastro.validade %">
+            </div>
+        </div>
+
+          <br>
+          <div>
+            <label for="armazenamento_ar_cond">Ar Condicionado:</label>
+            <input type="text" id="armazenamento_ar_cond" name="armazenamento_ar_cond" value="<%= cadastro.armazenamento_ar_cond %">
+        </div>
+        <div>
+            <label for="armazenamento_geladeira">Geladeira:</label>
+            <input type="text" id="armazenamento_geladeira" name="armazenamento_geladeira" value="<%= cadastro.armazenamento_geladeira %">
+        </div>
+
+                <br>
+                    
+            <div>
+                <label for="padronizado">Padronizado:</label>
+                 <input type="text" id="padronizado" name="padronizado" value="<%= cadastro.padronizado %">
+            </div>
+            
+            <br>
+
+            <div>
+                <label for="sn_movimentacao">Movimentação:</label>
+                 <input type="text" id="sn_movimentacao" name="sn_movimentacao" value="<%= cadastro.sn_movimentacao %">
+            </div>
+            
+            <div>
+                <label for="sn_bloqueio_de_compras">Bloq. Compras:</label>
+                 <input type="text" id="sn_bloqueio_de_compras" name="sn_bloqueio_de_compras" value="<%= sn_bloqueio_de_compras %">
+            </div>
+    
+                <br>
+
+            <h3>Precificação:</h3>
+
+            <div>
+                <label for="aplicacao">Aplicação:</label>
+                <input type="text" id="aplicacao" name="aplicacao">
+            </div>
+
+
+
+            <div>
+                <label for="auto_custo">Alto custo:</label>
+                <select id="auto_custo" name="auto_custo">
+                    <option value=""></option>
+                    <option value="SIM">Sim</option>
+                    <option value="NAO">Não</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="valor">Valor de venda:</label>
+                <input type="text" id="valor" name="valor">
+            </div>
+
+            <div>
+                <label for="repasse">Repasse:</label>
+                <input type="text" id="repasse" name="repasse">
+            </div>
+
+        <div>
+            <label for="procedimento_faturamento">Procedimento de Faturamento:</label>
+            <input type="text" id="procedimento_faturamento" name="procedimento_faturamento">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="tipo_atendimento">Tipo de Atendimento:</label>
+            <div class="checkbox-group">
+            <label for="tipo_atendimento_ps">PS:</label>
+            <input type="checkbox" id="tipo_atendimento_ps" name="tipo_atendimento_ps" value="SIM">
+        
+            <label for="tipo_atendimento_ambulatorio">Ambulatorial:</label>
+            <input type="checkbox" id="tipo_atendimento_ambulatorio" name="tipo_atendimento_ambulatorio" value="SIM">
+        
+            <label for="tipo_atendimento_internacao">Internação:</label>
+            <input type="checkbox" id="tipo_atendimento_internacao" name="tipo_atendimento_internacao" value="SIM">
+        
+            <label for="tipo_atendimento_externo">Externo:</label>
+            <input type="checkbox" id="tipo_atendimento_externo" name="tipo_atendimento_externo" value="SIM">
+        
+            <label for="tipo_atendimento_todos">Todos:</label>
+            <input type="checkbox" id="tipo_atendimento_todos" name="tipo_atendimento_todos" value="SIM">
+        </div>
+        </div>
+
+            <br>
+
+        <div>
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" rows="6" cols="100"></textarea>
+        </div>
+
+            <br>
+
+            <div>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>   
+            
+            <div>
+                <label for="email">Email solicitante:</label>
+                <input type="email" id="email" name="email" required>
+            </div>    
+
+            <div>
+                <label for="email">Com cópia:</label>
+                <input type="email" id="email_cc" name="email_cc" required>
+            </div> 
+
+            <br>
+
+            <button type="submit">Finalizar Cadastro</button>
+            
+            </form>
+            <script>
+                document.getElementById('editarCadastroForm').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evitar o comportamento padrão de envio do formulário
+                    
+                    // Fazer uma requisição assíncrona ao servidor
+                    fetch('/editar_cadastro', {
+                        method: 'POST',
+                        body: new FormData(this) // Enviar os dados do formulário
+                    })
+                    .then(response => response.json()) // Analisar a resposta JSON do servidor
+                    .then(data => {
+                        // Verificar o status retornado pelo servidor
+                        if (data.status === 'sucesso') {
+                            // Exibir uma mensagem de sucesso usando um pop-up
+                            alert('Cadastro atualizado com sucesso!');
+                        } else {
+                            // Exibir uma mensagem de erro usando um pop-up
+                            alert('Erro ao atualizar o cadastro. Por favor, tente novamente.');
+                        }
+                    })
+                    .catch(error => {
+                        // Exibir uma mensagem de erro em caso de falha na requisição
+                        console.error('Erro ao enviar requisição:', error);
+                        alert('Erro ao atualizar o cadastro. Por favor, tente novamente.');
+                    });
+                });
+            </script>
+        
+        </body>
+        </html>
+            

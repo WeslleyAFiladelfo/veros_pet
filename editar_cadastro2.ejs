@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuar Cadastro de Produto Pendente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="continuarCadastroForm" action="/finalizar_cadastro_produto" method="POST">
+        <!-- Campos do formulário -->
+        <div>
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo" value="<%= produto.codigo %>">
+        </div>
+        <div>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" value="<%= produto.descricao %>">
+        </div>
+        <div>
+            <label for="desc_resumida">Descrição Resumida:</label>
+            <input type="text" id="desc_resumida" name="desc_resumida" value="<%= produto.desc_resumida %>">
+        </div>
+        <div>
+            <label for="valor_unitario">Valor Unitário:</label>
+            <input type="text" id="valor_unitario" name="valor_unitario" value="<%= produto.valor_unitario %>">
+        </div>
+        <div>
+            <label for="unidade">Unidade:</label>
+            <input type="text" id="unidade" name="unidade" value="<%= produto.unidade %>">
+        </div>
+        <div>
+            <label for="kit">Kit:</label>
+            <input type="text" id="kit" name="kit" value="<%= produto.kit %>">
+        </div>
+        <div>
+            <label for="consignado">Consignado:</label>
+            <input type="text" id="consignado" name="consignado" value="<%= produto.consignado %>">
+        </div>
+        <div>
+            <label for="opme">OPME:</label>
+            <input type="text" id="opme" name="opme" value="<%= produto.opme %>">
+        </div>
+        <div>
+            <label for="especie">Espécie:</label>
+            <input type="text" id="especie" name="especie" value="<%= produto.especie %>">
+        </div>
+        <div>
+            <label for="classe">Classe:</label>
+            <input type="text" id="classe" name="classe" value="<%= produto.classe %>">
+        </div>
+        <div>
+            <label for="sub_classe">Sub-Classe:</label>
+            <input type="text" id="sub_classe" name="sub_classe" value="<%= produto.sub_classe %>">
+        </div>
+        <div>
+            <label for="curva_abc">Curva ABC:</label>
+            <input type="text" id="curva_abc" name="curva_abc" value="<%= produto.curva_abc %>">
+        </div>
+        <div>
+            <label for="lote">Lote:</label>
+            <input type="text" id="lote" name="lote" value="<%= produto.lote %>">
+        </div>
+        <div>
+            <label for="serie">Série:</label>
+            <input type="text" id="serie" name="serie" value="<%= produto.serie %>">
+        </div>
+        <div>
+            <label for="registro_anvisa">Registro ANVISA:</label>
+            <input type="text" id="registro_anvisa" name="registro_anvisa" value="<%= produto.registro_anvisa %>">
+        </div>
+        <div>
+            <label for="etiqueta">Etiqueta:</label>
+            <input type="text" id="etiqueta" name="etiqueta" value="<%= produto.etiqueta %>">
+        </div>
+        <div>
+            <label for="medicamento">Medicamento:</label>
+            <input type="text" id="medicamento" name="medicamento" value="<%= produto.medicamento %>">
+        </div>
+        <div>
+            <label for="med_controla">Controle de Medicamento:</label>
+            <input type="text" id="med_controla" name="med_controla" value="<%= produto.med_controla %>">
+        </div>
+        <div>
+            <label for="validade">Validade:</label>
+            <input type="text" id="validade" name="validade" value="<%= produto.validade %>">
+        </div>
+        <div>
+            <label for="armazenamento_ar_cond">Ar Condicionado:</label>
+            <input type="text" id="armazenamento_ar_cond" name="armazenamento_ar_cond" value="<%= produto.armazenamento_ar_cond %>">
+        </div>
+        <div>
+            <label for="armazenamento_geladeira">Geladeira:</label>
+            <input type="text" id="armazenamento_geladeira" name="armazenamento_geladeira" value="<%= produto.armazenamento_geladeira %>">
+        </div>
+        <div>
+            <label for="padronizado">Padronizado:</label>
+            <input type="text" id="padronizado" name="padronizado" value="<%= produto.padronizado %>">
+        </div>
+        <div>
+            <label for="aplicacao">Aplicação:</label>
+            <input type="text" id="aplicacao" name="aplicacao" value="<%= produto.aplicacao %>">
+        </div>
+        <div>
+            <label for="auto_custo">Auto Custo:</label>
+            <input type="text" id="auto_custo" name="auto_custo" value="<%= produto.auto_custo %>">
+        </div>
+        <div>
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" name="valor" value="<%= produto.valor %>">
+        </div>
+        <div>
+            <label for="repasse">Repasse:</label>
+            <input type="text" id="repasse" name="repasse" value="<%= produto.repasse %>">
+        </div>
+        <div>
+            <label for="procedimento_faturamento">Procedimento de Faturamento:</label>
+            <input type="text" id="procedimento_faturamento" name="procedimento_faturamento" value="<%= produto.procedimento_faturamento %>">
+        </div>
+        <div>
+            <label for="tipo_atendimento_ps">Atendimento (PS):</label>
+            <input type="checkbox" id="tipo_atendimento_ps" name="tipo_atendimento_ps" value="S" <%= produto.tipo_atendimento_ps === 1 ? 'checked' : '' %> >
+        </div>
+        <div>
+            <label for="tipo_atendimento_ambulatorio">Atendimento (Ambulatório):</label>
+            <input type="checkbox" id="tipo_atendimento_ambulatorio" name="tipo_atendimento_ambulatorio" value="S" <%= produto.tipo_atendimento_ambulatorio === 1 ? 'checked' : '' %> >
+        </div>
+        <div>
+            <label for="tipo_atendimento_internacao">Atendimento (Internação):</label>
+            <input type="checkbox" id="tipo_atendimento_internacao" name="tipo_atendimento_internacao" value="S" <%= produto.tipo_atendimento_internacao === 1 ? 'checked' : '' %> >
+        </div>
+        <div>
+            <label for="tipo_atendimento_externo">Atendimento (Externo):</label>
+            <input type="checkbox" id="tipo_atendimento_externo" name="tipo_atendimento_externo" value="S" <%= produto.tipo_atendimento_externo === 1 ? 'checked' : '' %> >
+        </div>
+        <div>
+            <label for="tipo_atendimento_todos">Atendimento (Todos):</label>
+            <input type="checkbox" id="tipo_atendimento_todos" name="tipo_atendimento_todos" value="S" <%= produto.tipo_atendimento_todos === 1 ? 'checked' : '' %> >
+        </div>        
+        <div>
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" rows="6" cols="100"><%= produto.observacao %></textarea>
+        </div>
+        <!-- Campo oculto para armazenar o token -->
+        <input type="hidden" id="token" name="token" value="<%= produto.token %>">
+        <!-- Botões para submeter ou voltar -->
+        <button type="submit">Finalizar Cadastro</button>
+        <button type="button" onclick="voltarParaMenu()">Voltar</button>
+    </form>
+    <script>
+        // Função para voltar para a página de menu.html
+        function voltarParaMenu() {
+            window.location.href = "menu.html";
+        }
+        
+        // Preencher os campos com os dados recuperados
+        window.onload = function() {
+            document.getElementById('codigo').value = '<%= produto.codigo %>';
+            document.getElementById('descricao').value = '<%= produto.descricao %>';
+            document.getElementById('desc_resumida').value = '<%= produto.desc_resumida %>';
+            document.getElementById('valor_unitario').value = '<%= produto.valor_unitario %>';
+            document.getElementById('unidade').value = '<%= produto.unidade %>';
+            document.getElementById('kit').value = '<%= produto.kit %>';
+            document.getElementById('consignado').value = '<%= produto.consignado %>';
+            document.getElementById('opme').value = '<%= produto.opme %>';
+            document.getElementById('especie').value = '<%= produto.especie %>';
+            document.getElementById('classe').value = '<%= produto.classe %>';
+            document.getElementById('sub_classe').value = '<%= produto.sub_classe %>';
+            document.getElementById('curva_abc').value = '<%= produto.curva_abc %>';
+            document.getElementById('lote').value = '<%= produto.lote %>';
+            document.getElementById('serie').value = '<%= produto.serie %>';
+            document.getElementById('registro_anvisa').value = '<%= produto.registro_anvisa %>';
+            document.getElementById('etiqueta').value = '<%= produto.etiqueta %>';
+            document.getElementById('medicamento').value = '<%= produto.medicamento %>';
+            document.getElementById('med_controla').value = '<%= produto.med_controla %>';
+            document.getElementById('validade').value = '<%= produto.validade %>';
+            document.getElementById('armazenamento_ar_cond').value = '<%= produto.armazenamento_ar_cond %>';
+            document.getElementById('armazenamento_geladeira').value = '<%= produto.armazenamento_geladeira %>';
+            document.getElementById('padronizado').value = '<%= produto.padronizado %>';
+            document.getElementById('aplicacao').value = '<%= produto.aplicacao %>';
+            document.getElementById('auto_custo').value = '<%= produto.auto_custo %>';
+            document.getElementById('valor').value = '<%= produto.valor %>';
+            document.getElementById('repasse').value = '<%= produto.repasse %>';
+            document.getElementById('procedimento_faturamento').value = '<%= produto.procedimento_faturamento %>';
+            document.getElementById('tipo_atendimento_ps').checked = '<%= produto.tipo_atendimento_ps %>' === 'S';
+            document.getElementById('tipo_atendimento_ambulatorio').checked = '<%= produto.tipo_atendimento_ambulatorio %>' === 'S';
+            document.getElementById('tipo_atendimento_internacao').checked = '<%= produto.tipo_atendimento_internacao %>' === 'S';
+            document.getElementById('tipo_atendimento_externo').checked = '<%= produto.tipo_atendimento_externo %>' === 'S';
+            document.getElementById('tipo_atendimento_todos').checked = '<%= produto.tipo_atendimento_todos %>' === 'S';
+            document.getElementById('observacao').value = '<%= produto.observacao %>';
+        }
+    </script>    
+</body>
+</html>
