@@ -1,92 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cadastro de Produto</title>
-<link rel="shortcut icon" href="/public/lobo.ico" type="image/x-icon">
-<link rel="icon" type="image/x-icon" href="/public/lobo.ico">
-<link rel="stylesheet" href="/styles.css">
-<script>
-    function addDescriptionFields() {
-        // Cria um novo div para os campos
-        const descriptionGroup = document.createElement('div');
-        descriptionGroup.classList.add('description-group');
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto</title>
+    <link rel="shortcut icon" href="/public/lobo.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="/public/lobo.ico">
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        function addDescriptionFields() {
+            // Cria um novo div para os campos
+            const descriptionGroup = document.createElement('div');
+            descriptionGroup.classList.add('description-group');
 
-        // Cria o campo "Descrição"
-        const descricaoLabel = document.createElement('label');
-        descricaoLabel.setAttribute('for', 'descricao');
-        descricaoLabel.textContent = 'Descrição:';
-        const descricaoInput = document.createElement('input');
-        descricaoInput.setAttribute('type', 'text');
-        descricaoInput.setAttribute('name', 'descricao[]');
-        descricaoInput.setAttribute('required', true);
-        descricaoInput.setAttribute('maxlength', 60);
+            // Cria o campo "Descrição"
+            const descricaoLabel = document.createElement('label');
+            descricaoLabel.setAttribute('for', 'descricao');
+            descricaoLabel.textContent = 'Descrição:';
+            const descricaoInput = document.createElement('input');
+            descricaoInput.setAttribute('type', 'text');
+            descricaoInput.setAttribute('name', 'descricao[]');
+            descricaoInput.setAttribute('required', true);
+            descricaoInput.setAttribute('maxlength', 60);
 
-        // Cria o campo "Descrição Resumida"
-        const descResumidaLabel = document.createElement('label');
-        descResumidaLabel.setAttribute('for', 'desc_resumida');
-        descResumidaLabel.textContent = 'Descrição Resumida:';
-        const descResumidaInput = document.createElement('input');
-        descResumidaInput.setAttribute('type', 'text');
-        descResumidaInput.setAttribute('name', 'desc_resumida[]');
-        descResumidaInput.setAttribute('required', true);
-        descResumidaInput.setAttribute('maxlength', 30);
+            // Cria o campo "Descrição Resumida"
+            const descResumidaLabel = document.createElement('label');
+            descResumidaLabel.setAttribute('for', 'desc_resumida');
+            descResumidaLabel.textContent = 'Descrição Resumida:';
+            const descResumidaInput = document.createElement('input');
+            descResumidaInput.setAttribute('type', 'text');
+            descResumidaInput.setAttribute('name', 'desc_resumida[]');
+            descResumidaInput.setAttribute('required', true);
+            descResumidaInput.setAttribute('maxlength', 30);
 
-        // Cria o campo "Valor Unitário"
-        const valorUnitarioLabel = document.createElement('label');
-        valorUnitarioLabel.setAttribute('for', 'valor_unitario');
-        valorUnitarioLabel.textContent = 'Valor de compra unitário:';
-        const valorUnitarioInput = document.createElement('input');
-        valorUnitarioInput.setAttribute('type', 'text');
-        valorUnitarioInput.setAttribute('name', 'valor_unitario[]');
+            // Cria o campo "Valor Unitário"
+            const valorUnitarioLabel = document.createElement('label');
+            valorUnitarioLabel.setAttribute('for', 'valor_unitario');
+            valorUnitarioLabel.textContent = 'Valor de compra unitário:';
+            const valorUnitarioInput = document.createElement('input');
+            valorUnitarioInput.setAttribute('type', 'text');
+            valorUnitarioInput.setAttribute('name', 'valor_unitario[]');
 
-        // Cria os campos "Marcas 1", "Marcas 2", e "Marcas 3"
-        const marcasLabel = document.createElement('label');
-        marcasLabel.textContent = 'Marcas dos produtos:';
+            // Cria os campos "Marcas 1", "Marcas 2", e "Marcas 3"
+            const marcasLabel = document.createElement('label');
+            marcasLabel.textContent = 'Marcas dos produtos:';
 
-        const marca1Label = document.createElement('label');
-        marca1Label.setAttribute('for', 'LAB_PRO_1');
-        marca1Label.textContent = 'Marcas 1:';
-        const marca1Input = document.createElement('input');
-        marca1Input.setAttribute('type', 'text');
-        marca1Input.setAttribute('name', 'LAB_PRO_1[]');
+            const marca1Label = document.createElement('label');
+            marca1Label.setAttribute('for', 'LAB_PRO_1');
+            marca1Label.textContent = 'Marcas 1:';
+            const marca1Input = document.createElement('input');
+            marca1Input.setAttribute('type', 'text');
+            marca1Input.setAttribute('name', 'LAB_PRO_1[]');
 
-        const marca2Label = document.createElement('label');
-        marca2Label.setAttribute('for', 'LAB_PRO_2');
-        marca2Label.textContent = 'Marcas 2:';
-        const marca2Input = document.createElement('input');
-        marca2Input.setAttribute('type', 'text');
-        marca2Input.setAttribute('name', 'LAB_PRO_2[]');
+            const marca2Label = document.createElement('label');
+            marca2Label.setAttribute('for', 'LAB_PRO_2');
+            marca2Label.textContent = 'Marcas 2:';
+            const marca2Input = document.createElement('input');
+            marca2Input.setAttribute('type', 'text');
+            marca2Input.setAttribute('name', 'LAB_PRO_2[]');
 
-        const marca3Label = document.createElement('label');
-        marca3Label.setAttribute('for', 'LAB_PRO_3');
-        marca3Label.textContent = 'Marcas 3:';
-        const marca3Input = document.createElement('input');
-        marca3Input.setAttribute('type', 'text');
-        marca3Input.setAttribute('name', 'LAB_PRO_3[]');
+            const marca3Label = document.createElement('label');
+            marca3Label.setAttribute('for', 'LAB_PRO_3');
+            marca3Label.textContent = 'Marcas 3:';
+            const marca3Input = document.createElement('input');
+            marca3Input.setAttribute('type', 'text');
+            marca3Input.setAttribute('name', 'LAB_PRO_3[]');
 
-        // Adiciona os campos ao div
-        descriptionGroup.appendChild(descricaoLabel);
-        descriptionGroup.appendChild(descricaoInput);
-        descriptionGroup.appendChild(descResumidaLabel);
-        descriptionGroup.appendChild(descResumidaInput);
-        descriptionGroup.appendChild(valorUnitarioLabel);
-        descriptionGroup.appendChild(valorUnitarioInput);
-        descriptionGroup.appendChild(marcasLabel);
-        descriptionGroup.appendChild(marca1Label);
-        descriptionGroup.appendChild(marca1Input);
-        descriptionGroup.appendChild(marca2Label);
-        descriptionGroup.appendChild(marca2Input);
-        descriptionGroup.appendChild(marca3Label);
-        descriptionGroup.appendChild(marca3Input);
+            // Adiciona os campos ao div
+            descriptionGroup.appendChild(descricaoLabel);
+            descriptionGroup.appendChild(descricaoInput);
+            descriptionGroup.appendChild(descResumidaLabel);
+            descriptionGroup.appendChild(descResumidaInput);
+            descriptionGroup.appendChild(valorUnitarioLabel);
+            descriptionGroup.appendChild(valorUnitarioInput);
+            descriptionGroup.appendChild(marcasLabel);
+            descriptionGroup.appendChild(marca1Label);
+            descriptionGroup.appendChild(marca1Input);
+            descriptionGroup.appendChild(marca2Label);
+            descriptionGroup.appendChild(marca2Input);
+            descriptionGroup.appendChild(marca3Label);
+            descriptionGroup.appendChild(marca3Input);
 
-        // Adiciona o novo div ao formulário antes do botão "Adicionar produtos"
-        const form = document.getElementById('productForm');
-        const addButton = document.getElementById('addDescriptionButton');
-        form.insertBefore(descriptionGroup, addButton);
-    }
-</script>
+            // Adiciona o novo div ao formulário antes do botão "Adicionar produtos"
+            const form = document.getElementById('productForm');
+            const addButton = document.getElementById('addDescriptionButton');
+            form.insertBefore(descriptionGroup, addButton);
+        }
+    </script>
 </head>
+
 <body>
     <form id="productForm" action="/salvar_produto" method="POST">
         <div>
@@ -126,84 +128,84 @@
         <br>
         <button type="button" id="addDescriptionButton" onclick="addDescriptionFields()">Adicionar produtos</button>
 
- <br>
-    <div>
-        <label for="unidade">Unidade:</label>           
-        <select id="unidade" name="unidade" required>
-            <option value=""></option>
-            <option value="DRAGEA">DRAGEA</option>
-            <option value="PACOTE">PACOTE</option>
-            <option value="MIO">MIO</option>
-            <option value="MUI">MUI</option>
-            <option value="SERINGA CHEIA">SERINGA CHEIA</option>
-            <option value="MEQ">MEQ</option>
-            <option value="QUILOGRAMA">QUILOGRAMA</option>
-            <option value="LITRO">LITRO</option>
-            <option value="MILILITRO">MILILITRO</option>
-            <option value="METRO">METRO</option>
-            <option value="SACHE">SACHE</option>
-            <option value="BLOCO">BLOCO</option>
-            <option value="FOLHA">FOLHA</option>
-            <option value="MICROGRAMA">MICROGRAMA</option>
-            <option value="DOSE">DOSE</option>
-            <option value="COMPRIMIDO">COMPRIMIDO</option>
-            <option value="CAPSULA">CAPSULA</option>
-            <option value="AMPOLA">AMPOLA</option>
-            <option value="POTE">POTE</option>
-            <option value="TUBO">TUBO</option>
-            <option value="ENVELOPE">ENVELOPE</option>
-            <option value="FRASCO">FRASCO</option>
-            <option value="TABLETE">TABLETE</option>
-            <option value="FLACONETE">FLACONETE</option>
-            <option value="UTR MIL">UTR MIL</option>
-            <option value="MILIGRAMA">MILIGRAMA</option>
-            <option value="FRASCO/AMPOLA">FRASCO/AMPOLA</option>
-            <option value="GALAO">GALAO</option>
-            <option value="GLOBULO">GLOBULO</option>
-            <option value="GOTAS">GOTAS</option>
-            <option value="OVULO">OVULO</option>
-            <option value="BILHAO DE UNID. INTERNACIONAL">BILHAO DE UNID. INTERNACIONAL</option>
-            <option value="BISNAGA">BISNAGA</option>
-            <option value="BOLSA">BOLSA</option>
-            <option value="CAIXA">CAIXA</option>
-            <option value="CARPULE">CARPULE</option>
-            <option value="LATA">LATA</option>
-            <option value="PEROLA">PEROLA</option>
-            <option value="PILULA">PILULA</option>
-            <option value="TUBETE">TUBETE</option>
-            <option value="CENTIMETRO">CENTIMETRO</option>
-            <option value="CONJUNTO">CONJUNTO</option>
-            <option value="KIT">KIT</option>
-            <option value="MACO">MACO</option>
-            <option value="METRO">METRO</option>
-            <option value="PECA">PECA</option>
-            <option value="ROLO">ROLO</option>
-            <option value="CENTGRAY">CENTGRAY</option>
-            <option value="GRAY">GRAY</option>
-            <option value="PAR">PAR</option>
-            <option value="ADESIVO TRANSDERMICO">ADESIVO TRANSDERMICO</option>
-            <option value="SUPOSITORIO">SUPOSITORIO</option>
-            <option value="PASTILHA">PASTILHA</option>
-            <option value="MILIGRAMA/ PESO">MILIGRAMA/ PESO</option>
-            <option value="CALORIAS">CALORIAS</option>
-            <option value="UI POR MILILITRO">UI POR MILILITRO</option>
-            <option value="COMPRIMIDO EFERVECENTE">COMPRIMIDO EFERVECENTE</option>
-            <option value="COMPRIMIDO MASTIGAVEL">COMPRIMIDO MASTIGAVEL</option>
-            <option value="GRAMAS">GRAMAS</option>
-            <option value="METRO CUBICO">METRO CUBICO</option>
-            <option value="CENTIMETRO CUBICO">CENTIMETRO CUBICO</option>
-            <option value="METRO QUADRADO">METRO QUADRADO</option>
-            <option value="MG POR METRO QUADRADO">MG POR METRO QUADRADO</option>
-            <option value="UI POR METRO QUADRADO">UI POR METRO QUADRADO</option>
-            <option value="UI POR MIL">UI POR MIL</option>
-            <option value="UNIDADE">UNIDADE</option>
-            <option value="PUFF">PUFF</option>
-            <option value="UNIDADE INTERNACIONAL">UNIDADE INTERNACIONAL</option>
-            <option value="POTE">POTE</option>
-            <option value="BOBINA">BOBINA</option>
-            <option value="UNIDADE">UNIDADE</option>
-        </select>
-    </div>
+        <br>
+        <div>
+            <label for="unidade">Unidade:</label>
+            <select id="unidade" name="unidade" required>
+                <option value=""></option>
+                <option value="DRAGEA">DRAGEA</option>
+                <option value="PACOTE">PACOTE</option>
+                <option value="MIO">MIO</option>
+                <option value="MUI">MUI</option>
+                <option value="SERINGA CHEIA">SERINGA CHEIA</option>
+                <option value="MEQ">MEQ</option>
+                <option value="QUILOGRAMA">QUILOGRAMA</option>
+                <option value="LITRO">LITRO</option>
+                <option value="MILILITRO">MILILITRO</option>
+                <option value="METRO">METRO</option>
+                <option value="SACHE">SACHE</option>
+                <option value="BLOCO">BLOCO</option>
+                <option value="FOLHA">FOLHA</option>
+                <option value="MICROGRAMA">MICROGRAMA</option>
+                <option value="DOSE">DOSE</option>
+                <option value="COMPRIMIDO">COMPRIMIDO</option>
+                <option value="CAPSULA">CAPSULA</option>
+                <option value="AMPOLA">AMPOLA</option>
+                <option value="POTE">POTE</option>
+                <option value="TUBO">TUBO</option>
+                <option value="ENVELOPE">ENVELOPE</option>
+                <option value="FRASCO">FRASCO</option>
+                <option value="TABLETE">TABLETE</option>
+                <option value="FLACONETE">FLACONETE</option>
+                <option value="UTR MIL">UTR MIL</option>
+                <option value="MILIGRAMA">MILIGRAMA</option>
+                <option value="FRASCO/AMPOLA">FRASCO/AMPOLA</option>
+                <option value="GALAO">GALAO</option>
+                <option value="GLOBULO">GLOBULO</option>
+                <option value="GOTAS">GOTAS</option>
+                <option value="OVULO">OVULO</option>
+                <option value="BILHAO DE UNID. INTERNACIONAL">BILHAO DE UNID. INTERNACIONAL</option>
+                <option value="BISNAGA">BISNAGA</option>
+                <option value="BOLSA">BOLSA</option>
+                <option value="CAIXA">CAIXA</option>
+                <option value="CARPULE">CARPULE</option>
+                <option value="LATA">LATA</option>
+                <option value="PEROLA">PEROLA</option>
+                <option value="PILULA">PILULA</option>
+                <option value="TUBETE">TUBETE</option>
+                <option value="CENTIMETRO">CENTIMETRO</option>
+                <option value="CONJUNTO">CONJUNTO</option>
+                <option value="KIT">KIT</option>
+                <option value="MACO">MACO</option>
+                <option value="METRO">METRO</option>
+                <option value="PECA">PECA</option>
+                <option value="ROLO">ROLO</option>
+                <option value="CENTGRAY">CENTGRAY</option>
+                <option value="GRAY">GRAY</option>
+                <option value="PAR">PAR</option>
+                <option value="ADESIVO TRANSDERMICO">ADESIVO TRANSDERMICO</option>
+                <option value="SUPOSITORIO">SUPOSITORIO</option>
+                <option value="PASTILHA">PASTILHA</option>
+                <option value="MILIGRAMA/ PESO">MILIGRAMA/ PESO</option>
+                <option value="CALORIAS">CALORIAS</option>
+                <option value="UI POR MILILITRO">UI POR MILILITRO</option>
+                <option value="COMPRIMIDO EFERVECENTE">COMPRIMIDO EFERVECENTE</option>
+                <option value="COMPRIMIDO MASTIGAVEL">COMPRIMIDO MASTIGAVEL</option>
+                <option value="GRAMAS">GRAMAS</option>
+                <option value="METRO CUBICO">METRO CUBICO</option>
+                <option value="CENTIMETRO CUBICO">CENTIMETRO CUBICO</option>
+                <option value="METRO QUADRADO">METRO QUADRADO</option>
+                <option value="MG POR METRO QUADRADO">MG POR METRO QUADRADO</option>
+                <option value="UI POR METRO QUADRADO">UI POR METRO QUADRADO</option>
+                <option value="UI POR MIL">UI POR MIL</option>
+                <option value="UNIDADE">UNIDADE</option>
+                <option value="PUFF">PUFF</option>
+                <option value="UNIDADE INTERNACIONAL">UNIDADE INTERNACIONAL</option>
+                <option value="POTE">POTE</option>
+                <option value="BOBINA">BOBINA</option>
+                <option value="UNIDADE">UNIDADE</option>
+            </select>
+        </div>
         <div>
             <label for="kit">Kit:</label>
             <select id="kit" name="kit" required>
@@ -228,316 +230,88 @@
                 <option value="NAO">Não</option>
             </select>
         </div>
+        <div class="especie-container">
+            <div>
+                <label for="codigo_especie">Código:</label>
+                <input type="text" id="codigo_especie" name="codigo_especie" oninput="updateEspecieDescricao()"
+                    onfocus="showEspecieList()" required>
+                <div id="especie-list"></div>
+            </div>
+            <div>
+                <label for="descricao_especie">Descrição Espécie</label>
+                <input type="text" id="descricao_especie" name="descricao_especie" oninput="searchEspecieByDescricao()">
+            </div>
+        </div>
+
+        <!-- Seção de Classe -->
+        <div class="classe-container">
+            <div>
+                <label for="codigo_classe">Código:</label>
+                <input type="text" id="codigo_classe" name="codigo_classe" oninput="updateClasseDescricao()"
+                    onfocus="showClasseList()" required>
+                <div id="classe-list"></div>
+            </div>
+            <div>
+                <label for="descricao_classe">Descrição Classe:</label>
+                <input type="text" id="descricao_classe" name="descricao_classe" oninput="searchClasseByDescricao()">
+            </div>
+        </div>
+
+        <!-- Seção de Subclasse -->
+        <div class="subclasse-container">
+            <div>
+                <label for="codigo_subclasse">Código:</label>
+                <input type="text" id="codigo_subclasse" name="codigo_subclasse" oninput="updateSubclasseDescricao()"
+                    onfocus="showSubclasseList()" required>
+                <div id="subclasse-list"></div>
+            </div>
+            <div>
+                <label for="descricao_subclasse">Descrição Subclasse:</label>
+                <input type="text" id="descricao_subclasse" name="descricao_subclasse" readonly>
+            </div>
+        </div>
+
         <div>
-            <label for="especie">Espécie:</label>
-            <select id="especie" name="especie" required>
-                <option value=""></option>
+            <label for="atividade">Atividade:</label>
+            <select id="atividade" name="atividade" required>
+                <option value=""></option>  
                 <option value="DROGAS E MEDICAMENTOS">DROGAS E MEDICAMENTOS</option>
-                <option value="MATERIAL MEDICO HOSPITALAR">MATERIAL MEDICO HOSPITALAR</option>
-                <option value="PATRIMONIO">PATRIMONIO</option>
+                <option value="MATERIAIS HOSPITALARES">MATERIAIS HOSPITALARES</option>
+                <option value="MATERIAL PERMANENTE">MATERIAL PERMANENTE</option>
                 <option value="GASES HOSPITALARES">GASES HOSPITALARES</option>
                 <option value="MATERIAL DE COPA E COZINHA">MATERIAL DE COPA E COZINHA</option>
                 <option value="GENEROS ALIMENTICIOS">GENEROS ALIMENTICIOS</option>
-                <option value="ORTESE, PROTESE E MAT. ESPECIAL">ORTESE, PROTESE E MAT. ESPECIAL</option>
-                <option value="MATERIAL DE MANUTENCAO">MATERIAL DE MANUTENCAO</option>
+                <option value="ORTSE, PROTESE E MAT. ESPECIAL">ORTSE, PROTESE E MAT. ESPECIAL</option>
+                <option value="ESTERILIZACAO DE MATERIAIS">ESTERILIZACAO DE MATERIAIS</option>
                 <option value="MATERIAL DE SEGURANCA">MATERIAL DE SEGURANCA</option>
                 <option value="MATERIAL DE HIGIENIZACAO">MATERIAL DE HIGIENIZACAO</option>
                 <option value="COMBUSTIVEIS E LUBRIFICANTES">COMBUSTIVEIS E LUBRIFICANTES</option>
                 <option value="MATERIAIS DE EXPEDIENTE">MATERIAIS DE EXPEDIENTE</option>
                 <option value="MATERIAL DE ROUPARIA">MATERIAL DE ROUPARIA</option>
-                <option value="MATERIAL DE LABORATORIO">MATERIAL DE LABORATORIO</option>
-                <option value="NUTRIENTES ENTERAIS/PARENTERAIS">NUTRIENTES ENTERAIS/PARENTERAIS</option>
-                <option value="BRINDES">BRINDES</option>
-                <option value="RAÇÃO">RAÇÃO</option>
-                <option value="INSUMOS">INSUMOS</option>
-                <option value="HIGIENE">HIGIENE</option>
-                <option value="MATERIAL CONSUMO">MATERIAL CONSUMO</option>
-                <option value="MATERIAL DE EMBALAGEM">MATERIAL DE EMBALAGEM</option>
-                <option value="MATERIAL DE ESCRITORIO">MATERIAL DE ESCRITORIO</option>
-            </select>    
-        </div>
-        <div>
-            <label for="classe">Classe:</label>
-            <select id="classe" name="classe" required>
-                <option value=""></option>
-                <option value="MATERIAL MEDICO">MATERIAL MEDICO</option>
-                <option value="MATERIAL PERMANENTE">MATERIAL PERMANENTE</option>
-                <option value="GASES">GASES</option>
-                <option value="CIRURGICA">CIRURGICA</option>
-                <option value="OPME NAO CIRURGICA">OPME NAO CIRURGICA</option>
-                <option value="CAIXA">CAIXA</option>
-                <option value="MATERIAL DE LABORATORIO">MATERIAL DE LABORATORIO</option>
-                <option value="MATERIAL DE DIAGNOSTICO">MATERIAL DE DIAGNOSTICO</option>
-                <option value="AGENTES DIAGNOSTICOS">AGENTES DIAGNOSTICOS</option>
-                <option value="ANTIINFECCIOSOS">ANTIINFECCIOSOS</option>
-                <option value="ESPASMOLITICOS">ESPASMOLITICOS</option>
-                <option value="IMUNOLOGIA E ALERGOLOGIA">IMUNOLOGIA E ALERGOLOGIA</option>
-                <option value="METABOLISMO E NUTRICAO">METABOLISMO E NUTRICAO</option>
-                <option value="SISTEMA NERVOSO PERIFERICO">SISTEMA NERVOSO PERIFERICO</option>
-                <option value="ANTI-REUMATICOS E ANTIGOTOSOS">ANTI-REUMATICOS E ANTIGOTOSOS</option>
-                <option value="SISTEMA DIGESTORIO">SISTEMA DIGESTORIO</option>
-                <option value="FARMACOS DIVERSOS">FARMACOS DIVERSOS</option>
-                <option value="ANTIDOTOS E ANTAGONISTAS">ANTIDOTOS E ANTAGONISTAS</option>
-                <option value="SISTEMA RESPIRATORIO">SISTEMA RESPIRATORIO</option>
-                <option value="MIORRELAXANTES">MIORRELAXANTES</option>
-                <option value="OLHOS E ANEXOS">OLHOS E ANEXOS</option>
-                <option value="AGENTES ANTINEOPLASICOS">AGENTES ANTINEOPLASICOS</option>
-                <option value="OUVIDO E ANEXOS">OUVIDO E ANEXOS</option>
-                <option value="SANGUE E SISTEMA HEMATOPOETICO">SANGUE E SISTEMA HEMATOPOETICO</option>
-                <option value="HORMONIOS E ANTI-HORMONIOS">HORMONIOS E ANTI-HORMONIOS</option>
-                <option value="PELE E MUCOSAS">PELE E MUCOSAS</option>
-                <option value="MEDICINA NUCLEAR">MEDICINA NUCLEAR</option>
-                <option value="SISTEMA NERVOSO CENTRAL">SISTEMA NERVOSO CENTRAL</option>
-                <option value="SISTEMA CARDIOVASCULAR">SISTEMA CARDIOVASCULAR</option>
-                <option value="NUTRIENTES ENTERAIS/PARENTERAIS">NUTRIENTES ENTERAIS/PARENTERAIS</option>
-                <option value="A CLASSIFICAR">A CLASSIFICAR</option>
-                <option value="MATERIAL DE COPA E COZINHA">MATERIAL DE COPA E COZINHA</option>
-                <option value="ALIMENTOS">ALIMENTOS</option>
-                <option value="MATERIAL DE MANUTENCAO">MATERIAL DE MANUTENCAO</option>
-                <option value="MATERIAL DE SEGURANCA">MATERIAL DE SEGURANCA</option>
-                <option value="COMBUSTIVEIS E LUBRIFICANTES">COMBUSTIVEIS E LUBRIFICANTES</option>
-                <option value="MATERIAIS DE EXPEDIENTE">MATERIAIS DE EXPEDIENTE</option>
-                <option value="MATERIAL DE ROUPARIA">MATERIAL DE ROUPARIA</option>
-                <option value="MATERIAL DE LABORATORIO">MATERIAL DE LABORATORIO</option>
-                <option value="BRINDES DIVERSOS">BRINDES DIVERSOS</option>
-                <option value="AGENTES IMUNIZANTES">AGENTES IMUNIZANTES</option>
-                <option value="ANTIALERGICOS">ANTIALERGICOS</option>
-                <option value="ANTISSEPTICOS">ANTISSEPTICOS</option>
-                <option value="CONTRASTES RADIOLOGICOS">CONTRASTES RADIOLOGICOS</option>
-                <option value="DERMATOLOGICOS">DERMATOLOGICOS</option>
-                <option value="DIURETICOS OSMOTICOS">DIURETICOS OSMOTICOS</option>
-                <option value="ELETROLITOS">ELETROLITOS</option>
-                <option value="FARMACOS INTERF METAB DA AGUA">FARMACOS INTERF METAB DA AGUA</option>
-                <option value="OFTALMICOS, OTOLOG, NASOFARINGE">OFTALMICOS, OTOLOG, NASOFARINGE</option>
-                <option value="SISTEMA ANALGESIA E ANESTESIA">SISTEMA ANALGESIA E ANESTESIA</option>
-                <option value="SISTEMA ANTIMICROBIANO">SISTEMA ANTIMICROBIANO</option>
-                <option value="SISTEMA NEUROLOGIA PSIQUIATRIA">SISTEMA NEUROLOGIA PSIQUIATRIA</option>
-                <option value="VITAMINAS">VITAMINAS</option>
-                <option value="SECA">SECA</option>
-                <option value="UMIDA">UMIDA</option>
-                <option value="MEDICAMENTOSA">MEDICAMENTOSA</option>
-                <option value="BENS DE PEQUENOS VALORES">BENS DE PEQUENOS VALORES</option>
-                <option value="SUPLEMENTOS">SUPLEMENTOS</option>
-                <option value="ADESIVOS/CURATIVOS/HEMOSTATICOS">ADESIVOS/CURATIVOS/HEMOSTATICOS</option>
-                <option value="CANULAS/DRENOS/SONDAS/TUBOS">CANULAS/DRENOS/SONDAS/TUBOS</option>
-                <option value="DESCARTAVEIS">DESCARTAVEIS</option>
-                <option value="INFUSAO/PERFUROCORTANTE">INFUSAO/PERFUROCORTANTE</option>
-                <option value="LATEX">LATEX</option>
-                <option value="ODONTOLOGICOS">ODONTOLOGICOS</option>
-                <option value="PRODUTOS QUIMICOS">PRODUTOS QUIMICOS</option>
-                <option value="SUTURA CIRURGICA">SUTURA CIRURGICA</option>
-                <option value="TEXTEIS">TEXTEIS</option>
-                <option value="USO GERAL">USO GERAL</option>
-                <option value="INSUMOS">INSUMOS</option>
-                <option value="USO GERAL">USO GERAL</option>                
-            </select>    
-        </div>
-        <div>
-            <label for="sub_classe">Sub-Classe:</label>
-            <select id="sub_classe" name="sub_classe" required>
-                <option value=""></option>
-                <option value="FARM. AFETAM A CALCIFICACAO">FARM. AFETAM A CALCIFICACAO</option>
-                <option value="FARM. P/ HIPERTIREOIDISMO">FARM. P/ HIPERTIREOIDISMO</option>
-                <option value="FARM. P/ HIPOTIREOIDISMO">FARM. P/ HIPOTIREOIDISMO</option>
-                <option value="HIPERGLICEMIANTE/ANABOLIZANTE">HIPERGLICEMIANTE/ANABOLIZANTE</option>
-                <option value="INSTALAÇÕES">INSTALAÇÕES</option>
-                <option value="GASES MEDICINAIS">GASES MEDICINAIS</option>
-                <option value="GASES INDUSTRIAIS">GASES INDUSTRIAIS</option>
-                <option value="HORM.ANTIDIURETICOS E ANALOGOS">HORM.ANTIDIURETICOS E ANALOGOS</option>
-                <option value="MINERALOCORTICOIDES">MINERALOCORTICOIDES</option>
-                <option value="REHIDRATACAO ORAL">REHIDRATACAO ORAL</option>
-                <option value="RESINAS PERMUTADORAS DE IONS">RESINAS PERMUTADORAS DE IONS</option>
-                <option value="SOLUCOES PARA DIALISE">SOLUCOES PARA DIALISE</option>
-                <option value="VITAMINAS">VITAMINAS</option>
-                <option value="MIORRELAXANTES CENTRAIS">MIORRELAXANTES CENTRAIS</option>
-                <option value="MIORRELAXANTES PERIFERICOS">MIORRELAXANTES PERIFERICOS</option>
-                <option value="ANTIGLAUCOMATOSOS">ANTIGLAUCOMATOSOS</option>
-                <option value="ANTIINFECCIOSOS">ANTIINFECCIOSOS</option>
-                <option value="ANTIINFLAMATORIOS">ANTIINFLAMATORIOS</option>
-                <option value="CORANTE/SOL.IRRIGACAO/LUBRIF.">CORANTE/SOL.IRRIGACAO/LUBRIF.</option>
-                <option value="GLICOCORTICOIDES">GLICOCORTICOIDES</option>
-                <option value="MIDRIATICOS E CICLOPLEGICOS">MIDRIATICOS E CICLOPLEGICOS</option>
-                <option value="MIOTICOS">MIOTICOS</option>
-                <option value="VISCOELASTICOS">VISCOELASTICOS</option>
-                <option value="ANTIINFECCIOSOS">ANTIINFECCIOSOS</option>
-                <option value="CERUMENOLITICO E EMOL. CERUMEN">CERUMENOLITICO E EMOL. CERUMEN</option>
-                <option value="NUTRIENTES PARENTERAIS">NUTRIENTES PARENTERAIS</option>
-                <option value="NUTRIENTES ENTERAIS">NUTRIENTES ENTERAIS</option>
-                <option value="LAMINAS/LANCETAS">LAMINAS/LANCETAS</option>
-                <option value="SCALPS">SCALPS</option>
-                <option value="FERRAMENTAS/ACESSORIOS/INSTRUMENTOS">FERRAMENTAS/ACESSORIOS/INSTRUMENTOS</option>
-                <option value="PINCAS">PINCAS</option>
-                <option value="TUBOS">TUBOS</option>
-                <option value="RESERVATORIOS">RESERVATORIOS</option>
-                <option value="PROTETORES">PROTETORES</option>
-                <option value="ANTICOAGULANTES/HEMOSTATICOS">ANTICOAGULANTES/HEMOSTATICOS</option>
-                <option value="ANTIINFECCIOSOS TOPICO">ANTIINFECCIOSOS TOPICO</option>
-                <option value="ANTIINFLAMATORIOS">ANTIINFLAMATORIOS</option>
-                <option value="ANTI-SEPTICOS">ANTI-SEPTICOS</option>
-                <option value="ANTIULCEROSOS DERMICOS">ANTIULCEROSOS DERMICOS</option>
-                <option value="EMOLIENTES/CONDUTORES">EMOLIENTES/CONDUTORES</option>
-                <option value="GLICOCORTICOIDES">GLICOCORTICOIDES</option>
-                <option value="MUCOPOLISSACARIDASES">MUCOPOLISSACARIDASES</option>
-                <option value="QUERATOLITICO/QUERATOPLASTICO">QUERATOLITICO/QUERATOPLASTICO</option>
-                <option value="ANTIANEMICOS ANTIMICROCITICOS">ANTIANEMICOS ANTIMICROCITICOS</option>
-                <option value="ANTIANEMICOS RENAIS">ANTIANEMICOS RENAIS</option>
-                <option value="ANTICOAGULANTES">ANTICOAGULANTES</option>
-                <option value="ANTIFIBRINOLITICOS">ANTIFIBRINOLITICOS</option>
-                <option value="ANTINEUTROPENICOS">ANTINEUTROPENICOS</option>
-                <option value="ANTITROMBOTICOS">ANTITROMBOTICOS</option>
-                <option value="COAGULANTES DIVERSOS">COAGULANTES DIVERSOS</option>
-                <option value="FIBRINOLITICOS">FIBRINOLITICOS</option>
-                <option value="FOLATOS">FOLATOS</option>
-                <option value="HEMOSTIPTICOS">HEMOSTIPTICOS</option>
-                <option value="SANGUE E FRACOES DO SANGUE">SANGUE E FRACOES DO SANGUE</option>
-                <option value="SUBSTITUTOS DO SANGUE">SUBSTITUTOS DO SANGUE</option>
-                <option value="ANALGESICOS ANTIENXAQUECA">ANALGESICOS ANTIENXAQUECA</option>
-                <option value="ANALGESICOS-ANTIPIRETICOS">ANALGESICOS-ANTIPIRETICOS</option>
-                <option value="ANTIPARKINSONIANOS">ANTIPARKINSONIANOS</option>
-                <option value="ANTIVERTIGINOSOS">ANTIVERTIGINOSOS</option>
-                <option value="ANEST. LOCAL DER. DE AMIDAS">ANEST. LOCAL DER. DE AMIDAS</option>
-                <option value="ANEST. LOCAL DER. DE ESTERES">ANEST. LOCAL DER. DE ESTERES</option>
-                <option value="CANULAS">CANULAS</option>
-                <option value="DRENOS">DRENOS</option>
-                <option value="SONDAS">SONDAS</option>
-                <option value="FRASCOS">FRASCOS</option>
-                <option value="ADESIVOS/CURATIVOS/HEMOSTATICOS/ESPARADRAPOS/SELOS/TAMPAO/FRALDAS/ABSORVENTES">ADESIVOS/CURATIVOS/HEMOSTATICOS/ESPARADRAPOS/SELOS/TAMPAO/FRALDAS/ABSORVENTES</option>
-                <option value="INSUMOS">INSUMOS</option>
-                <option value="BARACAS">BARACAS</option>
-                <option value="BOLSAS">BOLSAS</option>
-                <option value="COLETORES">COLETORES</option>
-                <option value="EMBALAGENS">EMBALAGENS</option>
-                <option value="DISPOSITIVOS">DISPOSITIVOS</option>
-                <option value="EPI (PROTETORES)">EPI (PROTETORES)</option>
-                <option value="PAPEIS PARA EXAMES">PAPEIS PARA EXAMES</option>
-                <option value="PULSEIRAS">PULSEIRAS</option>
-                <option value="APARELHO DE TRICOTOMIA">APARELHO DE TRICOTOMIA</option>
-                <option value="MEDICAMENTOS">MEDICAMENTOS</option>
-                <option value="COLETORES">COLETORES</option>
-                <option value="KITS CIRURGICOS/ CONJUNTOS">KITS CIRURGICOS/ CONJUNTOS</option>
-                <option value="INDICADORES">INDICADORES</option>
-                <option value="ACESSORIOS">ACESSORIOS</option>
-                <option value="TIRAS/FITAS">TIRAS/FITAS</option>
-                <option value="DESCONTAMINANTES">DESCONTAMINANTES</option>
-                <option value="REAGENTE QUIMICOS">REAGENTE QUIMICOS</option>
-                <option value="ORTODONTIA/ODONTOLOGIA">ORTODONTIA/ODONTOLOGIA</option>
-                <option value="ELETRODOS">ELETRODOS</option>
-                <option value="CAPA/CAMISA/SACO">CAPA/CAMISA/SACO</option>
-                <option value="FIOS">FIOS</option>
-                <option value="TORNEIRAS/CONECTORES">TORNEIRAS/CONECTORES</option>
-                <option value="ORTOPEDIA">ORTOPEDIA</option>
-                <option value="CIRURGIA GERAL">CIRURGIA GERAL</option>
-                <option value="CARDIOVASCULAR">CARDIOVASCULAR</option>
-                <option value="NEUROCIRURGIA">NEUROCIRURGIA</option>
-                <option value="OFTALMOLOGIA">OFTALMOLOGIA</option>
-                <option value="UROLOGIA">UROLOGIA</option>
-                <option value="OTORRINOLARINGOLOGIA">OTORRINOLARINGOLOGIA</option>
-                <option value="REAGENTE">REAGENTE</option>
-                <option value="CIRURGIA PLASTICA">CIRURGIA PLASTICA</option>
-                <option value="CONTRASTES">CONTRASTES</option>
-                <option value="DESCONTAMINANTES">DESCONTAMINANTES</option>
-                <option value="REAGENTE QUIMICOS">REAGENTE QUIMICOS</option>
-                <option value="ESCOVAS/ESPONJAS">ESCOVAS/ESPONJAS</option>
-                <option value="ESPACADOR">ESPACADOR</option>
-                <option value="IRRIGADOR/ASPIRADOR">IRRIGADOR/ASPIRADOR</option>
-                <option value="LATEX">LATEX</option>
-                <option value="ATADURAS/FAIXAS/MALHAS">ATADURAS/FAIXAS/MALHAS</option>
-                <option value="COMPRESSAS">COMPRESSAS</option>
-                <option value="INSUMOS">INSUMOS</option>
-                <option value="EMBALAGENS">EMBALAGENS</option>
-                <option value="PAPEIS PARA EXAMES">PAPEIS PARA EXAMES</option>
-                <option value="FILMES RADIOLOGICOS">FILMES RADIOLOGICOS</option>
-                <option value="REVELADORES">REVELADORES</option>
-                <option value="FIXADORES">FIXADORES</option>
-                <option value="COLETORES">COLETORES</option>
-                <option value="PRESERVATIVOS">PRESERVATIVOS</option>
-                <option value="EXTENSORES/PERFUSORES">EXTENSORES/PERFUSORES</option>
-                <option value="GERAMICIDAS/DETERGENTES/CICATRIZANTES/ALCOOL/OLEO">GERAMICIDAS/DETERGENTES/CICATRIZANTES/ALCOOL/OLEO</option>
-                <option value="MONITORIZACAO">MONITORIZACAO</option>
-                <option value="INDICADORES">INDICADORES</option>
-                <option value="ACESSORIOS">ACESSORIOS</option>
-                <option value="TEXTIL">TEXTIL</option>
-                <option value="TALAS">TALAS</option>
-                <option value="CAIXA">CAIXA</option>
-                <option value="SERINGAS">SERINGAS</option>
-                <option value="MOVEIS E UTENSILIOS">MOVEIS E UTENSILIOS</option>
-                <option value="MATERIAIS DE INFORMATICA">MATERIAIS DE INFORMATICA</option>
-                <option value="ORTOPEDICA">ORTOPEDICA</option>
-                <option value="OFTALMICA">OFTALMICA</option>
-                <option value="ODONTOLOGICA">ODONTOLOGICA</option>
-                <option value="AMIDOTRIZOATOS">AMIDOTRIZOATOS</option>
-                <option value="COMPOSTOS DE GADOLINIO">COMPOSTOS DE GADOLINIO</option>
-                <option value="METAIS PESADOS">METAIS PESADOS</option>
-                <option value="OLEOS IODADOS">OLEOS IODADOS</option>
-                <option value="AUX. DO ABANDONO DO TABAGISMO">AUX. DO ABANDONO DO TABAGISMO</option>
-                <option value="BLOQUEADORES NEUROMUSCULARES">BLOQUEADORES NEUROMUSCULARES</option>
-                <option value="CORANTES">CORANTES</option>
-                <option value="FAR. P/ DISF. ERETIL/RET. URIN">FAR. P/ DISF. ERETIL/RET. URIN</option>
-                <option value="LUBRIFICANTES ARTICULARES">LUBRIFICANTES ARTICULARES</option>
-                <option value="SOLUCAO CONSERV./IRRIGACAO">SOLUCAO CONSERV./IRRIGACAO</option>
-                <option value="SOLUCOES PARA CARDIOPLEGIA">SOLUCOES PARA CARDIOPLEGIA</option>
-                <option value="AGENTES ADSORVENTES">AGENTES ADSORVENTES</option>
-                <option value="AGENTES QUELANTES">AGENTES QUELANTES</option>
-                <option value="ANTIDOTOS FARM. ESPECIFICOS">ANTIDOTOS FARM. ESPECIFICOS</option>
-                <option value="ANTIBIOTICOS">ANTIBIOTICOS</option>
-                <option value="ANTIFUNGICOS">ANTIFUNGICOS</option>
-                <option value="ANTIINFECCIOSOS URINARIOS">ANTIINFECCIOSOS URINARIOS</option>
-                <option value="ANTIPARASITARIOS">ANTIPARASITARIOS</option>
-                <option value="ANTI-SEPTICOS">ANTI-SEPTICOS</option>
-                <option value="ANTIVIRAIS">ANTIVIRAIS</option>
-                <option value="SULFONAMIDAS">SULFONAMIDAS</option>
-                <option value="AGENTES DIVERSOS">AGENTES DIVERSOS</option>
-                <option value="ANTIGOTOSO/ANTI-HIPERURICEMICO">ANTIGOTOSO/ANTI-HIPERURICEMICO</option>
-                <option value="ANTIINFLAM. NAO ESTEREOIDAL">ANTIINFLAM. NAO ESTEREOIDAL</option>
-                <option value="ANTIINFLAM. ESTEREOIDAL">ANTIINFLAM. ESTEREOIDAL</option>
-                <option value="ANTIARRITMICOS">ANTIARRITMICOS</option>
-                <option value="ANTI-HIPERTENSIVOS">ANTI-HIPERTENSIVOS</option>
-                <option value="ANTIVARICOSOS">ANTIVARICOSOS</option>
-                <option value="GLICOSIDEOS DIGITALICOS">GLICOSIDEOS DIGITALICOS</option>
-                <option value="OUTROS FARMACOS INOTROPICOS">OUTROS FARMACOS INOTROPICOS</option>
-                <option value="PROSTAGLANDINA E SUBST. RELAC.">PROSTAGLANDINA E SUBST. RELAC.</option>
-                <option value="VASOCONSTRITORES">VASOCONSTRITORES</option>
-                <option value="VASODILATADORES">VASODILATADORES</option>
-                <option value="ANTIACIDOS ASSOCIADOS">ANTIACIDOS ASSOCIADOS</option>
-                <option value="ANTIACIDOS ISOLADOS">ANTIACIDOS ISOLADOS</option>
-                <option value="ANTIDIARREICOS">ANTIDIARREICOS</option>
-                <option value="ANTIEMETICOS">ANTIEMETICOS</option>
-                <option value="ANTIULCEROSOS">ANTIULCEROSOS</option>
-                <option value="CATARTICOS - ESTIMULANTES">CATARTICOS - ESTIMULANTES</option>
-                <option value="CATARTICOS - FORM. DE MASSA">CATARTICOS - FORM. DE MASSA</option>
-                <option value="CATARTICOS - LUBRIFICANTES">CATARTICOS - LUBRIFICANTES</option>
-                <option value="CATARTICOS - SALINOS">CATARTICOS - SALINOS</option>
-                <option value="ENZIMAS DIGESTIVAS">ENZIMAS DIGESTIVAS</option>
-                <option value="ESTOMAQUICOS/ANTI-FISETICOS">ESTOMAQUICOS/ANTI-FISETICOS</option>
-                <option value="OUTROS LAXANTES E ASSOCIACÖES">OUTROS LAXANTES E ASSOCIACÖES</option>
-                <option value="PRO-CINETICOS">PRO-CINETICOS</option>
-                <option value="ANTIASMATICOS">ANTIASMATICOS</option>
-                <option value="ANTITUSSIGENOS">ANTITUSSIGENOS</option>
-                <option value="DESCONGESTIONANTES NASAIS">DESCONGESTIONANTES NASAIS</option>
-                <option value="FARM. P/ DISTURBIOS PULMONARES">FARM. P/ DISTURBIOS PULMONARES</option>
-                <option value="ANTICOLINERGICOS">ANTICOLINERGICOS</option>
-                <option value="MUSCOLOTROPICOS">MUSCOLOTROPICOS</option>
-                <option value="ESTIMULANTES UTERINOS">ESTIMULANTES UTERINOS</option>
-                <option value="FARM. P/ DISTURBIO HORM. FEM.">FARM. P/ DISTURBIO HORM. FEM.</option>
-                <option value="FARM. P/ DISTURBIO HORM. MASC.">FARM. P/ DISTURBIO HORM. MASC.</option>
-                <option value="RELAX. UTERINO/INIB PROLACTINA">RELAX. UTERINO/INIB PROLACTINA</option>
-                <option value="ANTI-HISTAMINICOS">ANTI-HISTAMINICOS</option>
-                <option value="IMUNOESTIMULANTES">IMUNOESTIMULANTES</option>
-                <option value="IMUNOGLOBULINAS">IMUNOGLOBULINAS</option>
-                <option value="IMUNOSSUPRESSORES">IMUNOSSUPRESSORES</option>
-                <option value="VACINAS">VACINAS</option>
-                <option value="SUBSTANCIAS HORMONAIS">SUBSTANCIAS HORMONAIS</option>
-                <option value="AGUA, GLICOSE E SAIS MINERAIS">AGUA, GLICOSE E SAIS MINERAIS</option>
-                <option value="ANTIDIABETICOS">ANTIDIABETICOS</option>
-                <option value="ANTILIPEMICOS">ANTILIPEMICOS</option>
-                <option value="DIETAS ENTERAIS">DIETAS ENTERAIS</option>
-                <option value="DIETAS PARENTERAIS">DIETAS PARENTERAIS</option>
-                <option value="AGULHAS">AGULHAS</option>
-                <option value="BISTURIS">BISTURIS</option>
-                <option value="CATETERES">CATETERES</option>
-                <option value="EQUIPOS/INJETOR">EQUIPOS/INJETOR</option>
+                <option value="MOVEIL HOSPITALAR">MOVEIL HOSPITALAR</option>
+                <option value="MOVEIS PARA DECORACAO">MOVEIS PARA DECORACAO</option>
+                <option value="EQUIPAMENTO HOSPITALAR">EQUIPAMENTO HOSPITALAR</option>
+                <option value="EQUIPAMENTO DE INFORMATICA">EQUIPAMENTO DE INFORMATICA</option>
+                <option value="MATERIAL DE INFORMATICA">MATERIAL DE INFORMATICA</option>
+                <option value="MATERIAL DE CONSTRUCAO">MATERIAL DE CONSTRUCAO</option>
+                <option value="EQUIPAMENTO DE SEGURANCA">EQUIPAMENTO DE SEGURANCA</option>
+                <option value="EQUIPAMENTO DE REFRIGERACAO">EQUIPAMENTO DE REFRIGERACAO</option>
+                <option value="FERRAMENTAS E FERRAGENS">FERRAMENTAS E FERRAGENS</option>
+                <option value="FIO CIRURGICO">FIO CIRURGICO</option>
+                <option value="MATERIAL DE RADIOLOGIA">MATERIAL DE RADIOLOGIA</option>
+                <option value="MATERIAL HIDRAULICO">MATERIAL HIDRAULICO</option>
+                <option value="MATERIAL DE TELECOMUNICAO">MATERIAL DE TELECOMUNICAO</option>
+                <option value="TECIDOS E AVIAMENTOS">TECIDOS E AVIAMENTOS</option>
+                <option value="PECA AUTOMOTIVA">PECA AUTOMOTIVA</option>
+                <option value="NUTRICAO ENTERAL E PARENTERAL">NUTRICAO ENTERAL E PARENTERAL</option>
+                <option value="MEDICAMENTO MANIPULADO">MEDICAMENTO MANIPULADO</option>
+                <option value="MATERIAL DE PINTURA">MATERIAL DE PINTURA</option>
+                <option value="MATERIAL DE GRAFICO">MATERIAL DE GRAFICO</option>
+                <option value="LOCACAO DE AUTOMOVEIS">LOCACAO DE AUTOMOVEIS</option>
+                <option value="PASSAGENS AEREAS">PASSAGENS AEREAS</option>      
             </select>
         </div>
+
         <div>
             <label for="curva_abc">Curva ABC:</label>
             <input type="text" id="curva_abc" name="curva_abc">
@@ -562,7 +336,7 @@
                 <option value="NAO">Não</option>
             </select>
         </div>
-       
+
         <div>
             <label for="med_controla">Medicamento controlado:</label>
             <select id="med_controla" name="med_controla" required>
@@ -576,50 +350,50 @@
             </div>
         </div>
 
-          <br>
+        <br>
         <div>
             <label for="armazenamento">Armazenamento:</label>
             <div class="checkbox-group">
-            <label for="armazenamento_ar_cond">Temperatura ambiente:</label>
-            <input type="checkbox" id="armazenamento_ar_cond" name="armazenamento_ar_cond" value="SIM">
-        
-            <label for="armazenamento_geladeira">Geladeira:</label>
-            <input type="checkbox" id="armazenamento_geladeira" name="armazenamento_geladeira" value="SIM">
-        </div>
+                <label for="armazenamento_ar_cond">Temperatura ambiente:</label>
+                <input type="checkbox" id="armazenamento_ar_cond" name="armazenamento_ar_cond" value="SIM">
 
-                <br>
-                    
+                <label for="armazenamento_geladeira">Geladeira:</label>
+                <input type="checkbox" id="armazenamento_geladeira" name="armazenamento_geladeira" value="SIM">
+            </div>
+
+            <br>
+
             <div>
                 <label for="padronizado">Padronizado:</label>
-                 <select id="padronizado" name="padronizado" required>
+                <select id="padronizado" name="padronizado" required>
                     <option value=""></option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
                 </select>
             </div>
-            
+
             <br>
 
             <div>
                 <label for="sn_movimentacao">Movimentação:</label>
-                 <select id="sn_movimentacao" name="sn_movimentacao" required>
+                <select id="sn_movimentacao" name="sn_movimentacao" required>
                     <option value=""></option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
-                 </select>
+                </select>
             </div>
-    
-            
+
+
             <div>
                 <label for="sn_bloqueio_de_compras">Bloq. Compras:</label>
-                 <select id="sn_bloqueio_de_compras" name="sn_bloqueio_de_compras" required>
+                <select id="sn_bloqueio_de_compras" name="sn_bloqueio_de_compras" required>
                     <option value=""></option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
-                 </select>
+                </select>
             </div>
-    
-                <br>
+
+            <br>
 
             <h3>Precificação:</h3>
 
@@ -653,91 +427,1670 @@
                 <input type="text" id="repasse" name="repasse">
             </div>
 
-        <div>
-            <label for="procedimento_faturamento">Procedimento de Faturamento:</label>
-            <input type="text" id="procedimento_faturamento" name="procedimento_faturamento">
-        </div>
-
-        <br>
-
-        <div>
-            <label for="tipo_atendimento">Tipo de Atendimento:</label>
-            <div class="checkbox-group">
-            <label for="tipo_atendimento_ps">PS:</label>
-            <input type="checkbox" id="tipo_atendimento_ps" name="tipo_atendimento_ps" value="SIM">
-        
-            <label for="tipo_atendimento_ambulatorio">Ambulatorial:</label>
-            <input type="checkbox" id="tipo_atendimento_ambulatorio" name="tipo_atendimento_ambulatorio" value="SIM">
-        
-            <label for="tipo_atendimento_internacao">Internação:</label>
-            <input type="checkbox" id="tipo_atendimento_internacao" name="tipo_atendimento_internacao" value="SIM">
-        
-            <label for="tipo_atendimento_externo">Externo:</label>
-            <input type="checkbox" id="tipo_atendimento_externo" name="tipo_atendimento_externo" value="SIM">
-        
-            <label for="tipo_atendimento_todos">Todos:</label>
-            <input type="checkbox" id="tipo_atendimento_todos" name="tipo_atendimento_todos" value="SIM">
-        </div>
-        </div>
+            <div>
+                <label for="procedimento_faturamento">Procedimento de Faturamento:</label>
+                <input type="text" id="procedimento_faturamento" name="procedimento_faturamento">
+            </div>
 
             <br>
 
-        <div>
-            <label for="observacao">Observação:</label>
-            <textarea id="observacao" name="observacao" rows="6" cols="100"></textarea>
-        </div>
+            <div>
+                <label for="tipo_atendimento">Tipo de Atendimento:</label>
+                <div class="checkbox-group">
+                    <label for="tipo_atendimento_ps">PS:</label>
+                    <input type="checkbox" id="tipo_atendimento_ps" name="tipo_atendimento_ps" value="SIM">
+
+                    <label for="tipo_atendimento_ambulatorio">Ambulatorial:</label>
+                    <input type="checkbox" id="tipo_atendimento_ambulatorio" name="tipo_atendimento_ambulatorio"
+                        value="SIM">
+
+                    <label for="tipo_atendimento_internacao">Internação:</label>
+                    <input type="checkbox" id="tipo_atendimento_internacao" name="tipo_atendimento_internacao"
+                        value="SIM">
+
+                    <label for="tipo_atendimento_externo">Externo:</label>
+                    <input type="checkbox" id="tipo_atendimento_externo" name="tipo_atendimento_externo" value="SIM">
+
+                    <label for="tipo_atendimento_todos">Todos:</label>
+                    <input type="checkbox" id="tipo_atendimento_todos" name="tipo_atendimento_todos" value="SIM">
+                </div>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="observacao">Observação:</label>
+                <textarea id="observacao" name="observacao" rows="6" cols="100"></textarea>
+            </div>
 
             <br>
 
             <div>
                 <label for="usuario">Usuário:</label>
                 <input type="text" id="usuario" name="usuario" required>
-            </div>   
-            
+            </div>
+
             <div>
                 <label for="email">Email solicitante:</label>
                 <input type="email" id="email" name="email" required>
-            </div>    
+            </div>
 
             <div>
                 <label for="email">Com cópia:</label>
                 <input type="email" id="email_cc" name="email_cc" required>
-            </div> 
+            </div>
 
             <br>
 
             <button type="submit">Salvar</button>
-            
-            </form>
-            <script>
-            document.getElementById('continuarCadastroForm').addEventListener('submit', function(event) {
+
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const especieMapping = {
+                1: "DROGAS E MEDICAMENTOS",
+                2: "MATERIAL MEDICO HOSPITALAR",
+                3: "PATRIMONIO",
+                4: "GASES HOSPITALARES",
+                5: "MATERIAL DE COPA E COZINHA",
+                6: "GENEROS ALIMENTICIOS",
+                7: "ORTESE, PROTESE E MAT. ESPECIAL",
+                8: "MATERIAL DE MANUTENCAO",
+                9: "MATERIAL DE SEGURANCA",
+                10: "MATERIAL DE HIGIENIZACAO",
+                11: "COMBUSTIVEIS E LUBRIFICANTES",
+                12: "MATERIAIS DE EXPEDIENTE",
+                13: "MATERIAL DE ROUPARIA",
+                14: "MATERIAL DE LABORATORIO",
+                15: "NUTRIENTES ENTERAIS/PARENTERAIS",
+                16: "INSUMOS",
+                17: "HIGIENE",
+                18: "MATERIAL CONSUMO",
+                19: "MATERIAL DE EMBALAGEM",
+                20: "MATERIAL DE ESCRITORIO",
+                21: "RAÇÃO",
+                22: "BRINDES"
+            };
+
+            const classeMapping = {
+                0: [
+                    "A CLASSIFICAR"
+                ],
+                1: [
+                    "MATERIAL MEDICO",
+                    "MATERIAL PERMANENTE",
+                    "GASES",
+                    "OPME CIRURGICA",
+                    "AGENTES DIAGNOSTICOS",
+                    "NUTRIENTES ENTERAIS/PARENTERAIS",
+                    "MATERIAL DE COPA E COZINHA",
+                    "ALIMENTOS",
+                    "MATERIAL DE MANUTENCAO",
+                    "MATERIAL DE SEGURANCA",
+                    "COMBUSTIVEIS E LUBRIFICANTES",
+                    "MATERIAIS DE EXPEDIENTE",
+                    "MATERIAL DE ROUPARIA",
+                    "MATERIAL DE LABORATORIO",
+                    "BRINDES DIVERSOS",
+                    "SECA",
+                    "INSUMOS",
+                    "USO GERAL",
+                    "USO GERAL",
+                    "USO GERAL",
+                    "USO GERAL"
+                ],
+                2: [
+                    "UMIDA",
+                    "CAIXA",
+                    "BENS DE PEQUENOS VALORES",
+                    "FARMACOS DIVERSOS",
+                    "USO GERAL",
+                    "OPME NAO CIRURGICA",
+                    "MATERIAL DE LABORATORIO"
+                ],
+                3: [
+                    "MATERIAL DE DIAGNOSTICO",
+                    "ANTIDOTOS E ANTAGONISTAS",
+                    "MEDICAMENTOSA"
+                ],
+                4: [
+                    "ADESIVOS/CURATIVOS/HEMOSTATICOS",
+                    "ANTIINFECCIOSOS"
+                ],
+                5: [
+                    "CANULAS/DRENOS/SONDAS/TUBOS",
+                    "AGENTES ANTINEOPLASICOS"
+                ],
+                6: [
+                    "DESCARTAVEIS",
+                    "ANTI-REUMATICOS E ANTIGOTOSOS"
+                ],
+                7: [
+                    "SISTEMA CARDIOVASCULAR",
+                    "INFUSAO/PERFUROCORTANTE"
+                ],
+                8: [
+                    "LATEX",
+                    "SISTEMA DIGESTORIO"
+                ],
+                9: [
+                    "SISTEMA RESPIRATORIO",
+                    "ODONTOLOGICOS"
+                ],
+                10: [
+                    "ESPASMOLITICOS"
+                ],
+                11: [
+                    "HORMONIOS E ANTI-HORMONIOS",
+                    "PRODUTOS QUIMICOS"
+                ],
+                12: [
+                    "SUTURA CIRURGICA",
+                    "IMUNOLOGIA E ALERGOLOGIA"
+                ],
+                13: [
+                    "MEDICINA NUCLEAR",
+                    "TEXTEIS"
+                ],
+                14: [
+                    "METABOLISMO E NUTRICAO",
+                    "USO GERAL"
+                ],
+                15: [
+                    "MIORRELAXANTES"
+                ],
+                16: [
+                    "OLHOS E ANEXOS"
+                ],
+                17: [
+                    "OUVIDO E ANEXOS"
+                ],
+                18: [
+                    "PELE E MUCOSAS"
+                ],
+                19: [
+                    "SANGUE E SISTEMA HEMATOPOETICO"
+                ],
+                20: [
+                    "SISTEMA NERVOSO CENTRAL"
+                ],
+                21: [
+                    "SISTEMA NERVOSO PERIFERICO"
+                ],
+                22: [
+                    "AGENTES IMUNIZANTES"
+                ],
+                23: [
+                    "ANTIALERGICOS"
+                ],
+                24: [
+                    "ANTISSEPTICOS"
+                ],
+                25: [
+                    "CONTRASTES RADIOLOGICOS"
+                ],
+                26: [
+                    "DERMATOLOGICOS"
+                ],
+                27: [
+                    "DIURETICOS OSMOTICOS"
+                ],
+                28: [
+                    "ELETROLITOS"
+                ],
+                29: [
+                    "FARMACOS INTERF METAB DA AGUA"
+                ],
+                30: [
+                    "OFTALMICOS, OTOLOG, NASOFARINGE"
+                ],
+                31: [
+                    "SISTEMA ANALGESIA E ANESTESIA"
+                ],
+                32: [
+                    "SISTEMA ANTIMICROBIANO"
+                ],
+                33: [
+                    "SISTEMA NEUROLOGIA PSIQUIATRIA"
+                ],
+                34: [
+                    "VITAMINAS"
+                ],
+                35: [
+                    "SUPLEMENTOS"
+                ],
+                36: [
+                    "ANTICORPO MONOCLONAL"
+                ]
+            };
+
+
+            const subclasseMapping = {
+                0: [
+                    "A CLASSIFICAR - 1",
+                    "A CLASSIFICAR - 2",
+                    "A CLASSIFICAR - 3",
+                    "A CLASSIFICAR - 4",
+                    "A CLASSIFICAR - 5",
+                    "A CLASSIFICAR - 6",
+                    "A CLASSIFICAR - 7",
+                    "A CLASSIFICAR - 8",
+                    "A CLASSIFICAR - 9",
+                    "A CLASSIFICAR - 10",
+                    "A CLASSIFICAR - 11",
+                    "A CLASSIFICAR - 12",
+                    "A CLASSIFICAR - 13",
+                    "A CLASSIFICAR - 14",
+                    "A CLASSIFICAR - 15",
+                    "A CLASSIFICAR - 16",
+                    "A CLASSIFICAR - 17",
+                    "A CLASSIFICAR - 18",
+                    "A CLASSIFICAR - 19",
+                    "A CLASSIFICAR - 20",
+                    "A CLASSIFICAR - 21",
+                    "A CLASSIFICAR - 22",
+                    "A CLASSIFICAR - 23",
+                    "A CLASSIFICAR - 24",
+                    "A CLASSIFICAR - 25",
+                    "A CLASSIFICAR - 26",
+                    "A CLASSIFICAR - 27",
+                    "A CLASSIFICAR - NÃO UTILIZAR",
+                    "A CLASSIFICAR - 28",
+                    "A CLASSIFICAR - 29",
+                    "A CLASSIFICAR - 30",
+                    "A CLASSIFICAR - 31",
+                    "A CLASSIFICAR - 32",
+                    "A CLASSIFICAR - 33",
+                    "A CLASSIFICAR - 34",
+                    "A CLASSIFICAR - 35",
+                    "MATERIAL DE MANUTENCAO",
+                    "MATERIAL DE SEGURANCA",
+                    "MATERIAL DE COPA E COZINHA",
+                    "MATERIAL DE LABORATORIO",
+                    "MATERIAIS DE EXPEDIENTE",
+                    "COMBUSTIVEIS E LUBRIFICANTES",
+                    "MATERIAL DE ROUPARIA"
+                ],
+                1: [
+                    "LUVAS",
+                    "ORTOPEDICA",
+                    "GERMICIDAS",
+                    "CIRURGICA GERAL",
+                    "ATADURAS",
+                    "COLETA",
+                    "AREIA",
+                    "COLAR",
+                    "HIGIENE",
+                    "MATERIAL CONSUMO",
+                    "SACOS",
+                    "MATERIAL ESCRITORIO",
+                    "ANALGESICO OPIOIDE",
+                    "AMINOGLICOSIDEOS",
+                    "ANTIEPILETICOS/CONVULSOES EPILEPSIA",
+                    "SUPLEMENTO DE VITAMINAS E MINERAIS - 1",
+                    "RACÕES",
+                    "SECA",
+                    "RAÇÃO",
+                    "MATERIAIS DE MANUTENÇÃO",
+                    "IMUNOSUPRESSOR",
+                    "SUPLEMENTO DE VITAMINAS E MINERAIS - 2",
+                    "COLAS",
+                    "CANULAS",
+                    "AVENTAL",
+                    "AGULHAS - 1",
+                    "AMIDOTRIZOATOS",
+                    "AGULHAS - 2",
+                    "LEITES ESPECIAIS",
+                    "COLETA DE SANGUE",
+                    "BRINDES CORPORATIVOS",
+                    "OSTEOARTRITE",
+                    "IMUNOPROTETORES VACINAS E SORO",
+                    "ANTI-HISTAMINICO",
+                    "FARMACOS QUE DEBELAM O PROC REUMATICO",
+                    "ANTISSEPTICOS",
+                    "AGENTES DE DIAGNOSTICOS",
+                    "POMADA CICATRIZANTE",
+                    "LAXANTES OSMOTICOS",
+                    "SOL PARENTERAIS ELETROL E DILUENTES",
+                    "DIURETICOS",
+                    "MEDICAMENTOS OFTALMICOS",
+                    "INSTALAÇÕES",
+                    "GASES MEDICINAIS",
+                    "NUTRIENTES ENTERAIS",
+                    "PAPEIS PARA EXAMES - 1",
+                    "ORTOPEDIA",
+                    "PAPEIS PARA EXAMES - 2",
+                    "ODONTOLOGICOS"
+                ],
+                2: [
+                    "INSUMOS",
+                    "OFTALMICA",
+                    "CADARCO",
+                    "DESCARTAVEIS - 1",
+                    "EMBALAGEM",
+                    "ANALGESICO / ANTIPIRETICO E ANTITERMICO",
+                    "ANTIBIOTICOS/ANTIFUNGICOS/ANTI-INFLAMATORIO",
+                    "SEDATIVOS/ANSIOLITICOS/HIPNOTICOS",
+                    "GLICOCORTICOIDE",
+                    "UMIDA",
+                    "IMUNOSSUPRESSOR",
+                    "MATERIAIS DE ESCRITORIO",
+                    "PREBIOTICOS E PROBIOTICOS",
+                    "FITAS",
+                    "COLETOR",
+                    "DESCARTAVEIS - 2",
+                    "BISTURIS - 1",
+                    "COMPOSTOS DE GADOLINIO",
+                    "BISTURIS - 2",
+                    "AMOSTRA BIOLÓGICA",
+                    "PROGRAMA DE FIDELIDADE MÉDICO",
+                    "ALIMENTO COADJUVANTE CONVALESCENÇA",
+                    "GASES INDUSTRIAIS",
+                    "NUTRIENTES PARENTERAIS",
+                    "CIRURGIA GERAL",
+                    "FILMES RADIOLOGICOS",
+                    "CAIXA",
+                    "MOVEIS E UTENSILIOS",
+                    "ORTOPEDICA"
+                ],
+                3: [
+                    "COMPRESSAS",
+                    "ODONTOLOGICA",
+                    "ANALGESICOS OPIOIDES / HIPOANALGESICOS",
+                    "ANTIFUNGICOS",
+                    "CURATIVOS",
+                    "MEDICAMENTOSA",
+                    "CIRURGIA CARDIACA",
+                    "ITENS MAQUINA CAFE",
+                    "EQUIPAMENTOS HOSPITALARES - CONSUMO",
+                    "SEDATIVOS/ANSIOLITICOS/HIPNOTICOS",
+                    "SONDA",
+                    "TOUCA",
+                    "CATETERES - 1",
+                    "METAIS PESADOS",
+                    "CATETERES - 2",
+                    "PROGRAMA DE FIDELIDADE TUTOR",
+                    "CARDIOVASCULAR",
+                    "REAGENTE - 1",
+                    "REVELADORES",
+                    "MATERIAIS DE INFORMATICA",
+                    "FOCINHEIRAS"
+                ],
+                4: [
+                    "MALHA",
+                    "FIXADORES",
+                    "SACOS",
+                    "ANESTESICOS GERAIS",
+                    "ANTIINFECCIOSO",
+                    "TUBOS",
+                    "EQUIPAMENTOS PARA MANUTENÇÃO - CONSUMO",
+                    "ANTIPSICOTICOS/PSICOSES DEMENCIA",
+                    "COLETOR",
+                    "OLEOS IODADOS",
+                    "EQUIPOS/INJETOR",
+                    "CAIXAS CIRURGICAS",
+                    "ALIMENTO",
+                    "NEUROCIRURGIA",
+                    "DIAGNOSTICOS E MONITORIZACAO"
+                ],
+                5: [
+                    "MASCARAS",
+                    "EPIS",
+                    "INSUMOS",
+                    "DRENOS",
+                    "ANESTESICOS LOCAIS",
+                    "ANTI-INFLAMATORIO ESTEROIDAL",
+                    "CONTRASTES",
+                    "INFORMATICA CONSUMO",
+                    "CONECTORES",
+                    "AUX. DO ABANDONO DO TABAGISMO",
+                    "ANALITOS NA URINA",
+                    "LAMINAS/LANCETAS",
+                    "OFTALMOLOGIA",
+                    "MAQUINAS E EQUIPAMENTOS"
+                ],
+                6: [
+                    "EQUIPOS",
+                    "GEL",
+                    "EQUIPAMENTOS HOSPITALARES - ATIVO",
+                    "ANTICOLINERGICOS E ANTIESPASMODICOS",
+                    "ANTIPARASITARIO",
+                    "BLOQUEADORES NEUROMUSCULARES",
+                    "MOVEIS E UTENSILIOS",
+                    "SCALPS",
+                    "DESCONTAMINANTES - 1",
+                    "UROLOGIA",
+                    "DESCONTAMINANTES - 2"
+                ],
+                7: [
+                    "EXTENSORES",
+                    "INDICADORES",
+                    "OUTROS ANALGESICOS",
+                    "ANTIPROTOZOARIOS",
+                    "SERINGAS",
+                    "CORANTES",
+                    "REAGENTE QUIMICOS - 1",
+                    "OTORRINOLARINGOLOGIA",
+                    "REAGENTE QUIMICOS - 2",
+                    "MATERIAIS PARA MANUTENÇÃO"
+                ],
+                8: [
+                    "SCALP",
+                    "LUVAS LATEX",
+                    "BETA LACTAMICOS",
+                    "FAR. P/ DISF. ERETIL/RET. URIN",
+                    "INSUMOS - 1",
+                    "CANULAS",
+                    "INSUMOS - 2",
+                    "CIRURGIA PLASTICA",
+                    "CONSTRUÇÃO/REFORMA IMOVEL DE TERCEIRO"
+                ],
+                9: [
+                    "LENCOS UMEDECIDOS",
+                    "DISPOSITIVOS",
+                    "CINTA",
+                    "SEDATIVOS/ANSIOLITICOS/HIPNOTICOS",
+                    "ANTIDEPRESSIVOS",
+                    "HEMATOLOGIA",
+                    "SONDAS E DRENOS",
+                    "LAPAROSCOPIA",
+                    "AGULHAS"
+                ],
+                10: [
+                    "CAMISAS",
+                    "CAMAS",
+                    "DESIDRATADO",
+                    "IMUNOPROTETORES/VACINAS/SOROS",
+                    "CONSERVACAO",
+                    "PINÇA",
+                    "PINCA",
+                    "EXTRACAO DNA E RNA"
+                ],
+                11: [
+                    "SOLUCAO",
+                    "NITRILICA",
+                    "AQUISICAO DE IMOVEL PROPRIO",
+                    "SOLUCAO PARENTERAIS ELETROL E DILUENTES",
+                    "CIRURGIA REFRATARIA",
+                    "FILMES RADIOLOGICOS",
+                    "AD. PARA DESINTOXICACAO ALCOOLICA",
+                    "CIRURGIA ABDOMINAL",
+                    "CISTOSTATICOS ANTINEOPLASICOS"
+                ],
+                12: [
+                    "COBERTURA",
+                    "ANALGESICOS OPIOIDES/HIPOANALGESICOS",
+                    "MACRODROGA",
+                    "ALIMENTACAO - 1",
+                    "ANALGÉSICO/ANTIPIRÉTICO/ANTITÉRMICO",
+                    "ALIMENTACAO - 2",
+                    "EQUIPAMENTO"
+                ],
+                13: [
+                    "PROTETORES",
+                    "EXAME DE FLUXO",
+                    "DISPOSITIVOS DIAGNOSTICOS - 1",
+                    "ACIDO FOLICO",
+                    "MATERIAL",
+                    "DISPOSITIVOS DIAGNOSTICOS - 2",
+                    "UTENSILIOS DIVERSOS"
+                ],
+                14: [
+                    "MATERIAIS",
+                    "MOVEL",
+                    "DESINFECTANTES",
+                    "MAQUINAS",
+                    "CONSUMO",
+                    "ANEMIA",
+                    "SUPLEMENTOS",
+                    "LEITES INFANTIS - 1",
+                    "CONSERTO DE EQUIPAMENTOS",
+                    "LEITES INFANTIS - 2"
+                ],
+                15: [
+                    "ANTIINFECCIOSOS",
+                    "EPIs",
+                    "TAPETE",
+                    "DIAGNOSTICO",
+                    "ORTOPEDICOS"
+                ],
+                16: [
+                    "GASOMETRIA",
+                    "ANTI-INFEC",
+                    "COLETOR DE URINA",
+                    "ASSIST. RESGATE TEC. ANIMAL",
+                    "PINÇAS",
+                    "COLETA - 1",
+                    "CAES E GATOS",
+                    "COLETA - 2"
+                ],
+                17: [
+                    "CLIPES",
+                    "ALIMENTACAO",
+                    "ANTITUSIGENOS",
+                    "EQUIPOS/MATERIAIS",
+                    "MAQUINAS E UTENSILIOS"
+                ],
+                18: [
+                    "BOMBAS",
+                    "MOCHILAS",
+                    "ANTIVIRAL",
+                    "PONTEIRAS",
+                    "MOVEL",
+                    "MATERIAL CONSUMO",
+                    "PRATELEIRAS",
+                    "REAGENTE QUIMICO"
+                ],
+                19: [
+                    "DESINFETANTES",
+                    "AMINOGLICOSIDEOS",
+                    "SERINGA",
+                    "LUVAS"
+                ],
+                20: [
+                    "ALIMENTOS",
+                    "GELATINA",
+                    "INSTRUMENTOS",
+                    "PESAGEM",
+                    "CONSERTO DE EQUIPAMENTOS"
+                ],
+                21: [
+                    "TERMOMETROS",
+                    "DISPOSITIVOS",
+                    "DRENAGEM",
+                    "TUBULACAO",
+                    "MATERIAIS"
+                ],
+                22: [
+                    "TUBO",
+                    "EMBALAGENS",
+                    "CIRURGICOS",
+                    "GELATINA"
+                ],
+                23: [
+                    "CONES",
+                    "MATERIAL",
+                    "SUPORTE",
+                    "CAMAS"
+                ],
+                24: [
+                    "ESTETOSCOPIOS",
+                    "TORNEIRAS",
+                    "ALCOOL",
+                    "UTENSILIOS"
+                ],
+                25: [
+                    "APARELHOS",
+                    "FILTRO",
+                    "TALAS"
+                ],
+                26: [
+                    "BANDAGEM",
+                    "CATETER",
+                    "UTENSILIOS"
+                ],
+                27: [
+                    "NECESSAIRES",
+                    "SUPORTE"
+                ],
+                28: [
+                    "ANEL",
+                    "ANEL"
+                ],
+                29: [
+                    "DISPOSITIVO",
+                    "DISPOSITIVO"
+                ],
+                30: [
+                    "EQUIPO",
+                    "EQUIPO"
+                ],
+                31: [
+                    "BATERIA",
+                    "BATERIA"
+                ],
+                32: [
+                    "ROUPEIRO",
+                    "ROUPEIRO"
+                ],
+                33: [
+                    "COLIRIO",
+                    "COLIRIO"
+                ],
+                34: [
+                    "SABAO",
+                    "SABAO"
+                ],
+                35: [
+                    "SERINGA",
+                    "SERINGA"
+                ],
+                36: [
+                    "SERINGAS",
+                    "SERINGAS"
+                ],
+                37: [
+                    "BISTURI",
+                    "BISTURI"
+                ],
+                38: [
+                    "EQUIPAMENTOS",
+                    "EQUIPAMENTOS"
+                ],
+                39: [
+                    "MATERIAIS",
+                    "MATERIAIS"
+                ]
+            };
+
+
+            const especieClasseMapping = {
+                1: {
+                    "DROGAS E MEDICAMENTOS": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "AGENTES DIAGNOSTICOS" },
+                        { codigo: 2, descricao: "FARMACOS DIVERSOS" },
+                        { codigo: 3, descricao: "AGENTES ANTINEOPLASICOS" },
+                        { codigo: 4, descricao: "ANTIINFECCIOSOS" },
+                        { codigo: 5, descricao: "AGENTES ANTINEOPLASICOS" },
+                        { codigo: 6, descricao: "ANTI-REUMATICOS E ANTIGOTOSOS" },
+                        { codigo: 7, descricao: "SISTEMA CARDIOVASCULAR" },
+                        { codigo: 8, descricao: "SISTEMA DIGESTORIO" },
+                        { codigo: 9, descricao: "SISTEMA RESPIRATORIO" },
+                        { codigo: 10, descricao: "ESPASMOLITICOS" },
+                        { codigo: 11, descricao: "HORMONIOS E ANTI-HORMONIOS" },
+                        { codigo: 12, descricao: "IMUNOLOGIA E ALERGOLOGIA" },
+                        { codigo: 13, descricao: "MEDICINA NUCLEAR" },
+                        { codigo: 14, descricao: "METABOLISMO E NUTRICAO" },
+                        { codigo: 15, descricao: "MIORRELAXANTES" },
+                        { codigo: 16, descricao: "OLHOS E ANEXOS" },
+                        { codigo: 17, descricao: "OUVIDO E ANEXOS" },
+                        { codigo: 18, descricao: "PELE E MUCOSAS" },
+                        { codigo: 19, descricao: "SANGUE E SISTEMA HEMATOPOETICO" },
+                        { codigo: 20, descricao: "SISTEMA NERVOSO CENTRAL" },
+                        { codigo: 21, descricao: "SISTEMA NERVOSO PERIFERICO" },
+                        { codigo: 22, descricao: "AGENTES IMUNIZANTES" },
+                        { codigo: 23, descricao: "ANTIALERGICOS" },
+                        { codigo: 24, descricao: "ANTISSEPTICOS" },
+                        { codigo: 25, descricao: "CONTRASTES RADIOLOGICOS" },
+                        { codigo: 26, descricao: "DERMATOLOGICOS" },
+                        { codigo: 27, descricao: "DIURETICOS OSMOTICOS" },
+                        { codigo: 28, descricao: "ELETROLITOS" },
+                        { codigo: 29, descricao: "FARMACOS INTERF METAB DA AGUA" },
+                        { codigo: 30, descricao: "OFTALMICOS, OTOLOG, NASOFARINGE" },
+                        { codigo: 31, descricao: "SISTEMA ANALGESIA E ANESTESIA" },
+                        { codigo: 32, descricao: "SISTEMA ANTIMICROBIANO" },
+                        { codigo: 33, descricao: "SISTEMA NEUROLOGIA PSIQUIATRIA" },
+                        { codigo: 34, descricao: "VITAMINAS" },
+                        { codigo: 35, descricao: "SUPLEMENTOS" },
+                        { codigo: 36, descricao: "ANTICORPO MONOCLONAL" }
+                        // Adicione outras classes conforme necessário
+                    ]
+                },
+                2: {
+                    "MATERIAL MEDICO HOSPITALAR": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "MATERIAL MEDICO" },
+                        { codigo: 2, descricao: "MATERIAL DE LABORATORIO" },
+                        { codigo: 3, descricao: "MATERIAL DE DIAGNOSTICO" },
+                        { codigo: 4, descricao: "ADESIVOS/CURATIVOS/HEMOSTATICOS" },
+                        { codigo: 5, descricao: "CANULAS/DRENOS/SONDAS/TUBOS" },
+                        { codigo: 6, descricao: "DESCARTAVEIS" },
+                        { codigo: 7, descricao: "INFUSAO/PERFUROCORTANTE" },
+                        { codigo: 8, descricao: "LATEX" },
+                        { codigo: 9, descricao: "ODONTOLOGICOS" },
+                        { codigo: 11, descricao: "PRODUTOS QUIMICOS" },
+                        { codigo: 12, descricao: "SUTURA CIRURGICA" },
+                        { codigo: 13, descricao: "TEXTEIS" },
+                        { codigo: 14, descricao: "USO GERAL" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                3: {
+                    "PATRIMONIO": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "MATERIAL PERMANENTE" },
+                        { codigo: 2, descricao: "BENS DE PEQUENOS VALORES" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                4: {
+                    "GASES HOSPITALARES": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "GASES" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                5: {
+                    "MATERIAL DE COPA E COZINHA": [
+                        { codigo: 1, descricao: "MATERIAL DE COPA E COZINHA" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                6: {
+                    "GENEROS ALIMENTICIOS": [
+                        { codigo: 1, descricao: "ALIMENTOS" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                7: {
+                    "ORTESE, PROTESE E MAT. ESPECIAL": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "OPME CIRURGICA" },
+                        { codigo: 2, descricao: "OPME NAO CIRURGICA" },
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                8: {
+                    "MATERIAL DE MANUTENCAO": [
+                        { codigo: 1, descricao: "MATERIAL DE MANUTENCAO" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                9: {
+                    "MATERIAL DE SEGURANCA": [
+                        { codigo: 1, descricao: "MATERIAL DE SEGURANCA" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                10: {
+                    "MATERIAL DE HIGIENIZACAO": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 2, descricao: "CAIXA" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                11: {
+                    "COMBUSTIVEIS E LUBRIFICANTES": [
+                        { codigo: 1, descricao: "COMBUSTIVEIS E LUBRIFICANTES" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                12: {
+                    "MATERIAIS DE EXPEDIENTE": [
+                        { codigo: 1, descricao: "MATERIAIS DE EXPEDIENTE" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                13: {
+                    "MATERIAL DE ROUPARIA": [
+                        { codigo: 1, descricao: "MATERIAL DE ROUPARIA" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                14: {
+                    "MATERIAL DE LABORATORIO": [
+                        { codigo: 1, descricao: "MATERIAL DE LABORATORIO" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                15: {
+                    "NUTRIENTES ENTERAIS/PARENTERAIS": [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "NUTRIENTES ENTERAIS/PARENTERAIS" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                16: {
+                    "INSUMOS": [
+                        { codigo: 1, descricao: "INSUMOS" },
+                        { codigo: 2, descricao: "USO GERAL" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                17: {
+                    "HIGIENE": [
+                        { codigo: 1, descricao: "USO GERAL" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                18: {
+                    "MATERIAL CONSUMO": [
+                        { codigo: 1, descricao: "USO GERAL" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                19: {
+                    "MATERIAL DE EMBALAGEM": [
+                        { codigo: 1, descricao: "USO GERAL" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                20: {
+                    "MATERIAL DE ESCRITORIO": [
+                        { codigo: 1, descricao: "USO GERAL" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                21: {
+                    "RAÇÃO": [
+                        { codigo: 1, descricao: "SECA" },
+                        { codigo: 2, descricao: "UMIDA" },
+                        { codigo: 3, descricao: "MEDICAMENTOSA" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+                22: {
+                    "BRINDES": [
+                        { codigo: 1, descricao: "BRINDES DIVERSOS" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
+            };
+
+
+            const classeSubclasseMapping = {
+                1: {
+                    0: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" }
+                    ],
+                    1: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "AMIDOTRIZOATOS" },
+                        { codigo: 2, descricao: "COMPOSTOS DE GADOLINIO" },
+                        { codigo: 3, descricao: "METAIS PESADOS" },
+                        { codigo: 4, descricao: "OLEOS IODADOS" },
+                        { codigo: 5, descricao: "ANALITOS NA URINA" }
+                    ],
+                    2: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 5, descricao: "AUX. DO ABANDONO DO TABAGISMO" },
+                        { codigo: 6, descricao: "BLOQUEADORES NEUROMUSCULARES" },
+                        { codigo: 7, descricao: "CORANTES" },
+                        { codigo: 8, descricao: "FAR. P/ DISF. ERETIL/RET. URIN" },
+                        { codigo: 9, descricao: "LUBRIFICANTES ARTICULARES" },
+                        { codigo: 10, descricao: "SOLUCAO CONSERV./IRRIGACAO" },
+                        { codigo: 11, descricao: "SOLUCOES PARA CARDIOPLEGIA" },
+                        { codigo: 12, descricao: "ANTIGALACTOGENICOS" },
+                        { codigo: 13, descricao: "ANTIHEMORRAGICOS" },
+                        { codigo: 14, descricao: "ANTITOXICOS" },
+                        { codigo: 15, descricao: "CICATRIZANTES" },
+                        { codigo: 16, descricao: "DERMATOLOGICOS" },
+                        { codigo: 17, descricao: "HEPATOPROTETOR" },
+                        { codigo: 18, descricao: "OTOLOGICOS" },
+                        { codigo: 19, descricao: "PARASSIMPATOMIMETICO" },
+                        { codigo: 20, descricao: "PROBIOTICOS" },
+                        { codigo: 21, descricao: "REGENERADOR ARTICULAR" },
+                        { codigo: 22, descricao: "VASODILATADOR CEREBRAL E PERIFERICO" },
+                        { codigo: 23, descricao: "OFTALMICOS" },
+                        { codigo: 24, descricao: "ANTIINTOXICANTE" },
+                        { codigo: 25, descricao: "ANTIFUNGICOS" },
+                        { codigo: 26, descricao: "INODILATADOR" },
+                        { codigo: 27, descricao: "IMUNOGLOBULINAS" },
+                        { codigo: 28, descricao: "AGENTES ANTIESCLEROSANTES" },
+                        { codigo: 29, descricao: "ANTIVERTIGINOSOS" },
+                        { codigo: 30, descricao: "HIPERLIPIDEMICOS" },
+                        { codigo: 31, descricao: "SOLUÇÕES P/HEMODIALISE" },
+                        { codigo: 32, descricao: "ANTICOLINERGICOS" }
+                    ],
+                    3: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 12, descricao: "AGENTES ADSORVENTES" },
+                        { codigo: 13, descricao: "AGENTES QUELANTES" },
+                        { codigo: 14, descricao: "ANTIDOTOS FARM. ESPECIFICOS" },
+                        { codigo: 15, descricao: "ANTIDOTO E ANTAGONISTA" }
+                    ],
+                    4: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 15, descricao: "ANTIBIOTICOS" },
+                        { codigo: 16, descricao: "ANTIFUNGICOS" },
+                        { codigo: 17, descricao: "ANTIINFECCIOSOS URINARIOS" },
+                        { codigo: 18, descricao: "ANTIPARASITARIOS" },
+                        { codigo: 19, descricao: "ANTI-SEPTICOS" },
+                        { codigo: 20, descricao: "ANTIVIRAIS" },
+                        { codigo: 21, descricao: "SULFONAMIDAS" }
+                    ],
+                    5: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "IMUNOSUPRESSOR" },
+                        { codigo: 22, descricao: "AGENTES DIVERSOS" }
+                    ],
+                    6: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "FARMACOS QUE DEBELAM O PROC REUMATICO" },
+                        { codigo: 23, descricao: "ANTIGOTOSO/ANTI-HIPERURICEMICO" },
+                        { codigo: 24, descricao: "ANTIINFLAM. NAO ESTEREOIDAL" },
+                        { codigo: 25, descricao: "ANTIINFLAM. ESTEREOIDAL" }
+                    ],
+                    7: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 26, descricao: "ANTIARRITMICOS" },
+                        { codigo: 27, descricao: "ANTI-HIPERTENSIVOS" },
+                        { codigo: 28, descricao: "ANTIVARICOSOS" },
+                        { codigo: 29, descricao: "GLICOSIDEOS DIGITALICOS" },
+                        { codigo: 30, descricao: "OUTROS FARMACOS INOTROPICOS" },
+                        { codigo: 31, descricao: "PROSTAGLANDINA E SUBST. RELAC." },
+                        { codigo: 32, descricao: "VASOCONSTRITORES" },
+                        { codigo: 33, descricao: "VASODILATADORES" },
+                        { codigo: 34, descricao: "SIMPATOMIMETICOS E HIPERTENSOR" },
+                        { codigo: 35, descricao: "ANTIARRITMICOS" },
+                        { codigo: 36, descricao: "HEMOSTATICOS" },
+                        { codigo: 37, descricao: "ANTICOAGULANTES E TROMBOLITICO" },
+                        { codigo: 38, descricao: "INODILATADORES" }
+                    ],
+                    8: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 34, descricao: "ANTIACIDOS ASSOCIADOS" },
+                        { codigo: 35, descricao: "ANTIACIDOS ISOLADOS" },
+                        { codigo: 36, descricao: "ANTIDIARREICOS" },
+                        { codigo: 37, descricao: "ANTIEMETICOS" },
+                        { codigo: 38, descricao: "ANTIULCEROSOS" },
+                        { codigo: 39, descricao: "CATARTICOS - ESTIMULANTES" },
+                        { codigo: 40, descricao: "CATARTICOS - FORM. DE MASSA" },
+                        { codigo: 41, descricao: "CATARTICOS - LUBRIFICANTES" },
+                        { codigo: 42, descricao: "CATARTICOS - SALINOS" },
+                        { codigo: 43, descricao: "ENZIMAS DIGESTIVAS" },
+                        { codigo: 44, descricao: "ESTOMAQUICOS/ANTI-FISETICOS" },
+                        { codigo: 45, descricao: "OUTROS LAXANTES E ASSOCIACÖES" },
+                        { codigo: 46, descricao: "PRO-CINETICOS" },
+                        { codigo: 47, descricao: "ANTIPARASITARIO" },
+                        { codigo: 48, descricao: "FARMACOS ANTI-SECRETORES" },
+                    ],
+                    9: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 47, descricao: "ANTIASMATICOS" },
+                        { codigo: 48, descricao: "ANTITUSSIGENOS" },
+                        { codigo: 49, descricao: "DESCONGESTIONANTES NASAIS" },
+                        { codigo: 50, descricao: "FARM. P/ DISTURBIOS PULMONARES" },
+                        { codigo: 51, descricao: "EXPECTORANTES" }
+                    ],
+                    10: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 51, descricao: "ANTICOLINERGICOS" },
+                        { codigo: 51, descricao: "MUSCOLOTROPICOS" }
+                    ],
+                    11: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 53, descricao: "ESTIMULANTES UTERINOS" },
+                        { codigo: 54, descricao: "FARM. P/ DISTURBIO HORM. FEM." },
+                        { codigo: 55, descricao: "FARM. P/ DISTURBIO HORM. MASC." },
+                        { codigo: 56, descricao: "RELAX. UTERINO/INIB PROLACTINA." },
+                        { codigo: 57, descricao: "ADRENOCORTICOIDE" },
+                        { codigo: 58, descricao: "HORMONIOS TIREIOIDIANOS" },
+                        { codigo: 59, descricao: "HORMONIOS ANTIDIURETICOS" }
+                    ],
+                    12: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 57, descricao: "ANTI-HISTAMINICOSR" },
+                        { codigo: 58, descricao: "IMUNOESTIMULANTES" },
+                        { codigo: 59, descricao: "IMUNOGLOBULINAS" },
+                        { codigo: 60, descricao: "IMUNOSSUPRESSORES" },
+                        { codigo: 61, descricao: "VACINAS" }
+                    ],
+                    13: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 62, descricao: "SUBSTANCIAS HORMONAIS" }
+                    ],
+                    14: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 63, descricao: "AGUA, GLICOSE E SAIS MINERAIS" },
+                        { codigo: 64, descricao: "ANTIDIABETICOS" },
+                        { codigo: 65, descricao: "ANTILIPEMICOS" },
+                        { codigo: 66, descricao: "DIETAS ENTERAIS" },
+                        { codigo: 67, descricao: "DIETAS PARENTERAIS" },
+                        { codigo: 68, descricao: "DIURETICOS" },
+                        { codigo: 69, descricao: "FARM. AFETAM A CALCIFICACAO" },
+                        { codigo: 70, descricao: "FARM. P/ HIPERTIREOIDISMO" },
+                        { codigo: 71, descricao: "FARM. P/ HIPOTIREOIDISMO" },
+                        { codigo: 72, descricao: "HIPERGLICEMIANTE/ANABOLIZANTE" },
+                        { codigo: 73, descricao: "HORM.ANTIDIURETICOS E ANALOGOS" },
+                        { codigo: 74, descricao: "MINERALOCORTICOIDES" },
+                        { codigo: 75, descricao: "REHIDRATACAO ORAL" },
+                        { codigo: 76, descricao: "RESINAS PERMUTADORAS DE IONS" },
+                        { codigo: 77, descricao: "SOLUCOES PARA DIALISE" },
+                        { codigo: 78, descricao: "VITAMINAS" },
+                        { codigo: 79, descricao: "HEPATOPROTETOR" }
+                    ],
+                    15: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 79, descricao: "MIORRELAXANTES CENTRAIS" },
+                        { codigo: 80, descricao: "MIORRELAXANTES PERIFERICOS" }
+                    ],
+                    16: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 81, descricao: "ANTIGLAUCOMATOSOS" },
+                        { codigo: 82, descricao: "ANTIINFECCIOSOS" },
+                        { codigo: 83, descricao: "ANTIINFLAMATORIOS" },
+                        { codigo: 84, descricao: "CORANTE/SOL.IRRIGACAO/LUBRIF." },
+                        { codigo: 85, descricao: "GLICOCORTICOIDES" },
+                        { codigo: 86, descricao: "MIDRIATICOS E CICLOPLEGICOS" },
+                        { codigo: 87, descricao: "MIOTICOS" },
+                        { codigo: 88, descricao: "VISCOELASTICOS" }
+                    ],
+                    17: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 89, descricao: "ANTIINFECCIOSOS" },
+                        { codigo: 90, descricao: "CERUMENOLITICO E EMOL. CERUMEN" }
+                    ],
+                    18: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 91, descricao: "ANTICOAGULANTES/HEMOSTATICOS" },
+                        { codigo: 92, descricao: "ANTIINFECCIOSOS TOPICO" },
+                        { codigo: 93, descricao: "ANTIINFLAMATORIOS" },
+                        { codigo: 94, descricao: "ANTI-SEPTICOS" },
+                        { codigo: 95, descricao: "ANTIULCEROSOS DERMICOS" },
+                        { codigo: 96, descricao: "EMOLIENTES/CONDUTORES" },
+                        { codigo: 97, descricao: "GLICOCORTICOIDES" },
+                        { codigo: 98, descricao: "MUCOPOLISSACARIDASES" },
+                        { codigo: 99, descricao: "QUERATOLITICO/QUERATOPLASTICO" },
+                        { codigo: 100, descricao: "ANTIFUNGICO TOPICO" }
+                    ],
+                    19: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 100, descricao: "ANTIANEMICOS ANTIMICROCITICOS" },
+                        { codigo: 101, descricao: "ANTIANEMICOS RENAIS" },
+                        { codigo: 102, descricao: "ANTICOAGULANTES" },
+                        { codigo: 103, descricao: "ANTIFIBRINOLITICOS" },
+                        { codigo: 104, descricao: "ANTINEUTROPENICOS" },
+                        { codigo: 105, descricao: "ANTITROMBOTICOS" },
+                        { codigo: 106, descricao: "COAGULANTES DIVERSOS" },
+                        { codigo: 107, descricao: "FIBRINOLITICOS" },
+                        { codigo: 108, descricao: "FOLATOS" },
+                        { codigo: 109, descricao: "HEMOSTIPTICOS" },
+                        { codigo: 110, descricao: "SANGUE E FRACOES DO SANGUE" },
+                        { codigo: 111, descricao: "SUBSTITUTOS DO SANGUE" },
+                        { codigo: 112, descricao: "FARMACOS ANTIANEMICOS" }
+                    ],
+                    20: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 112, descricao: "ANALGESICOS ANTIENXAQUECA" },
+                        { codigo: 113, descricao: "ANALGESICOS-ANTIPIRETICOS" },
+                        { codigo: 114, descricao: "ANTIPARKINSONIANOS" },
+                        { codigo: 115, descricao: "ANTIVERTIGINOSOS" },
+                        { codigo: 116, descricao: "ANTIDEPRESSIVO TRICICLICO" }
+                    ],
+                    21: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 116, descricao: "ANEST. LOCAL DER. DE AMIDAS" },
+                        { codigo: 117, descricao: "ANEST. LOCAL DER. DE ESTERES" }
+                    ],
+                    22: [
+                        { codigo: 1, descricao: "IMUNOPROTETORES VACINAS E SORO" },
+                        { codigo: 2, descricao: "IMUNOSSUPRESSOR" }
+                    ],
+                    23: [
+                        { codigo: 1, descricao: "ANTI-HISTAMINICO" },
+                        { codigo: 2, descricao: "GLICOCORTICOIDE" }
+                    ],
+                    24: [
+                        { codigo: 1, descricao: "ANTISSEPTICOS" },
+                    ],
+                    25: [
+                        { codigo: 1, descricao: "AGENTES DE DIAGNOSTICOS" },
+                    ],
+                    26: [
+                        { codigo: 1, descricao: "POMADA CICATRIZANTE" },
+                    ],
+                    27: [
+                        { codigo: 1, descricao: "LAXANTES OSMOTICOS" },
+                    ],
+                    28: [
+                        { codigo: 1, descricao: "SOL PARENTERAIS ELETROL E DILUENTES" },
+                    ],
+                    29: [
+                        { codigo: 1, descricao: "DIURETICOS" },
+                    ],
+                    30: [
+                        { codigo: 1, descricao: "MEDICAMENTOS OFTALMICOS" },
+                    ],
+                    31: [
+                        { codigo: 1, descricao: "ANALGESICO OPIOIDE" },
+                        { codigo: 2, descricao: "ANALGESICO / ANTIPIRETICO E ANTITERMICO" },
+                        { codigo: 3, descricao: "ANALGESICOS OPIOIDES / HIPOANALGESICOS" },
+                        { codigo: 4, descricao: "ANESTESICOS GERAIS" },
+                        { codigo: 5, descricao: "ANESTESICOS LOCAIS" },
+                        { codigo: 6, descricao: "ANTICOLINERGICOS E ANTIESPASMODICOS" },
+                        { codigo: 7, descricao: "OUTROS ANALGESICOS" }
+                    ],
+                    32: [
+                        { codigo: 1, descricao: "AMINOGLICOSIDEOS" },
+                        { codigo: 2, descricao: "ANTIBIOTICOS/ANTIFUNGICOS/ANTI-INFLAMATORIO" },
+                        { codigo: 3, descricao: "ANTIFUNGICOS" },
+                        { codigo: 4, descricao: "ANTIINFECCIOSO" },
+                        { codigo: 5, descricao: "ANTI-INFLAMATORIO ESTEROIDAL" },
+                        { codigo: 6, descricao: "ANTIPARASITARIO" },
+                        { codigo: 7, descricao: "ANTIPROTOZOARIOS" },
+                        { codigo: 8, descricao: "BETA LACTAMICOS" },
+                        { codigo: 9, descricao: "CEFALOSPORINAS" },
+                        { codigo: 10, descricao: "FLUOROQUINOLONAS" },
+                        { codigo: 11, descricao: "LINCOSAMIDAS" },
+                        { codigo: 12, descricao: "OTOLOGICOS" },
+                        { codigo: 13, descricao: "PENICILINAS" },
+                        { codigo: 14, descricao: "SULFANOMIDAS" },
+                        { codigo: 15, descricao: "TETRACICLINAS" },
+                        { codigo: 16, descricao: "MACROLIDEOS" }
+                    ],
+                    33: [
+                        { codigo: 1, descricao: "ANTIEPILETICOS/CONVULSOES EPILEPSIA" },
+                        { codigo: 2, descricao: "SEDATIVOS/ANSIOLITICOS/HIPNOTICOS" },
+                        { codigo: 3, descricao: "SEDATIVOS/ANSIOLITICOS/HIPNOTICOS" },
+                        { codigo: 4, descricao: "ANTIPSICOTICOS/PSICOSES DEMENCIA" }
+                    ],
+                    34: [
+                        { codigo: 1, descricao: "SUPLEMENTO DE VITAMINAS E MINERAIS" }
+                    ],
+                    35: [
+                        { codigo: 1, descricao: "SUPLEMENTO DE VITAMINAS E MINERAIS" },
+                        { codigo: 2, descricao: "PREBIOTICOS E PROBIOTICOS" }
+                    ],
+                    36: [
+                        { codigo: 1, descricao: "OSTEOARTRITE" },
+                    ]
+                },
+                2: {
+                    0: [
+                        { codigo: 0, descricao: "A CLASSIFICAR ESPÉCIE 2" }
+                    ],
+                    1: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "AGULHAS" },
+                        { codigo: 2, descricao: "BISTURIS" },
+                        { codigo: 3, descricao: "CATETERES" },
+                        { codigo: 4, descricao: "EQUIPOS/INJETOR" },
+                        { codigo: 5, descricao: "LAMINAS/LANCETAS" },
+                        { codigo: 6, descricao: "SCALPS" },
+                        { codigo: 7, descricao: "SERINGAS" },
+                        { codigo: 8, descricao: "CANULAS" },
+                        { codigo: 9, descricao: "DRENOS" },
+                        { codigo: 10, descricao: "SONDAS" },
+                        { codigo: 11, descricao: "FRASCOS" },
+                        { codigo: 12, descricao: "ADESIVOS/CURATIVOS/HEMOSTATICOS/ESPARADRAPOS/SELOS/TAMPAO/FRALDAS/ABSORVENTES" },
+                        { codigo: 13, descricao: "LATEX" },
+                        { codigo: 14, descricao: "BARACAS" },
+                        { codigo: 15, descricao: "BOLSAS" },
+                        { codigo: 16, descricao: "COLETORES" },
+                        { codigo: 17, descricao: "ATADURAS/FAIXAS/MALHAS" },
+                        { codigo: 18, descricao: "EPI (PROTETORES)" },
+                        { codigo: 19, descricao: "COMPRESSAS" },
+                        { codigo: 20, descricao: "PRESERVATIVOS" },
+                        { codigo: 21, descricao: "EXTENSORES/PERFUSORES" },
+                        { codigo: 22, descricao: "GERAMICIDAS/DETERGENTES/CICATRIZANTES/ALCOOL/OLEO" },
+                        { codigo: 23, descricao: "TEXTIL" },
+                        { codigo: 24, descricao: "TALAS" },
+                        { codigo: 25, descricao: "TIRAS/FITAS" },
+                        { codigo: 26, descricao: "ELETRODOS" },
+                        { codigo: 27, descricao: "CAPA/CAMISA/SACO" },
+                        { codigo: 28, descricao: "FIOS" },
+                        { codigo: 29, descricao: "TORNEIRAS/CONECTORES" },
+                        { codigo: 30, descricao: "ESCOVAS/ESPONJAS" },
+                        { codigo: 31, descricao: "ESPACADOR" },
+                        { codigo: 32, descricao: "IRRIGADOR/ASPIRADOR" },
+                        { codigo: 33, descricao: "PINCAS" },
+                        { codigo: 34, descricao: "TUBOS" },
+                        { codigo: 35, descricao: "RESERVATORIOS" },
+                        { codigo: 36, descricao: "PROTETORES" },
+                        { codigo: 37, descricao: "DISPOSITIVOS" },
+                        { codigo: 38, descricao: "PULSEIRAS" },
+                        { codigo: 39, descricao: "APARELHO DE TRICOTOMIA" },
+                        { codigo: 40, descricao: "KITS CIRURGICOS/ CONJUNTOS" },
+                        { codigo: 42, descricao: "TELAS" },
+                        { codigo: 43, descricao: "GRAMPEADOR CIRURGICO" },
+                        { codigo: 44, descricao: "INSTRUMENTAL" }
+                    ],
+                    2: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "PAPEIS PARA EXAMES" },
+                        { codigo: 6, descricao: "DESCONTAMINANTES 2" },
+                        { codigo: 7, descricao: "REAGENTE QUIMICOS" },
+                        { codigo: 8, descricao: "INSUMOS" },
+                        { codigo: 9, descricao: "EMBALAGENS" },
+                        { codigo: 10, descricao: "COLETORES" },
+                        { codigo: 12, descricao: "INDICADORES" },
+                        { codigo: 13, descricao: "ACESSORIOS" },
+                        { codigo: 14, descricao: "BOLSAS" }
+                    ],
+                    3: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "PAPEIS PARA EXAMES" },
+                        { codigo: 2, descricao: "FILMES RADIOLOGICOS" },
+                        { codigo: 3, descricao: "REVELADORES" },
+                        { codigo: 4, descricao: "FIXADORES" },
+                        { codigo: 5, descricao: "CONTRASTES" },
+                        { codigo: 6, descricao: "DESCONTAMINANTES" },
+                        { codigo: 7, descricao: "REAGENTE QUIMICOS" },
+                        { codigo: 8, descricao: "INSUMOS" },
+                        { codigo: 9, descricao: "EMBALAGENS" },
+                        { codigo: 10, descricao: "COLETORES" },
+                        { codigo: 11, descricao: "MONITORIZACAO" },
+                        { codigo: 12, descricao: "INDICADORES" },
+                        { codigo: 13, descricao: "ACESSORIOS" },
+                    ],
+                    4: [
+                        { codigo: 1, descricao: "COLAS" },
+                        { codigo: 2, descricao: "FITAS" },
+                        { codigo: 3, descricao: "CURATIVOS" }
+                    ],
+                    5: [
+                        { codigo: 1, descricao: "CANULAS" },
+                        { codigo: 2, descricao: "COLETOR" },
+                        { codigo: 3, descricao: "SONDA" },
+                        { codigo: 4, descricao: "TUBOS" },
+                        { codigo: 5, descricao: "DRENOS" }
+                    ],
+                    6: [
+                        { codigo: 1, descricao: "AVENTAL" },
+                        { codigo: 2, descricao: "DESCARTAVEIS" },
+                        { codigo: 3, descricao: "TOUCA" }
+                    ],
+                    7: [
+                        { codigo: 1, descricao: "AGULHAS" },
+                        { codigo: 2, descricao: "BISTURIS" },
+                        { codigo: 3, descricao: "CATETERES" },
+                        { codigo: 4, descricao: "COLETOR" },
+                        { codigo: 5, descricao: "CONECTORES" },
+                        { codigo: 6, descricao: "EQUIPOS" },
+                        { codigo: 7, descricao: "EXTENSORES" },
+                        { codigo: 8, descricao: "SCALP" },
+                        { codigo: 9, descricao: "SERINGAS" },
+                        { codigo: 10, descricao: "TORNEIRINHAS" }
+                    ],
+                    8: [
+                        { codigo: 1, descricao: "LUVAS" }
+                    ],
+                    9: [
+                        { codigo: 1, descricao: "ODONTOLOGICOS" },
+                    ],
+                    11: [
+                        { codigo: 1, descricao: "GERMICIDAS" },
+                        { codigo: 2, descricao: "INSUMOS" }
+                    ],
+                    12: [
+                        { codigo: 1, descricao: "CIRURGICA GERAL" },
+                        { codigo: 2, descricao: "ORTOPEDICA" },
+                        { codigo: 3, descricao: "CIRURGIA CARDIACA" }
+                    ],
+                    13: [
+                        { codigo: 1, descricao: "ATADURAS" },
+                        { codigo: 2, descricao: "CADARCO" },
+                        { codigo: 3, descricao: "COMPRESSAS" },
+                        { codigo: 4, descricao: "MALHA" },
+                        { codigo: 4, descricao: "MASCARAS" }
+                    ],
+                    14: [
+                        { codigo: 1, descricao: "COLETA" },
+                        { codigo: 2, descricao: "DESCARTAVEIS" },
+                        { codigo: 4, descricao: "DIAGNOSTICOS E MONITORIZACAO" },
+                        { codigo: 5, descricao: "EPIS" },
+                        { codigo: 6, descricao: "GEL" },
+                        { codigo: 7, descricao: "INDICADORES" },
+                        { codigo: 8, descricao: "LUVAS LATEX" },
+                        { codigo: 9, descricao: "PUNCH" },
+                        { codigo: 10, descricao: "TALAS" },
+                        { codigo: 11, descricao: "USO PESSOAL" },
+                        { codigo: 12, descricao: "LUVAS SEM LATEX" },
+                        { codigo: 13, descricao: "SUPORTES" },
+                        { codigo: 14, descricao: "INSUMOS" }
+                    ]
+                },
+                3: {
+                    0: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" }
+                    ],
+                    1: [
+                        { codigo: 0, descricao: "A CLASSIFICAR - NÃO UTILIZAR" },
+                        { codigo: 1, descricao: "INSTALAÇÕES" },
+                        { codigo: 2, descricao: "MOVEIS E UTENSILIOS" },
+                        { codigo: 3, descricao: "MATERIAIS DE INFORMATICA" },
+                        { codigo: 4, descricao: "CAIXAS CIRURGICAS" },
+                        { codigo: 5, descricao: "MAQUINAS E EQUIPAMENTOS" },
+                        { codigo: 6, descricao: "EQUIPAMENTOS HOSPITALARES - ATIVO " },
+                        { codigo: 7, descricao: "MATERIAIS PARA MANUTENÇÃO" },
+                        { codigo: 8, descricao: "CONSTRUÇÃO/REFORMA IMOVEL DE TERCEIRO" }
+                    ],
+                    2: [
+                        { codigo: 1, descricao: "MATERIAIS DE MANUTENÇÃO" },
+                        { codigo: 2, descricao: "MATERIAIS DE ESCRITORIO" },
+                        { codigo: 3, descricao: "EQUIPAMENTOS HOSPITALARES - CONSUMO " },
+                        { codigo: 4, descricao: "EQUIPAMENTOS PARA MANUTENÇÃO - CONSUMO " },
+                        { codigo: 5, descricao: "INFORMATICA CONSUMO " },
+                        { codigo: 6, descricao: "MOVEIS E UTENSILIOS " }
+                    ]
+                },
+                4: {
+                    0: [
+                        { codigo: 1, descricao: "A CLASSIFICAR" }
+                    ],
+                    1: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "GASES MEDICINAIS" },
+                        { codigo: 2, descricao: "GASES INDUSTRIAIS" }
+                    ]
+                },
+                5: {
+                    1: [
+                        { codigo: 0, descricao: "MATERIAL DE COPA E COZINHA" }
+                    ]
+                },
+                6: {
+                    1: [
+                        { codigo: 1, descricao: "LEITES ESPECIAIS" },
+                        { codigo: 2, descricao: "ALIMENTO COADJUVANTE CONVALESCENÇA" },
+                        { codigo: 3, descricao: "ITENS MAQUINA CAFE" },
+                        { codigo: 4, descricao: "ALIMENTO" }
+                    ]
+
+                },
+                7: {
+                    0: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" }
+                    ],
+                    1: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "ORTOPEDIA" },
+                        { codigo: 2, descricao: "CIRURGIA GERAL" },
+                        { codigo: 3, descricao: "CARDIOVASCULAR" },
+                        { codigo: 4, descricao: "NEUROCIRURGIA" },
+                        { codigo: 5, descricao: "OFTALMOLOGIA" },
+                        { codigo: 6, descricao: "UROLOGIA" },
+                        { codigo: 7, descricao: "OTORRINOLARINGOLOGIA" },
+                        { codigo: 8, descricao: "CIRURGIA PLASTICA" },
+                        { codigo: 9, descricao: "FERRAMENTAS/ACESSORIOS/INSTRUMENTOS" },
+                        { codigo: 10, descricao: "ORTODONTIA/ODONTOLOGIA" },
+                        { codigo: 11, descricao: "MEDICAMENTOS" }
+                    ],
+                    2: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "ORTOPEDICA" },
+                        { codigo: 2, descricao: "OFTALMICA" },
+                        { codigo: 3, descricao: "ODONTOLOGICA" }
+                    ]
+                },
+                8: {
+                    1: [
+                        { codigo: 0, descricao: "MATERIAL DE MANUTENCAO" }
+                    ]
+                },
+                9: {
+                    1: [
+                        { codigo: 0, descricao: "MATERIAL DE SEGURANCA" }
+                    ]
+                },
+                10: {
+                    0: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" }
+                    ],
+                    2: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 2, descricao: "CAIXA" }
+                    ]
+                },
+                11: {
+                    1: [
+                        { codigo: 0, descricao: "COMBUSTIVEIS E LUBRIFICANTES" }
+                    ]
+                },
+                12: {
+                    1: [
+                        { codigo: 0, descricao: "COMBUSTIVEIS E LUBRIFICANTES" }
+                    ]
+                },
+                13: {
+                    1: [
+                        { codigo: 0, descricao: "MATERIAL DE ROUPARIA" }
+                    ]
+                },
+                14: {
+                    1: [
+                        { codigo: 0, descricao: "MATERIAL DE LABORATORIO" },
+                        { codigo: 1, descricao: "COLETA DE SANGUE " },
+                        { codigo: 2, descricao: "AMOSTRA BIOLÓGICA" },
+                        { codigo: 3, descricao: "REAGENTE" }
+                    ]
+                },
+                15: {
+                    0: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" }
+                    ],
+                    1: [
+                        { codigo: 0, descricao: "A CLASSIFICAR" },
+                        { codigo: 1, descricao: "NUTRIENTES ENTERAIS" },
+                        { codigo: 2, descricao: "NUTRIENTES PARENTERAIS" }
+                    ]
+                },
+                16: {
+                    1: [
+                        { codigo: 1, descricao: "AREIA" }
+                    ],
+                    2: [
+                        { codigo: 1, descricao: "COLAR" },
+                        { codigo: 2, descricao: "EMBALAGEM" },
+                        { codigo: 3, descricao: "FOCINHEIRAS" },
+                        { codigo: 4, descricao: "SACOS" },
+                        { codigo: 5, descricao: "INSUMOS" }
+                    ]
+                },
+                17: {
+                    1: [
+                        { codigo: 1, descricao: "HIGIENE" }
+                    ]
+                },
+                18: {
+                    1: [
+                        { codigo: 1, descricao: "MATERIAL CONSUMO" }
+                    ]
+                },
+                19: {
+                    1: [
+                        { codigo: 1, descricao: "SACOS" }
+                    ]
+                },
+                20: {
+                    1: [
+                        { codigo: 1, descricao: "MATERIAL ESCRITORIO" }
+                    ]
+                },
+                21: {
+                    1: [
+                        { codigo: 1, descricao: "SECA" },
+                        { codigo: 2, descricao: "UMIDA" },
+                        { codigo: 3, descricao: "MEDICAMENTOSA" }
+                    ],
+                    2: [
+                        { codigo: 1, descricao: "RAÇÃO" }
+                    ],
+                    3: [
+                        { codigo: 1, descricao: "RAÇÃO" }
+                    ]
+                },
+                22: {
+                    1: [
+                        { codigo: 1, descricao: "BRINDES CORPORATIVOS" },
+                        { codigo: 2, descricao: "PROGRAMA DE FIDELIDADE MÉDICO" },
+                        { codigo: 3, descricao: "PROGRAMA DE FIDELIDADE TUTOR" }
+                    ]
+                }    
+            };
+
+           // Função para buscar uma espécie pelo nome/descrição
+function searchEspecieByDescricao() {
+    const descricao = document.getElementById('descricao_especie').value.toLowerCase();
+    let codigo = null;
+
+    Object.keys(especieClasseMapping).some(key => {
+        const especie = especieClasseMapping[key];
+
+        if (Object.keys(especie).some(classe => especie[classe].some(item => item.descricao.toLowerCase() === descricao))) {
+            codigo = key;
+            return true;
+        }
+        return false;
+    });
+
+    document.getElementById('codigo_especie').value = codigo || '';
+
+    if (codigo) {
+        document.getElementById('descricao_especie').value = especieMapping[codigo];
+        updateClasseList(codigo); // Chama a função para atualizar a lista de classes
+    } else {
+        clearAndResetLists('especie');
+    }
+}
+
+// Função para exibir a lista de espécies disponíveis
+function showEspecieList() {
+    const especieList = document.getElementById('especie-list');
+    especieList.innerHTML = '';
+
+    Object.keys(especieClasseMapping).forEach(codigo => {
+        const descricao = especieMapping[codigo]; // Obtém a descrição da espécie
+
+        const itemElement = document.createElement('div');
+        itemElement.textContent = `${codigo} - ${descricao}`;
+        itemElement.onclick = () => selectEspecie(codigo);
+        especieList.appendChild(itemElement);
+    });
+
+    especieList.style.display = 'block';
+}
+
+// Função para selecionar uma espécie
+function selectEspecie(codigo) {
+    document.getElementById('codigo_especie').value = codigo;
+
+    const descricao = especieMapping[codigo]; // Obtém a descrição da espécie
+
+    if (descricao) {
+        document.getElementById('descricao_especie').value = descricao;
+        updateClasseList(codigo); // Chama a função para atualizar a lista de classes
+    }
+
+    document.getElementById('especie-list').style.display = 'none';
+    clearAndResetLists('classe'); // Limpa e reseta as listas de classe e subclasse
+}
+
+// Função para atualizar a lista de classes com base no código da espécie selecionada
+function updateClasseList(especieCodigo) {
+    const classeList = document.getElementById('classe-list');
+    classeList.innerHTML = '';
+    const especie = especieClasseMapping[especieCodigo];
+    if (especie) {
+        Object.keys(especie).forEach(classe => {
+            especie[classe].forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.textContent = `${item.codigo} - ${item.descricao}`;
+                itemElement.onclick = () => selectClasse(especieCodigo, item.codigo, item.descricao);
+                classeList.appendChild(itemElement);
+            });
+        });
+    }
+    classeList.style.display = 'block';
+}
+
+// Função para selecionar uma classe
+function selectClasse(especieCodigo, classeCodigo, descricao) {
+    document.getElementById('codigo_classe').value = classeCodigo;
+    document.getElementById('descricao_classe').value = descricao;
+    document.getElementById('classe-list').style.display = 'none';
+    updateSubclasseList(especieCodigo, classeCodigo); // Chama a função para atualizar a lista de subclasses
+}
+
+// Função para atualizar a lista de subclasses com base no código da espécie e da classe selecionadas
+function updateSubclasseList(especieCodigo, classeCodigo) {
+    const subclasseList = document.getElementById('subclasse-list');
+    subclasseList.innerHTML = '';
+    const subclasses = classeSubclasseMapping[especieCodigo] && classeSubclasseMapping[especieCodigo][classeCodigo];
+    (subclasses || []).forEach(subclasse => {
+        const item = document.createElement('div');
+        item.textContent = `${subclasse.codigo} - ${subclasse.descricao}`;
+        item.onclick = () => selectSubclasse(subclasse.codigo, subclasse.descricao);
+        subclasseList.appendChild(item);
+    });
+    subclasseList.style.display = 'block';
+}
+
+// Função para selecionar uma subclasse
+function selectSubclasse(codigo, descricao) {
+    document.getElementById('codigo_subclasse').value = codigo;
+    document.getElementById('descricao_subclasse').value = descricao;
+    document.getElementById('subclasse-list').style.display = 'none';
+}
+
+// Função para limpar campos e redefinir listas
+function clearAndResetLists(type) {
+    if (type === 'especie' || type === 'classe') {
+        document.getElementById('codigo_classe').value = '';
+        document.getElementById('descricao_classe').value = '';
+        document.getElementById('classe-list').innerHTML = '';
+        if (type === 'especie') {
+            clearAndResetLists('subclasse');
+        }
+    }
+    if (type === 'subclasse') {
+        document.getElementById('codigo_subclasse').value = '';
+        document.getElementById('descricao_subclasse').value = '';
+        document.getElementById('subclasse-list').innerHTML = '';
+    }
+}
+
+// Função para exibir a lista de classes disponíveis
+function showClasseList() {
+    const especieCodigo = document.getElementById('codigo_especie').value;
+    if (especieCodigo) {
+        updateClasseList(especieCodigo);
+    }
+}
+
+// Função para exibir a lista de subclasses disponíveis
+function showSubclasseList() {
+    const especieCodigo = document.getElementById('codigo_especie').value;
+    const classeCodigo = document.getElementById('codigo_classe').value;
+    if (especieCodigo && classeCodigo) {
+        updateSubclasseList(especieCodigo, classeCodigo);
+    }
+}
+
+// Event listeners para mostrar listas e ocultá-las ao clicar fora
+document.getElementById('codigo_especie').addEventListener('focus', showEspecieList);
+document.getElementById('codigo_classe').addEventListener('focus', showClasseList);
+document.getElementById('codigo_subclasse').addEventListener('focus', showSubclasseList);
+
+document.addEventListener('click', function (event) {
+    if (!event.target.closest('#especie-list') && event.target.id !== 'codigo_especie') {
+        document.getElementById('especie-list').style.display = 'none';
+    }
+    if (!event.target.closest('#classe-list') && event.target.id !== 'codigo_classe') {
+        document.getElementById('classe-list').style.display = 'none';
+    }
+    if (!event.target.closest('#subclasse-list') && event.target.id !== 'codigo_subclasse') {
+        document.getElementById('subclasse-list').style.display = 'none';
+    }
+});
+
+
+            // Event listener para enviar o formulário
+            document.getElementById('continuarCadastroForm').addEventListener('submit', function (event) {
                 event.preventDefault(); // Evitar o comportamento padrão de envio do formulário
-            
+
                 // Fazer uma requisição assíncrona ao servidor
                 fetch('/salvar_produto', {
                     method: 'POST',
                     body: new FormData(this) // Enviar os dados do formulário
                 })
-                .then(response => response.json()) // Analisar a resposta JSON do servidor
-                .then(data => {
-                    // Verificar o status retornado pelo servidor
-                    if (data.status === 'sucesso') {
-                        // Exibir uma mensagem de sucesso usando um pop-up
-                        alert('Produto cadastrado com sucesso!');
-                    } else {
-                        // Exibir uma mensagem de erro usando um pop-up
+                    .then(response => response.json()) // Analisar a resposta JSON do servidor
+                    .then(data => {
+                        // Verificar o status retornado pelo servidor
+                        if (data.status === 'sucesso') {
+                            // Exibir uma mensagem de sucesso usando um pop-up
+                            alert('Produto cadastrado com sucesso!');
+                        } else {
+                            // Exibir uma mensagem de erro usando um pop-up
+                            alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
+                        }
+                    })
+                    .catch(error => {
+                        // Exibir uma mensagem de erro em caso de falha na requisição
+                        console.error('Erro ao enviar requisição:', error);
                         alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
-                    }
-                })
-                .catch(error => {
-                    // Exibir uma mensagem de erro em caso de falha na requisição
-                    console.error('Erro ao enviar requisição:', error);
-                    alert('Erro ao cadastrar o produto. Por favor, tente novamente.');
-                });
+                    });
             });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script src="server.js"></script>
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="server.js"></script>
+
+
+
+
 </body>
+
 </html>
-            

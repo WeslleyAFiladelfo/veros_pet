@@ -2,15 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const uuid = require('uuid'); // Biblioteca para gerar UUIDs únicos
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Array para simular o armazenamento dos cadastros
-let cadastros = [];
 
 function convertToUpperCase(obj) {
     const newObj = {};
@@ -26,59 +22,18 @@ function convertToUpperCase(obj) {
     return newObj;
 }
 
-// Função para gerar um token único
-function generateToken() {
-    return uuid.v4(); // Gera um UUID v4 (versão 4)
-}
-
-// Rota para carregar a página inicial
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'menu.html'));
 });
 
-// Rota para carregar a página de cadastro
 app.get('/index.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Rota para carregar a página de edição de cadastro com o token específico
-app.get('/editar_cadastro', (req, res) => {
-    const token = req.query.token; // Recupera o token da URL
-
-    // Procura o cadastro no array 'cadastros' pelo token fornecido
-    const cadastro = cadastros.find(cadastro => cadastro.token === token);
-
-    if (!cadastro) {
-        return res.status(404).send('Cadastro não encontrado. Verifique o link fornecido.');
-    }
-
-    // Renderiza a página de edição de cadastro com os dados preenchidos
-    res.sendFile(path.join(__dirname, 'public/editar_cadastro.html'));
-});
-
-// Rota para processar o salvamento do produto e enviar o e-mail com o link de edição
 app.post('/salvar_produto', (req, res) => {
     const formData = convertToUpperCase(req.body);
-    const token = generateToken(); // Gera um token único para este cadastro
-
-    // Simulando o armazenamento do cadastro
-    const novoCadastro = {
-        token: token,
-        formData: formData
-    };
-    cadastros.push(novoCadastro);
-
-    // Envie um e-mail com o link para editar o cadastro e os dados preenchidos
-    enviarEmailEditarCadastro(formData, token);
-
-    // Responde ao cliente com sucesso
-    res.send({ status: 'sucesso' });
-});
-
-// Função para enviar o e-mail com o link para editar o cadastro e os dados preenchidos
-function enviarEmailEditarCadastro(formData, token) {
     const {
-        cadastro_urgente, codigo, kit, consignado, opme, especie, classe, sub_classe, unidade, curva_abc, serie,
+        cadastro_urgente,codigo, kit, consignado, opme, especie, classe, sub_classe, unidade, curva_abc, serie,
         registro_anvisa, etiqueta, med_controla, validade, armazenamento_ar_cond, armazenamento_geladeira,
         padronizado, sn_movimentacao, sn_bloqueio_de_compras, aplicacao, auto_custo, valor, repasse,
         procedimento_faturamento, tipo_atendimento_ps, tipo_atendimento_ambulatorial, tipo_atendimento_internacao,
@@ -121,12 +76,9 @@ function enviarEmailEditarCadastro(formData, token) {
     const mailOptions = {
         from: 'cadastrosveros@outlook.com',
         to: 'cadastrosveros@outlook.com',
-        subject: 'Finalize seu Cadastro',
+        subject: 'Solicitação de Cadastro',
         html: `
-            <h1>Finalize seu Cadastro</h1>
-            <p>Obrigado por salvar seu produto. Clique no link abaixo para editar e finalizar seu cadastro:</p>
-            <a href="http://localhost:3000/editar_cadastro?token=${token}">Editar Cadastro</a>
-            <h2>Detalhes do Produto:</h2>
+            <h1>Solicitação de Cadastro:</h1>
             <p><strong>Cadastro de Urgência:</strong> ${cadastro_urgente}</p>
             ${codigo ? `<p><strong>Código:</strong> ${codigo}</p>` : ''}
             ${descricoesHtml}
@@ -163,23 +115,58 @@ function enviarEmailEditarCadastro(formData, token) {
             <p><strong>Observação:</strong> ${observacao}</p>
             <p><strong>Usuário:</strong> ${usuario}</p>
             <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Email CC:</strong> ${email_cc}</p>
+            <p><strong>Com cópia:</strong> ${email_cc}</p>
         `
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error);
+            res.status(500).send('Erro ao enviar e-mail');
         } else {
             console.log('E-mail enviado: ' + info.response);
+            res.send('Produto cadastrado com sucesso!');
         }
     });
-}
+});
 
-// Configuração da porta e inicialização do servidor
+app.post('/responder_email', (req, res) => {
+    const { from, to, cc, subject, message } = convertToUpperCase(req.body);
+
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.office365.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'cadastrosveros@outlook.com',
+            pass: 'Veros@1234'
+        },
+        tls: {
+            ciphers: 'SSLv3',
+            rejectUnauthorized: false // Permite conexões a servidores com certificados autoassinados
+        }
+    });
+
+    const mailOptions = {
+        from: from || 'cadastrosveros@outlook.com',
+        to: to,
+        cc: cc,
+        subject: subject,
+        text: message
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Erro ao enviar e-mail de resposta');
+        } else {
+            console.log('E-mail de resposta enviado: ' + info.response);
+            res.send('E-mail de resposta enviado com sucesso!');
+        }
+    });
+});
+
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
-

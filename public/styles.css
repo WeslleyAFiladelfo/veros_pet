@@ -133,3 +133,42 @@ img {
 .description-group {
     margin-bottom: 10px;
 }
+
+.especie-container , .classe-container, .subclasse-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os campos */
+}
+
+.especie-container label, .classe-container label, .subclasse-container label {
+    margin-bottom: 0; /* Remove a margem inferior dos labels */
+}
+
+#codigo_especie, #codigo_classe, #codigo_subclasse {
+    width: 60px; /* Largura dos campos de código */
+}
+
+#descricao_especie, #descricao_classe, #descricao_subclasse {
+    width: 600px; /* Largura dos campos de descrição */
+}
+
+#especie-list, #classe-list, #subclasse-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#especie-list div, #classe-list div, #subclasse-list div {
+    padding: 5px;
+    cursor: pointer;
+}
+
+#especie-list div:hover, #classe-list div:hover, #subclasse-list div:hover {
+    background-color: #ddd;
+}
+
+
