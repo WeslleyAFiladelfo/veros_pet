@@ -896,8 +896,8 @@ app.post("/salvar_produto", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: "cadastrosveros@outlook.com",
-      pass: "Veros@1234",
+      user: "cadastro_pet@outlook.com",
+      pass: "Gic@29098",
     },
     tls: {
       ciphers: "SSLv3",
@@ -906,8 +906,8 @@ app.post("/salvar_produto", (req, res) => {
   });
 
   const mailOptions = {
-    from: "cadastrosveros@outlook.com",
-    to: "cadastrosveros@outlook.com",
+    from: "cadastro_pet@outlook.com",
+    to: "cadastro_pet@outlook.com",
     subject: "Solicitação de Cadastro",
     html: `
             <h1>Solicitação de Cadastro:</h1>
@@ -971,8 +971,8 @@ app.post("/responder_email", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: "cadastrosveros@outlook.com",
-      pass: "Veros@1234",
+      user: "cadastro_pet@outlook.com",
+      pass: "Gic@29098",
     },
     tls: {
       ciphers: "SSLv3",
@@ -981,7 +981,7 @@ app.post("/responder_email", (req, res) => {
   });
 
   const mailOptions = {
-    from: from || "cadastrosveros@outlook.com",
+    from: from || "cadastro_pet@outlook.com",
     to: to,
     cc: cc,
     subject: subject,
