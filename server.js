@@ -841,6 +841,7 @@ app.post("/salvar_produto", (req, res) => {
     descricao_subclasse,
     atividade,
     unidade,
+    auxiliar,
     curva_abc,
     serie,
     registro_anvisa,
@@ -917,6 +918,7 @@ app.post("/salvar_produto", (req, res) => {
             ${codigo ? `<p><strong>Código:</strong> ${codigo}</p>` : ""}
             ${descricoesHtml}
             <p><strong>Unidade:</strong> ${unidade}</p>
+            <p><strong>Auxiliar 1:</strong> ${auxiliar}</p>
             <p><strong>Kit:</strong> ${kit}</p>
             <p><strong>Consignado:</strong> ${consignado}</p>
             <p><strong>OPME:</strong> ${opme}</p>
