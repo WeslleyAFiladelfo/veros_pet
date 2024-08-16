@@ -863,6 +863,8 @@ app.post("/salvar_produto", (req, res) => {
     tipo_atendimento_externo,
     tipo_atendimento_todos,
     observacao,
+    precificar,
+    setor_solicitante,
     usuario,
     email,
     email_cc,
@@ -946,6 +948,8 @@ app.post("/salvar_produto", (req, res) => {
             <p><strong>Externo:</strong> ${tipo_atendimento_externo}</p>
             <p><strong>Todos:</strong> ${tipo_atendimento_todos}</p>
             <p><strong>Observação:</strong> ${observacao}</p>
+            <p><strong>Precificar:</strong> ${precificar}</p>
+            <p><strong>Setor se solicitação da compra:</strong> ${setor_solicitante}</p>
             <p><strong>Usuário:</strong> ${usuario}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Com cópia:</strong> ${email_cc}</p>
