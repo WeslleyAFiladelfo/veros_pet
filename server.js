@@ -949,7 +949,7 @@ app.post("/salvar_produto", (req, res) => {
             <p><strong>Todos:</strong> ${tipo_atendimento_todos}</p>
             <p><strong>Observação:</strong> ${observacao}</p>
             <p><strong>Precificar:</strong> ${precificar}</p>
-            <p><strong>Setor se solicitação da compra:</strong> ${setor_solicitante}</p>
+            <p><strong>Setor de solicitação da compra:</strong> ${setor_solicitante}</p>
             <p><strong>Usuário:</strong> ${usuario}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Com cópia:</strong> ${email_cc}</p>
