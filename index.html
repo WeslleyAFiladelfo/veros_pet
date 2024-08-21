@@ -541,7 +541,8 @@
                 19: "MATERIAL DE EMBALAGEM",
                 20: "MATERIAL DE ESCRITORIO",
                 21: "RAÇÃO",
-                22: "BRINDES"
+                22: "BRINDES",
+                23: "BENS DE PEQUENOS VALORES"
             };
 
             const classeMapping = {
@@ -569,7 +570,8 @@
                     "USO GERAL",
                     "USO GERAL",
                     "USO GERAL",
-                    "USO GERAL"
+                    "USO GERAL",
+                    "BENS DE PEQUENOS VALORES"
                 ],
                 2: [
                     "UMIDA",
@@ -1308,6 +1310,12 @@
                         // Adicione outras classes conforme necessário 
                     ]
                 },
+                23: {
+                    "BENS DE PEQUENOS VALORES": [
+                        { codigo: 1, descricao: "BRINDES BENS DE PEQUENOS VALORES" }
+                        // Adicione outras classes conforme necessário 
+                    ]
+                },
             };
 
 
@@ -1853,7 +1861,7 @@
                 },
                 12: {
                     1: [
-                        { codigo: 0, descricao: "COMBUSTIVEIS E LUBRIFICANTES" }
+                        { codigo: 0, descricao: "MATERIAIS DE EXPEDIENTES" }
                     ]
                 },
                 13: {
@@ -1930,7 +1938,12 @@
                         { codigo: 2, descricao: "PROGRAMA DE FIDELIDADE MÉDICO" },
                         { codigo: 3, descricao: "PROGRAMA DE FIDELIDADE TUTOR" }
                     ]
-                }    
+                },
+                23: {
+                    1: [
+                        { codigo: 1, descricao: "BENS DE PEQUENOS VALORES" }
+                    ]
+                }        
             };
 
            // Função para buscar uma espécie pelo nome/descrição
