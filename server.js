@@ -843,6 +843,8 @@ app.post("/salvar_produto", (req, res) => {
     unidade,
     auxiliar,
     curva_abc,
+    lote,
+    validade_2,
     serie,
     registro_anvisa,
     etiqueta,
@@ -927,6 +929,8 @@ app.post("/salvar_produto", (req, res) => {
             <p><strong>Sub-Classe:</strong> ${descricao_subclasse}</p>
             <p><strong>Atividade:</strong> ${atividade}</p>
             <p><strong>Curva ABC:</strong> ${curva_abc}</p>
+            <p><strong>Lote:</strong> ${lote}</p>
+            <p><strong>Validade:</strong> ${validade_2}</p>
             <p><strong>Série:</strong> ${serie}</p>
             <p><strong>Registro ANVISA:</strong> ${registro_anvisa}</p>
             <p><strong>Etiqueta:</strong> ${etiqueta}</p>
